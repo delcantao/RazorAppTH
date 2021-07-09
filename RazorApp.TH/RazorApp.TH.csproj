@@ -5,11 +5,7 @@
     <Authors>Fernando del Cantão</Authors>
     <Company>Sistemas TH</Company>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <PlatformTarget>ARM64</PlatformTarget>
-  </PropertyGroup>
-
+ 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.7" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
