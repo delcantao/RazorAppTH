@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>Fernando del Cantão</Authors>
+    <Company>Sistemas TH</Company>
   </PropertyGroup>
 
   <ItemGroup>
