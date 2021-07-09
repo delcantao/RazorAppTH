@@ -1,0 +1,12 @@
+﻿@page
+@model ProdutosModel
+@{
+    ViewData["Title"] = "Produtos";
+}
+<hr>
+Produtos
+<hr>
+@foreach(var data in Model._info)
+{
+    @Html.Raw(Model.CarregaBloco(data));
+ }

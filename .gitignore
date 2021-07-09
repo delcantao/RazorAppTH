@@ -1,0 +1,8 @@
+# Folders
+/.vs
+/RazorApp.TH/Properties/PublishProfiles
+/RazorApp.TH/bin
+/RazorApp.TH/obj
+
+#Files
+*.exe
