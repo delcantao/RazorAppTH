@@ -2,12 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Authors>Fernando del Cantão</Authors>
-    <Company>Sistemas TH</Company>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <PlatformTarget>ARM64</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
