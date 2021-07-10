@@ -30,10 +30,12 @@ namespace RazorAppTH.Pages
         }
         public async Task OnGet()
         {
-            using var httpClient = new HttpClient();
-            using var response = await httpClient.GetAsync(Statics.UrlWsIth);
-            string apiResponse = await response.Content.ReadAsStringAsync();
-            _info = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Model.Info.Data>>(apiResponse);
+            //using var httpClient = new HttpClient();
+            //using var response = await httpClient.GetAsync(Statics.UrlWsIth);
+            //string apiResponse = await response.Content.ReadAsStringAsync();
+            //_info = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Model.Info.Data>>(apiResponse);
+
+            _info = new List<Info.Data> { new Info.Data() };
         }
         public async Task<string> RenderBlocks(Model.Info.Data data)
         {

@@ -85,7 +85,8 @@
                                                                             <div class="elementor-container elementor-column-gap-default">
                                                                                 @foreach(var data in Model._info)
                                                                                 {
-                                                                                    @Html.Raw(await Model.RenderBlocks(data))
+                                                                                    if (data.Ordem > 0)
+                                                                                        @Html.Raw(await Model.RenderBlocks(data))
                                                                                 }
                                                                             </div>
                                                                         </section>

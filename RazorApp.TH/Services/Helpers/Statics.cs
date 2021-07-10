@@ -10,10 +10,16 @@ namespace RazorAppTH.Services.Helpers
     {
         public static string UrlWsIth = "https://api3.sistemasth.com.br/api/ith_Check_Modulos?sCodValidacao=$WB$";
         public static string UrlLoginSipWeb = "https://sipweb.sistemasth.com.br/login";
+        public static string UrlResultadoScripts = "/includes/resultado/scripts.html";
+
         public static List<string> AllowsAnonymousAccess = new List<string>
         {
+             "/",
              "/Login",
-             "/"
+             "/Check",
+             "/Resultado",
+             "/Resultado/scripts.html"
+
         };
     }
 }
