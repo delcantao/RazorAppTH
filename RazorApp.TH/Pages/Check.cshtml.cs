@@ -15,30 +15,46 @@ using Web.Services;
 using Microsoft.AspNetCore.Http;
 using RazorAppTH.Services.Helpers;
 using System.Net.Http;
+using Microsoft.AspNetCore.Hosting;
 
 namespace RazorAppTH.Pages
 {
-    public class IndexModel : PageModel
+    public class CheckModel : PageModel
     {   
         public List<Model.Info.Data> _info;
-        private readonly ILogger<IndexModel> _logger;
-        private readonly IRazorRenderService _renderService; 
-        public IndexModel(ILogger<IndexModel> logger, IRazorRenderService renderService )
+        private readonly ILogger<CheckModel> _logger;
+        private readonly IRazorRenderService _renderService;
+        public IWebHostEnvironment _env;
+        public CheckModel(ILogger<CheckModel> logger, IRazorRenderService renderService, IWebHostEnvironment env)
         {
             _renderService = renderService;
-            _logger = logger; 
+            _logger = logger;
+            _env = env;
         }
         public async Task OnGet()
         {
-            //using var httpClient = new HttpClient();
-            //using var response = await httpClient.GetAsync(Statics.UrlWsIth);
-            //string apiResponse = await response.Content.ReadAsStringAsync();
-            //_info = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Model.Info.Data>>(apiResponse);
+            using var httpClient = new HttpClient();
+            using var response = await httpClient.GetAsync(Statics.UrlWsIth);
+            string apiResponse = await response.Content.ReadAsStringAsync();
+            _info = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Model.Info.Data>>(apiResponse);
 
-            _info = new List<Info.Data> { new Info.Data() };
+            //_info = new List<Info.Data> { new Info.Data() };
+            if (_info.Count >= 5)
+            {
+                _info.FirstOrDefault(e => e.Modulo.Equals("CPF")).UrlIcone = "far fa-address-card";
+                _info.FirstOrDefault(e => e.Modulo.Equals("NOME")).UrlIcone = "fas fa-user";
+                _info.FirstOrDefault(e => e.Modulo.Equals("NOMEADC")).UrlIcone = "fas fa-user-plus";
+                _info.FirstOrDefault(e => e.Modulo.Equals("FONE")).UrlIcone = "fas fa-phone-alt";
+                //_info.FirstOrDefault(e => e.Modulo.Equals("EMAIL")).UrlIcone = "icon icon-email";
+                //_info.FirstOrDefault(e => e.Modulo.Equals("NASC")).UrlIcone = "far fa-calendar-check";
+                _info.FirstOrDefault(e => e.Modulo.Equals("PEP")).UrlIcone = "far fa-calendar-check";
+
+            }
+
         }
         public async Task<string> RenderBlocks(Model.Info.Data data)
         {
+
             var htmlString = await _renderService.ToStringAsync("_Block", data);
             return htmlString;
 

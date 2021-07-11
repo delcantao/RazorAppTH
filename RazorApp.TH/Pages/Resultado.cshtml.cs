@@ -6,18 +6,22 @@ using RazorAppTH.Services.Helpers;
 using System.Net.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace RazorAppTH.Pages
 {
-    public class ProdutosModel : PageModel
+    public class ResultadoModel : PageModel
     {
-        private readonly ILogger<ProdutosModel> _logger;
+        public IWebHostEnvironment _env;
+        private readonly ILogger<ResultadoModel> _logger;
         public List<Model.Info.Data> _info;
         
         
-        public ProdutosModel(ILogger<ProdutosModel> logger)
+        public ResultadoModel(ILogger<ResultadoModel> logger, IWebHostEnvironment env)
         {
             _logger = logger;
+            _env = env;
         }
 
         public void OnGet()
@@ -25,14 +29,7 @@ namespace RazorAppTH.Pages
 
          
         }
-        public async Task<string> LoadScripts()
-        {
-            using var httpClient = new HttpClient();
-            using var response = await httpClient.GetAsync(HttpContext.Request.Scheme + "://" + HttpContext.Request.Host + Statics.UrlResultadoScripts);
-            string apiResponse = await response.Content.ReadAsStringAsync();
-            
-            return apiResponse;
+      
 
-        }
     }
 }

@@ -8,11 +8,6 @@ namespace RazorAppTH.Services.Helpers
 {
     public class Functions
     {
-        public static string GetStringValueFromSession(string value)
-        {
-            return "";
-        }
-
 
     }
 }

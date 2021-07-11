@@ -1,6 +1,7 @@
 ﻿@*@page "Principal/Teste"*@
 @page
-@model IndexModel
+@using RazorAppTH.Services.Helpers
+@model CheckModel
 
 @{
     ViewData["Title"] = "Home page";
@@ -44,21 +45,13 @@
                                     </section>
                                     <div class="elementor-element elementor-element-7945f59 elementor-widget elementor-widget-text-editor" data-id="7945f59" data-element_type="widget" data-widget_type="text-editor.default">
                                         <div class="elementor-widget-container">
-                                            <p>É uma ferramenta de apoio à prevenção ao risco e à fraude que oferece uma solução automática de checagem da informação cadastral, em tempo real, via API, evitando tentativas de fraude de identidade e inconsistências no cadastro dos clientes e prospects. sem comprometer a agilidade na entrada de dados e a satisfação dos seus clientes. <br><strong>Benefício:</strong>&nbsp; Realizar a validação, a qualificação e confirmação de forma automática dos dados cadastrais CPF e CNPJ. Esta aplicação permite a parametrização de informações a serem checadas em uma única requisição, possibilitando:</p>
+                                            <p>É uma ferramenta de apoio à prevenção ao risco e à fraude que oferece uma solução automática de checagem da informação cadastral, em tempo real, via API, evitando tentativas de fraude de identidade e inconsistências no cadastro dos clientes e prospects. sem comprometer a agilidade na entrada de dados e a satisfação dos seus clientes. <br><strong>Benefícios:</strong>&nbsp; Realizar a validação, a qualificação e confirmação de forma automática dos dados cadastrais CPF e CNPJ. Esta aplicação permite a parametrização de informações a serem checadas em uma única requisição, possibilitando:</p>
                                             <ul>
                                                 <li>Otimização de recursos, tempo de análise, através de acessos a fontes de fé pública;</li>
                                                 <li>Aumento de segurança da informação, pois reduz o risco da entrada de dados inconsistentes e fraudulentos;</li>
                                                 <li>Customização de acordo com a demanda de cada área, através da parametrização das APIs;</li>
-                                                <li>Conformidade com os órgãos reguladores (Circular 3988 do Bacen e da Lei Complementar 105).</li>
+                                                <li>Conformidade com os órgãos reguladores (Circulares 3978 e 3988 do Bacen e da Lei Complementar 105).</li>
                                             </ul>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-bf82876 elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="bf82876" data-element_type="widget" data-widget_type="divider.default">
-                                        <div class="elementor-widget-container">
-                                            <div class="elementor-divider">
-                                                <span class="elementor-divider-separator">
-                                                </span>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -74,20 +67,44 @@
                                             <div id="mf-response-props-id-235" data-editswitchopen="" data-erroricon="fas fa-exclamation-triangle" data-successicon="fas fa-check" data-messageposition="top" class="   mf-scroll-top-no">
                                                 <div class="formpicker_warper formpicker_warper_editable" data-metform-formpicker-key="235">
                                                     <div class="elementor-widget-container">
-                                                        <div id="metform-wrap-fcb0140-235" class="mf-form-wrapper" data-form-id="235" data-action="https://adrianogiopato.com.br/projetoth/wp-json/metform/v1/entries/insert/235" data-wp-nonce="456ac1c598" data-form-nonce="d52a7764d7" data-stop-vertical-effect="">
+                                                        <div id="metform-wrap-fcb0140-235" class="mf-form-wrapper" data-form-id="235" data-action="./wp-json/metform/v1/entries/insert/235" data-wp-nonce="840c16a903" data-form-nonce="6e6eb23d02" data-stop-vertical-effect="">
                                                             <form class="metform-form-content">
                                                                 <div class="mf-main-response-wrap   mf-response-msg-wrap" data-show="0">
                                                                     <div class="mf-response-msg"></div>
                                                                 </div>
                                                                 <div data-elementor-type="wp-post" data-elementor-id="235" class="elementor elementor-235" data-elementor-settings="[]">
                                                                     <div class="elementor-section-wrap">
-                                                                        <section class="elementor-section elementor-top-section elementor-element elementor-element-76fe9cd elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="76fe9cd" data-element_type="section" data-settings="{&amp;quot;background_background&amp;quot;:&amp;quot;classic&amp;quot;}">
+                                                                        <section class="elementor-section elementor-top-section elementor-element elementor-element-b155d01 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="b155d01" data-element_type="section" data-settings="{&amp;quot;background_background&amp;quot;:&amp;quot;classic&amp;quot;}">
+
                                                                             <div class="elementor-container elementor-column-gap-default">
-                                                                                @foreach(var data in Model._info)
+                                                                                @foreach(var fields in Model._info)
                                                                                 {
-                                                                                    if (data.Ordem > 0)
-                                                                                        @Html.Raw(await Model.RenderBlocks(data))
-                                                                                }
+                                                                                    if(fields.Ordem > 0)
+                                                                                        @Html.Raw(await Model.RenderBlocks(fields));
+
+                                                                                    }
+                                                                            </div>
+                                                                        </section>
+                                                                        <section class="elementor-section elementor-top-section elementor-element elementor-element-76fe9cd elementor-section-height-min-height elementor-section-stretched elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="76fe9cd" data-element_type="section" data-settings="{&amp;quot;background_background&amp;quot;:&amp;quot;classic&amp;quot;,&amp;quot;stretch_section&amp;quot;:&amp;quot;section-stretched&amp;quot;}">
+                                                                            <div class="elementor-container elementor-column-gap-default">
+                                                                                <div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-78470ff" data-id="78470ff" data-element_type="column">
+                                                                                    <div class="elementor-widget-wrap"></div>
+                                                                                </div>
+                                                                                <div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-5b677ca" data-id="5b677ca" data-element_type="column">
+                                                                                    <div class="elementor-widget-wrap"></div>
+                                                                                </div>
+                                                                                <div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-5f694b3" data-id="5f694b3" data-element_type="column">
+                                                                                    <div class="elementor-widget-wrap"></div>
+                                                                                </div>
+                                                                                <div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-7e23d47" data-id="7e23d47" data-element_type="column">
+                                                                                    <div class="elementor-widget-wrap"></div>
+                                                                                </div>
+                                                                                <div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-2ed6b9b" data-id="2ed6b9b" data-element_type="column">
+                                                                                    <div class="elementor-widget-wrap"></div>
+                                                                                </div>
+                                                                                <div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-81d1c96" data-id="81d1c96" data-element_type="column">
+                                                                                    <div class="elementor-widget-wrap"></div>
+                                                                                </div>
                                                                             </div>
                                                                         </section>
                                                                     </div>
@@ -95,10 +112,10 @@
                                                             </form>
                                                         </div>
                                                         <!-----------------------------
-                                                           * controls_data : find the the props passed indie of data attribute
-                                                           * parent.submit_response_message : contains the markup of error or success message
-                                                           * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
-                                                           --------------------------- -->
+                                                        * controls_data : find the the props passed indie of data attribute
+                                                        * parent.submit_response_message : contains the markup of error or success message
+                                                        * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+                                                        --------------------------- -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,7 +128,7 @@
                                                     <div class="elementor-element elementor-element-4d2bada elementor-align-left elementor-widget elementor-widget-button" data-id="4d2bada" data-element_type="widget" data-widget_type="button.default">
                                                         <div class="elementor-widget-container">
                                                             <div class="elementor-button-wrapper">
-                                                                <a href="https://adrianogiopato.com.br/projetoth" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+                                                                <a href="./../index.html" class="elementor-button-link elementor-button elementor-size-sm" role="button">
                                                                     <span class="elementor-button-content-wrapper">
                                                                         <span class="elementor-button-text">VOLTAR</span>
                                                                     </span>
@@ -126,7 +143,7 @@
                                                     <div class="elementor-element elementor-element-75cf48e elementor-align-right elementor-widget elementor-widget-button" data-id="75cf48e" data-element_type="widget" data-widget_type="button.default">
                                                         <div class="elementor-widget-container">
                                                             <div class="elementor-button-wrapper">
-                                                                <a href="https://adrianogiopato.com.br/projetoth/resultado/" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+                                                                <a href="./../Resultado" class="elementor-button-link elementor-button elementor-size-sm" role="button">
                                                                     <span class="elementor-button-content-wrapper">
                                                                         <span class="elementor-button-text">SUBMETER</span>
                                                                     </span>
@@ -149,3 +166,10 @@
     </article>
     <!-- #post-213 -->
 </main>
+
+@section Head {
+    @Html.Raw(await Statics.RenderStaticPage(Model._env.WebRootPath, "includes", "check", "head.html"))
+}
+@section Scripts {
+    @Html.Raw(await Statics.RenderStaticPage(Model._env.WebRootPath, "includes", "check", "scripts.html"))
+}
