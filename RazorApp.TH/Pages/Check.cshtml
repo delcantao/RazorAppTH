@@ -68,7 +68,7 @@
                                                 <div class="formpicker_warper formpicker_warper_editable" data-metform-formpicker-key="235">
                                                     <div class="elementor-widget-container">
                                                         <div id="metform-wrap-fcb0140-235" class="mf-form-wrapper" data-form-id="235" data-action="./wp-json/metform/v1/entries/insert/235" data-wp-nonce="840c16a903" data-form-nonce="6e6eb23d02" data-stop-vertical-effect="">
-                                                            <form class="metform-form-content">
+                                                            <form id="formCheck" class="metform-form-content" method="post" asp-page="/Resultado" asp-page-handler="CarregaModulos">
                                                                 <div class="mf-main-response-wrap   mf-response-msg-wrap" data-show="0">
                                                                     <div class="mf-response-msg"></div>
                                                                 </div>
@@ -77,12 +77,16 @@
                                                                         <section class="elementor-section elementor-top-section elementor-element elementor-element-b155d01 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="b155d01" data-element_type="section" data-settings="{&amp;quot;background_background&amp;quot;:&amp;quot;classic&amp;quot;}">
 
                                                                             <div class="elementor-container elementor-column-gap-default">
-                                                                                @foreach(var fields in Model._info)
-                                                                                {
-                                                                                    if(fields.Ordem > 0)
-                                                                                        @Html.Raw(await Model.RenderBlocks(fields));
+                                                                                 
+                                                                                    
+                                                                                    @foreach(var fields in Model._info)
+                                                                                    {
+                                                                                        if(fields.Ordem > 0)
+                                                                                            @Html.Raw(await Model.RenderBlocks(fields));
 
-                                                                                    }
+                                                                                        }
+
+                                                                                
                                                                             </div>
                                                                         </section>
                                                                         <section class="elementor-section elementor-top-section elementor-element elementor-element-76fe9cd elementor-section-height-min-height elementor-section-stretched elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="76fe9cd" data-element_type="section" data-settings="{&amp;quot;background_background&amp;quot;:&amp;quot;classic&amp;quot;,&amp;quot;stretch_section&amp;quot;:&amp;quot;section-stretched&amp;quot;}">
@@ -143,7 +147,7 @@
                                                     <div class="elementor-element elementor-element-75cf48e elementor-align-right elementor-widget elementor-widget-button" data-id="75cf48e" data-element_type="widget" data-widget_type="button.default">
                                                         <div class="elementor-widget-container">
                                                             <div class="elementor-button-wrapper">
-                                                                <a href="./../Resultado" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+                                                                <a xhref="./../Resultado" href="#" onclick="document.getElementById('formCheck').submit()" xonclick="jQueryCheckPost(document.getElementById('formCheck'))" class="elementor-button-link elementor-button elementor-size-sm" role="button">
                                                                     <span class="elementor-button-content-wrapper">
                                                                         <span class="elementor-button-text">SUBMETER</span>
                                                                     </span>

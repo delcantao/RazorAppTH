@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://localhost/RazorApp.TH",
+      "applicationUrl": "http://localhost/RazorAppTH",
       "sslPort": 0
     },
     "iisExpress": {

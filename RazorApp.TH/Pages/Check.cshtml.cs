@@ -33,12 +33,17 @@ namespace RazorAppTH.Pages
         }
         public async Task OnGet()
         {
-            using var httpClient = new HttpClient();
-            using var response = await httpClient.GetAsync(Statics.UrlWsIth);
-            string apiResponse = await response.Content.ReadAsStringAsync();
+            string apiResponse = HttpContext.Session.GetString("info");
+            if (string.IsNullOrEmpty(apiResponse))
+            {
+                using var httpClient = new HttpClient();
+                using var response = await httpClient.GetAsync(Statics.UrlWsIth);
+                apiResponse = await response.Content.ReadAsStringAsync();
+                HttpContext.Session.SetString("info", apiResponse);
+            }
             _info = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Model.Info.Data>>(apiResponse);
 
-            //_info = new List<Info.Data> { new Info.Data() };
+            
             if (_info.Count >= 5)
             {
                 _info.FirstOrDefault(e => e.Modulo.Equals("CPF")).UrlIcone = "far fa-address-card";
@@ -55,7 +60,7 @@ namespace RazorAppTH.Pages
         public async Task<string> RenderBlocks(Model.Info.Data data)
         {
 
-            var htmlString = await _renderService.ToStringAsync("_Block", data);
+            var htmlString = await _renderService.ToStringAsync("_Check_Blocks", data);
             return htmlString;
 
         }
