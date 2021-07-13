@@ -1,0 +1,74 @@
+﻿@model RazorAppTH.Model.Check
+
+<table class="ea-advanced-data-table ea-advanced-data-table-static ea-advanced-data-table-d3e681d ea-advanced-data-table-sortable" data-id="d3e681d">
+    <thead>
+        <tr>
+            <th>
+                <p>CONSULTA</p>
+            </th>
+            <th>
+                <p>RESULTADO</p>
+            </th>
+        </tr>
+    </thead>
+</table>
+<tbody>
+    @if(Model.Dados.NOME != null)
+    {
+        <tr>
+            <td>
+                <p>NOME:</p>
+            </td>
+            <td>
+                <p>@Model.Dados.NOME.CODSTATUS - @Model.Dados.NOME.MSGSTATUS</p>
+            </td>
+        </tr>
+    }
+    @if(Model.Dados.NASC != null)
+    {
+        <tr>
+            <td>
+                <p>NASC:</p>
+            </td>
+            <td>
+                <p>@Model.Dados.NASC.CODSTATUS - @Model.Dados.NASC.MSGSTATUS</p>
+            </td>
+        </tr>
+    }
+
+    @if(Model.Dados.FONE != null)
+    {
+        <tr>
+            <td>
+                <p>FONE:</p>
+            </td>
+            <td>
+                <p>@Model.Dados.FONE.CODSTATUS - @Model.Dados.FONE.MSGSTATUS</p>
+            </td>
+        </tr>
+    }
+
+    @if(Model.Dados.EMAIL != null)
+    {
+        <tr>
+            <td>
+                <p>EMAIL:</p>
+            </td>
+            <td>
+                <p>@Model.Dados.EMAIL.CODSTATUS - @Model.Dados.EMAIL.MSGSTATUS</p>
+            </td>
+        </tr>
+    }
+
+    @if(Model.Dados.NOMEADC != null)
+    {
+        <tr>
+            <td>
+                <p>NOMEADC:</p>
+            </td>
+            <td>
+                <p>@Model.Dados.NOMEADC.CODSTATUS - @Model.Dados.NOMEADC.MSGSTATUS</p>
+            </td>
+        </tr>
+    }
+</tbody>

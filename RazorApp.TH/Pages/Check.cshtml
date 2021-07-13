@@ -82,7 +82,7 @@
                                                                                     @foreach(var fields in Model._info)
                                                                                     {
                                                                                         if(fields.Ordem > 0)
-                                                                                            @Html.Raw(await Model.RenderBlocks(fields));
+                                                                                            @Html.Raw(await Model.RenderFields(fields));
 
                                                                                         }
 
@@ -132,7 +132,7 @@
                                                     <div class="elementor-element elementor-element-4d2bada elementor-align-left elementor-widget elementor-widget-button" data-id="4d2bada" data-element_type="widget" data-widget_type="button.default">
                                                         <div class="elementor-widget-container">
                                                             <div class="elementor-button-wrapper">
-                                                                <a href="./../index.html" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+                                                                <a href="./index.html" class="elementor-button-link elementor-button elementor-size-sm" role="button">
                                                                     <span class="elementor-button-content-wrapper">
                                                                         <span class="elementor-button-text">VOLTAR</span>
                                                                     </span>
@@ -147,7 +147,13 @@
                                                     <div class="elementor-element elementor-element-75cf48e elementor-align-right elementor-widget elementor-widget-button" data-id="75cf48e" data-element_type="widget" data-widget_type="button.default">
                                                         <div class="elementor-widget-container">
                                                             <div class="elementor-button-wrapper">
-                                                                <a xhref="./../Resultado" href="#" onclick="document.getElementById('formCheck').submit()" xonclick="jQueryCheckPost(document.getElementById('formCheck'))" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+                                                                <a xhref="./Resultado" 
+                                                                   href="#" 
+                                                                   id="check_send" 
+                                                                   xonclick="document.getElementById('formCheck').submit()" 
+                                                                   onclick="jQueryCheckPost(document.getElementById('formCheck'))" 
+                                                                   class="elementor-button-link elementor-button elementor-size-sm" 
+                                                                   role="button">
                                                                     <span class="elementor-button-content-wrapper">
                                                                         <span class="elementor-button-text">SUBMETER</span>
                                                                     </span>

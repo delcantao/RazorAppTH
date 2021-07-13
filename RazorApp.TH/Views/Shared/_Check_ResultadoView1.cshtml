@@ -1,0 +1,22 @@
+﻿@model RazorAppTH.Model.Check.CAD
+
+
+<h3>Dados obtidos na Receita Federal</h3>
+<p>
+    <span style="color: #808080;">
+        <strong>Nome:</strong>
+    </span>
+    @Model.NOME
+    <br>
+    <span style="color: #808080;">
+        <strong>Situação:</strong>
+    </span>@Model.SITUACAO<br>
+    <span style="color: #808080;">
+        <strong>Nascimento</strong>
+    </span>: @Model.NASCIMENTO<br>
+    <span style="color: #808080;">
+        <strong>Status:</strong>
+    </span> @Model.STATUS.CODSTATUS - @Model.STATUS.MSGSTATUS
+</p>
+
+<p>&nbsp;</p>

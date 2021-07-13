@@ -8,7 +8,7 @@ namespace RazorAppTH.Entities
     public class Fields
     {
         public string Name { get; set; }
-        public bool Mandatory{ get; set; }
+        public string Value{ get; set; }
 
     }
 }

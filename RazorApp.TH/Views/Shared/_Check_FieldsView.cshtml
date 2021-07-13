@@ -18,12 +18,13 @@
                                 <input  type="checkbox"
                                         class="mf-input mf-checkbox-input"
                                         name="Modulo"
-                                        data-checked=""
-                                        aria-invalid="false"
+                                        data-checked="true"
+                                        aria-invalid="true"
                                         value="@Model.Modulo"
-                                        attr-obrigatorio="@Model.Obrigatorio"
-                                        attr-descricao="@Model.Descricao">
-                                <span></span>
+                                        attr-descricao="@Model.Descricao" 
+                                        @(Model.Obrigatorio ? "readonly=readonly" : "")
+                                        @(Model.Obrigatorio ? "checked=checked" : "")>
+                                <span class="@(Model.Obrigatorio ? "checkbox-obrigatorio" : "")"></span>
 
 
 

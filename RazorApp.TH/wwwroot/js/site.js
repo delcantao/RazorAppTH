@@ -5,7 +5,10 @@
 
 $(document).ready(function () {
 
-    console.log("uhul")
+    //$("#formCheck").on("submit", function (e, f, x) {
+    //    e.preventDefault();
+    //    console.log(e, f, x);
+    //});
 
     jQueryCheckPost = form => {
         try {
@@ -17,10 +20,11 @@ $(document).ready(function () {
                 contentType: false,
                 processData: false,
                 success: function (res) {
-                    if (res.isValid) {
-                        $('#viewAll').html(res.html)
-                        $('#form-modal').modal('hide');
+                    if (!res.isValid) {
+                        // exibe mensagem de erro 
+                        return;
                     }
+                    window.location.href = './Resultado';
                 },
                 error: function (err) {
                     console.log(err)
@@ -32,28 +36,35 @@ $(document).ready(function () {
         }
     }
 
-    jQueryModalGet = (url, reload) => {
+
+
+
+    jQueryResultPost = form => {
         try {
+            console.log(form);
             $.ajax({
-                type: 'GET',
-                url: url,
+                type: 'POST',
+                url: form.action,
+                data: new FormData(form),
                 contentType: false,
                 processData: false,
                 success: function (res) {
-                    console.log("sucesso:", res);
-                    var urlAtual = window.location.href;
-                    $("#" + reload).load(urlAtual + ' #' + reload, (e) => {
-                        console.log('realiza o reload', e);
-                    });
+                    if (!res.isValid) {
+                        // exibe mensagem de erro 
+                        return;
+                    }
+                    $("#resultView-1").html(res.htmlView1);
+                    $("#resultView-2").html(res.htmlView2);
+
                 },
                 error: function (err) {
-                    console.log("erro:", err)
+                    console.log(err)
                 }
             })
-            //to prevent default form submit event
             return false;
         } catch (ex) {
-            console.log("throw:", ex)
+            console.log(ex)
         }
     }
+
 });

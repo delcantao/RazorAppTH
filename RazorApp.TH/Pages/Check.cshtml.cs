@@ -36,31 +36,17 @@ namespace RazorAppTH.Pages
             string apiResponse = HttpContext.Session.GetString("info");
             if (string.IsNullOrEmpty(apiResponse))
             {
-                using var httpClient = new HttpClient();
-                using var response = await httpClient.GetAsync(Statics.UrlWsIth);
-                apiResponse = await response.Content.ReadAsStringAsync();
+                apiResponse = await Commons.ConsumeApiAsync(Statics.UrlWsIth);
                 HttpContext.Session.SetString("info", apiResponse);
             }
             _info = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Model.Info.Data>>(apiResponse);
-
-            
-            if (_info.Count >= 5)
-            {
-                _info.FirstOrDefault(e => e.Modulo.Equals("CPF")).UrlIcone = "far fa-address-card";
-                _info.FirstOrDefault(e => e.Modulo.Equals("NOME")).UrlIcone = "fas fa-user";
-                _info.FirstOrDefault(e => e.Modulo.Equals("NOMEADC")).UrlIcone = "fas fa-user-plus";
-                _info.FirstOrDefault(e => e.Modulo.Equals("FONE")).UrlIcone = "fas fa-phone-alt";
-                //_info.FirstOrDefault(e => e.Modulo.Equals("EMAIL")).UrlIcone = "icon icon-email";
-                //_info.FirstOrDefault(e => e.Modulo.Equals("NASC")).UrlIcone = "far fa-calendar-check";
-                _info.FirstOrDefault(e => e.Modulo.Equals("PEP")).UrlIcone = "far fa-calendar-check";
-
-            }
+          
 
         }
-        public async Task<string> RenderBlocks(Model.Info.Data data)
+        public async Task<string> RenderFields(Model.Info.Data data)
         {
 
-            var htmlString = await _renderService.ToStringAsync("_Check_Blocks", data);
+            var htmlString = await _renderService.ToStringAsync("_Check_FieldsView", data);
             return htmlString;
 
         }
