@@ -24,7 +24,7 @@ namespace RazorAppTH.Pages
         private string[] _modulos { get; set; }
         public List<Model.Info.Data> _info;
         public List<Model.Info.Data> Fields;
-        public Model.Check.Data Result;
+        public List<Model.Check.Data> Result;
         public Dictionary<string, string> fields = new Dictionary<string, string>();
 
 
@@ -42,54 +42,82 @@ namespace RazorAppTH.Pages
         }
         public async Task<JsonResult> OnPostConsultaApiAsync() //(string CPF, string NOME, string NOMEADC, string FONE, string EMAIL)
         {
-            LoadSession();
-
-            var queryParams = new SortedList<string, string>();         
-
-            foreach(var dado in _info)
+            try
             {
-                var query = HttpContext.Request.Form.ToList().Where(e => e.Key.Contains(dado.Modulo)).ToList();
-                if(query == null || query.Count == 0) continue;
-                var value = query.FirstOrDefault().Value.ToString();
-                queryParams.Add('p' + dado.Modulo, value); 
+
+                LoadSession();
+                string htmlView1 = "";
+                string htmlView2 = "";
+
+                var queryParams = new SortedList<string, string>
+                {
+                    { "sCliente", HttpContext.Session.GetString("cliente") },
+                    { "sUsuario", HttpContext.Session.GetString("usuario") },
+                    { "sSenha", HttpContext.Session.GetString("senha") }
+                };
+
+                foreach(var dado in _info)
+                {
+                    var query = HttpContext.Request.Form.ToList().Where(e => e.Key.Contains(dado.Modulo)).ToList();
+                    if(query == null || query.Count == 0) continue;
+                    var value = query.FirstOrDefault().Value.ToString();
+                    queryParams.Add('p' + dado.Modulo, value);
+                }
+                var urlToSend = QueryHelpers.AddQueryString(Statics.UrlCheck, queryParams);
+
+                // ler a página view referente ao carregamento das tabelas
+                // carregar via POST de AJAX
+
+                var jsonApi = await Commons.ConsumeApiAsync(urlToSend);
+                Result = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Model.Check.Data>>(jsonApi);
+                var message = Result[0].MENSAGEM;
+
+
+                if(string.IsNullOrEmpty(message))
+                {
+                    htmlView1 = await _renderService.ToStringAsync("_Check_ResultadoView1", Result[0].CAD);
+                    htmlView2 = await _renderService.ToStringAsync("_Check_ResultadoView2", Result[0]);
+                }
+
+                return await Task.FromResult(
+                    new JsonResult(
+                        new
+                        {
+                            isValid = string.IsNullOrEmpty(message),
+                            message = message ?? "",
+                            htmlView1 = htmlView1,
+                            htmlView2 = htmlView2
+                        }));
+
             }
-            var urlToSend = QueryHelpers.AddQueryString(Statics.UrlCheck, queryParams);
+            catch(System.Exception ex)
+            {
+                return await Task.FromResult(
+                   new JsonResult(
+                       new
+                       {
+                           isValid = false,
+                           message = "Ocorreu um erro ao realizar a solicitação",
+                           htmlView1 = "",
+                           htmlView2 = ""
+                       }));
+            }
 
-         
-            
 
-
-            // ler a página view referente ao carregamento das tabelas
-            // carregar via POST de AJAX
-
-            var jsonApi = await Commons.ConsumeApiAsync(urlToSend);
-            Result = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.Check.Data>(jsonApi);
-
-            var htmlView1 = "" ?? await _renderService.ToStringAsync("_Check_ResultadoView1", Result.CAD);
-            var htmlView2 = "" ?? await _renderService.ToStringAsync("_Check_ResultadoView2", Result);
-
-            return await Task.FromResult(
-                new JsonResult(
-                    new { 
-                        isValid = true, 
-                        message = "",
-                        htmlView1 = htmlView1,
-                        htmlView2 = htmlView2
-                    }));
         }
         public void OnPost()
         {
 
         }
         public async Task<JsonResult> OnPostCheckAsync()
-        { 
+        {
             return await Task.FromResult(new JsonResult(new { isValid = true }));
         }
         public async Task<JsonResult> OnPostCarregaModulos(string[] Modulo)
         {
             HttpContext.Session.SetString("modulos", string.Join(",", Modulo));
             _modulos = Modulo;
-            LoadSession();            
+            LoadSession();
             CarregaModulos();
             return await Task.FromResult(new JsonResult(new { isValid = true }));
 

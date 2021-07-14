@@ -95,6 +95,7 @@
                                                                                                                                placeholder="@field.Descricao" 
                                                                                                                                aria-invalid="false"
                                                                                                                                title="@field.Observacoes"
+                                                                                                                               maxlength="@field.Tamanho"
                                                                                                                                >
 
                                                                                                                         </div>
@@ -126,9 +127,12 @@
                                             </div>
                                             <div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-03b2d7b" data-id="03b2d7b" data-element_type="column">
                                                 <div class="elementor-widget-wrap">
+                                                </div> 
+                                                <div id="loading-animation" style="right: 46%; display: none; top: 42%; position: relative; font-size: 37px; margin-left: 41px; z-index: 10000; ">
+                                                    <div class="loader" style="left: 200px; top: -57px;">Loading...</div>
                                                 </div>
                                             </div>
-                                            <div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-056521e" data-id="056521e" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                            <div id="first-block" class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-056521e" data-id="056521e" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                                                 <div class="elementor-widget-wrap elementor-element-populated">
                                                     <div class="elementor-element elementor-element-e561c3c elementor-widget elementor-widget-text-editor" data-id="e561c3c" data-element_type="widget" data-widget_type="text-editor.default">
                                                         <div id="resultView-1"class="elementor-widget-container">
@@ -141,7 +145,7 @@
                                                 <div class="elementor-widget-wrap">
                                                 </div>
                                             </div>
-                                            <div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-fed2bc2" data-id="fed2bc2" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                            <div id="second-block" class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-fed2bc2" data-id="fed2bc2" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                                                 <div class="elementor-widget-wrap elementor-element-populated">
                                                     <div class="elementor-element elementor-element-d3e681d elementor-widget elementor-widget-eael-advanced-data-table" data-id="d3e681d" data-element_type="widget" data-widget_type="eael-advanced-data-table.default">
                                                         <div class="elementor-widget-container">
@@ -178,7 +182,6 @@
                                     <div class="elementor-element elementor-element-54cd04e elementor-widget elementor-widget-html" data-id="54cd04e" data-element_type="widget" data-widget_type="html.default">
                                         <div class="elementor-widget-container">
                                             <form method="post" asp-page-handler="Check">
-                                                form-result
                                                 <input 
                                                        type="button" 
                                                        value="PROCESSAR" 
@@ -200,6 +203,10 @@
         <!-- .entry-content -->
     </article>
     <!-- #post-265 -->
+    <div style=" padding: 0px 58px; color: red; background: white" id="return-message">
+
+    </div>
+   
 </main>
 @section Head {
     @Html.Raw(await Statics.RenderStaticPage(Model._env.WebRootPath, "includes", "resultado", "head.html"))

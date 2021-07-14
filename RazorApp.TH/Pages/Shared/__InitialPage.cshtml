@@ -7,18 +7,54 @@
     <link rel="dns-prefetch" href="//s.w.org">
     <link rel="alternate" type="application/rss+xml" title="Feed para Projeto TH »" href="./feed/index.html">
     <link rel="alternate" type="application/rss+xml" title="Feed de comentários para Projeto TH »" href="./comments/feed/index.html">
-    <script>
-        var pagelayer_ajaxurl = "./wp-admin/admin-ajax.php?";
-        var pagelayer_global_nonce = "af10ec4689";
-        var pagelayer_server_time = 1625922133;
-        var pagelayer_is_live = "";
-        var pagelayer_facebook_id = "";
-        var pagelayer_settings = { "post_types": ["post", "page"], "enable_giver": "1", "max_width": 1170, "tablet_breakpoint": 768, "mobile_breakpoint": 360, "sidebar": false, "body_font": false, "color": false };
-        var pagelayer_recaptch_lang = "";
-    </script>
-    @RenderSection("Head", true)
+
+
+        <link rel="stylesheet" id="elementor-frontend-css" href="./css/loader.css" media="all">
+        <script>
+            var pagelayer_ajaxurl = "./wp-admin/admin-ajax.php?";
+            var pagelayer_global_nonce = "af10ec4689";
+            var pagelayer_server_time = 1625922133;
+            var pagelayer_is_live = "";
+            var pagelayer_facebook_id = "";
+            var pagelayer_settings = { "post_types": ["post", "page"], "enable_giver": "1", "max_width": 1170, "tablet_breakpoint": 768, "mobile_breakpoint": 360, "sidebar": false, "body_font": false, "color": false };
+            var pagelayer_recaptch_lang = "";
+        </script>
+        <style id="popularfx-global-styles" type="text/css">
+            .entry-content {
+                max-width: 1170px;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            .site-header {
+                background-color: #ffffff !important;
+            }
+
+            .site-title a {
+                color: #171717 !important;
+            }
+
+            .site-title a {
+                font-size: 30 px;
+            }
+
+            .site-description {
+                color: #171717 !important;
+            }
+
+            .site-description {
+                font-size: 15px;
+            }
+
+            .site-footer {
+                background-color: #171717 !important;
+            }
+        </style>
+        @RenderSection("Head", true)
 
 </head>
+
+
 <body class="page-template-default page page-id-213 popularfx-body pagelayer-body elementor-default elementor-kit-22 elementor-page elementor-page-213 e--ua-blink e--ua-chrome e--ua-webkit" data-elementor-device-mode="desktop">
     <div class="ekit-template-content-markup ekit-template-content-header ekit-template-content-theme-support">
         <div data-elementor-type="wp-post" data-elementor-id="20" class="elementor elementor-20" data-elementor-settings="[]">

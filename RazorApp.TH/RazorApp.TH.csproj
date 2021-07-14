@@ -12,10 +12,6 @@
   </ItemGroup>
  
   <ItemGroup>
-    <Folder Include="wwwroot\css\" />
-  </ItemGroup>
- 
-  <ItemGroup>
     <Content Update="wwwroot\includes\resultado\scripts.html">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

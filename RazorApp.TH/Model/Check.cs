@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 
 namespace RazorAppTH.Model
 {
+     
     public class Check
     {
         public Data Dados { get; set; }
- 
+     
+
         public class Data
         {
             public CAD CAD { get; set; }
@@ -17,6 +19,11 @@ namespace RazorAppTH.Model
             public FONE FONE { get; set; }
             public NASC NASC { get; set; }
             public EMAIL EMAIL { get; set; }
+            public string ID_ERRO { get; set; }
+            public string MENSAGEM { get; set; }
+            public string Message { get; set; }
+            public string TIPO_CONSULTA { get; set; }
+            public string ERRO_REF { get; set; }
         }
 
         public class CAD
@@ -63,6 +70,6 @@ namespace RazorAppTH.Model
             public string CODSTATUS { get; set; }
             public string MSGSTATUS { get; set; }
         }
-         
+
     }
 }
