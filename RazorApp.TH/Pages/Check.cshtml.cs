@@ -34,7 +34,9 @@ namespace RazorAppTH.Pages
         }
         public async Task OnGet()
         {
-            string apiResponse = HttpContext.Session.GetString("info");
+            // retirando o estado da sessão que fazia com que carregasse mais rápido
+            // desta forma fica mais lento, mas por outro lado é o dado real que está no banco de dados.
+            string apiResponse = ""; // HttpContext.Session.GetString("info");
             if (string.IsNullOrEmpty(apiResponse))
             {
                 try

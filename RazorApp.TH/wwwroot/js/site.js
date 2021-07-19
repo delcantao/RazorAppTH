@@ -5,6 +5,12 @@
 
 $(document).ready(function () {
 
+    $("input[type='text'").on("keydown", function (e, f, g) {
+        if (e.keyCode == 13) {
+            jQueryResultPost(document.getElementById('form-result'))
+        }
+    })
+
     function showLoading (on) {
         var _loading = $("#loading-animation")
         var _1stblock = $("#first-block")
@@ -54,13 +60,35 @@ $(document).ready(function () {
     }
 
 
-
+    jQueryLimparPost = form => {
+        $("input[type='text']").val("");
+        $.ajax({
+            type: 'POST',
+            url: form.action,
+            data: new FormData(form),
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                /*
+                showLoading(false);
+                if (!res.isValid) {
+                    // exibe mensagem de erro 
+                    $("#return-message").show();
+                    $("#return-message").html(res.message);
+                    return;
+                }
+                $("#resultView-1").html(res.htmlView1);
+                $("#resultView-2").html(res.htmlView2);
+                */
+            },
+            error: function (err) {
+                console.log(err)
+            }
+        })
+    }
 
     jQueryResultPost = form => {
         try {
-            console.log(form)
-
-
             showLoading(true);
             $.ajax({
                 type: 'POST',

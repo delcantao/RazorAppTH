@@ -17,7 +17,7 @@ namespace RazorAppTH.Model
             public string UrlIcone { get; set; }
             public int Tamanho { get; set; }
             public string Observacoes { get; set; }
-            public bool Ativo { get; set; }
+            public bool Ativo { get; set; } 
         }
 
     }

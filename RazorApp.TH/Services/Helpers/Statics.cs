@@ -15,11 +15,17 @@ namespace RazorAppTH.Services.Helpers
         public const string UrlLoginSipWeb = "https://sipweb.sistemasth.com.br/login";
         public const string UrlSolucoes = "https://solucoes.sistemasth.com.br/";
 
+        public const string Cliente = "TH";
+        public const string Usuario = "TIWS";
+        public const string Senha = "TIWSTIWS";
         //?sCliente=th&sUsuario=tiws&sSenha=tiwstiws
         // parameters -> ?sCliente=th&sUsuario=tiws&sSenha=tiwstiws&pCPF=33032041791&pNomeAdc=leonidas%20tiriba&pFone=1129594077&pEmail=leo.tiriba@gmail.com&pNasc=23-07-1954&pNome=douglas%20mathias%20de%20oliveira%20lima"
         public static List<string> AllowsAnonymousAccess = new List<string>
         {
-             "/Login"
+             "/Login",
+             //"/",
+             //"/Resultado",
+             //"/Check"
 
         };
 

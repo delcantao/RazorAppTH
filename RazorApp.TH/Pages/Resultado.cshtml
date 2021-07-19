@@ -1,5 +1,7 @@
 ﻿@page
 @using RazorAppTH.Services.Helpers
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Extensions
 @model ResultadoModel
 @{
     ViewData["Title"] = "Resultado";
@@ -83,22 +85,23 @@
                                                                                                         @foreach(var field in Model.Fields)
                                                                                                         {
 
-                                                                                                            <div class="elementor-element elementor-element-5ea6053 elementor-widget elementor-widget-mf-text" data-id="5ea6053" data-element_type="widget" data-settings="{&amp;quot;mf_input_name&amp;quot;:&amp;quot;mf-text&amp;quot;}" data-widget_type="mf-text.default">
-                                                                                                                <div class="elementor-widget-container">
-                                                                                                                    <div class="mf-input-wrapper">
-                                                                                                                        <label class="mf-input-label" for="mf-input-text-5ea6053">@field.Modulo</label>
-                                                                                                                        <input type="text"
-                                                                                                                               class="mf-input "
-                                                                                                                               id="mf-input-text-5ea6053"
-                                                                                                                               name="@field.Modulo"
-                                                                                                                               placeholder="@field.Descricao"
-                                                                                                                               aria-invalid="false"
-                                                                                                                               title="@field.Observacoes"
-                                                                                                                               maxlength="@field.Tamanho">
+                                                                                                        <div class="elementor-element elementor-element-5ea6053 elementor-widget elementor-widget-mf-text" data-id="5ea6053" data-element_type="widget" data-settings="{&amp;quot;mf_input_name&amp;quot;:&amp;quot;mf-text&amp;quot;}" data-widget_type="mf-text.default">
+                                                                                                            <div class="elementor-widget-container">
+                                                                                                                <div class="mf-input-wrapper">
+                                                                                                                    <label class="mf-input-label" for="mf-input-text-5ea6053">@field.Modulo</label>
+                                                                                                                    <input type="text"
+                                                                                                                           class="mf-input "
+                                                                                                                           id="mf-input-text-5ea6053"
+                                                                                                                           name="@field.Modulo"
+                                                                                                                           placeholder="@field.Descricao"
+                                                                                                                           aria-invalid="false"
+                                                                                                                           title="@field.Observacoes"
+                                                                                                                           maxlength="@field.Tamanho"
+                                                                                                                           value="@HttpContext.Session.GetString(@field.Modulo)">
 
-                                                                                                                    </div>
                                                                                                                 </div>
                                                                                                             </div>
+                                                                                                        </div>
 
                                                                                                         }
 
@@ -112,10 +115,10 @@
                                                                             </form>
                                                                         </div>
                                                                         <!-----------------------------
-                                * controls_data : find the the props passed indie of data attribute
-                                * parent.submit_response_message : contains the markup of error or success message
-                                * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
-                                --------------------------- -->
+                                                                        * controls_data : find the the props passed indie of data attribute
+                                                                        * parent.submit_response_message : contains the markup of error or success message
+                                                                        * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+                                                                        --------------------------- -->
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -147,7 +150,7 @@
                                                 <div class="elementor-widget-wrap">
                                                 </div>
                                             </div>
-                                           
+
                                             <div id="second-block" class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-fed2bc2" data-id="fed2bc2" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                                                 <div class="elementor-widget-wrap elementor-element-populated">
                                                     <div class="elementor-element elementor-element-d3e681d elementor-widget elementor-widget-eael-advanced-data-table" data-id="d3e681d" data-element_type="widget" data-widget_type="eael-advanced-data-table.default">
@@ -173,9 +176,9 @@
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-9065075 elementor-widget elementor-widget-html" data-id="9065075" data-element_type="widget" data-widget_type="html.default">
                                         <div class="elementor-widget-container">
-                                             
+
                                             <input type="button" value="VOLTAR" onclick="history.go(-1)" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
-                                             
+
                                         </div>
                                     </div>
                                 </div>
@@ -184,16 +187,28 @@
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-54cd04e elementor-widget elementor-widget-html" data-id="54cd04e" data-element_type="widget" data-widget_type="html.default">
                                         <div class="elementor-widget-container">
-                                            <form method="post" asp-page-handler="Check">
-                                                <input 
-                                                       type="button" 
-                                                       value="PROCESSAR" 
-                                                       onclick="jQueryResultPost(document.getElementById('form-result'))"  
-                                                       button="" 
-                                                       style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
+                                            <div id="div-forms" style="display: inline">
 
-                                                @*<input type="submit" value="PROCESSAR" onclick="#" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">*@
-                                            </form>
+                                                <form method="post" asp-page-handler="Check" style="display: inline">
+                                                    <input type="button"
+                                                           value="PROCESSAR"
+                                                           onclick="jQueryResultPost(document.getElementById('form-result'))"
+                                                           button=""
+                                                           style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
+
+                                                    @*<input type="submit" value="PROCESSAR" onclick="#" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">*@
+                                                </form>
+                                                <form id="form-limpar" class="" asp-page="/Resultado" asp-page-handler="Limpar" style="display: inline">
+                                                    <input type="button"
+                                                           value="LIMPAR"
+                                                           onclick="jQueryLimparPost(document.getElementById('form-limpar'))"
+                                                           button=""
+                                                           style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
+
+                                                    @*<input type="submit" value="PROCESSAR" onclick="#" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">*@
+                                                </form>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -209,13 +224,13 @@
     <div style=" padding: 0px 58px; color: red; background: white" id="return-message">
 
     </div>
-   
+
 </main>
 @section Head {
     @Html.Raw(await Statics.RenderStaticPage(Model._env.WebRootPath, "includes", "resultado", "head.html"))
 
 }
-@section Scripts { 
+@section Scripts {
     @Html.Raw(await Statics.RenderStaticPage(Model._env.WebRootPath, "includes", "resultado", "scripts.html"))
 
 }

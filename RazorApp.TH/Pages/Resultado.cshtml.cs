@@ -47,27 +47,35 @@ namespace RazorAppTH.Pages
         {
             try
             {
-
                 LoadSession();
-                string htmlView1 = "";
-                string htmlView2 = "";
-
+             
+                var htmlView1 = "";
+                var htmlView2 = "";
                 var queryParams = new SortedList<string, string>
                 {
                     { "sCliente", HttpContext.Session.GetString("cliente") },
                     { "sUsuario", HttpContext.Session.GetString("usuario") },
                     { "sSenha", HttpContext.Session.GetString("senha") }
                 };
+                //var queryParams = new SortedList<string, string>
+                //{
+                //    { "sCliente", Statics.Cliente },
+                //    { "sUsuario", Statics.Usuario },
+                //    { "sSenha", Statics.Senha }
+                //};
+
 
                 foreach(var dado in _info)
                 {
                     var query = HttpContext.Request.Form.ToList().Where(e => e.Key.Contains(dado.Modulo)).ToList();
                     if(query == null || query.Count == 0) continue;
                     var value = query.FirstOrDefault().Value.ToString();
+                    HttpContext.Session.SetString(dado.Modulo, value);
                     queryParams.Add('p' + dado.Modulo, value);
                 }
                 var urlToSend = QueryHelpers.AddQueryString(Statics.UrlCheck, queryParams);
-
+                // Mantem o estado do que foi digitado na tela, caso o usuário decida voltar e escolher um campo novo.
+                
                 // ler a página view referente ao carregamento das tabelas
                 // carregar via POST de AJAX
 
@@ -108,18 +116,23 @@ namespace RazorAppTH.Pages
 
 
         }
-        public void OnPost()
-        {
 
+        public JsonResult  OnPostLimpar()
+        {
+            LoadSession();
+            if (_info != null) _info.ForEach(e => HttpContext.Session.SetString(e.Modulo, ""));
+            return new JsonResult(new { isValid = true });
         }
         public async Task<JsonResult> OnPostCheckAsync()
         {
             return await Task.FromResult(new JsonResult(new { isValid = true }));
         }
-        public async Task<JsonResult> OnPostCarregaModulos(string[] Modulo)
+        public async Task<JsonResult> OnPostCarregaModulos(List<string> Modulo)
         {
-            HttpContext.Session.SetString("modulos", string.Join(",", Modulo));
-            _modulos = Modulo;
+
+            if(!Modulo.Contains("CPF")) Modulo.Insert(0, "CPF");
+            HttpContext.Session.SetString("modulos", string.Join(",", Modulo.ToArray()));
+            _modulos = Modulo.ToArray();
             LoadSession();
             CarregaModulos();
             return await Task.FromResult(new JsonResult(new { isValid = true }));

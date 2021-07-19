@@ -4,13 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace RazorAppTH.Model
-{
-     
+{    
     public class Check
     {
         public Data Dados { get; set; }
-     
-
         public class Data
         {
             public CAD CAD { get; set; }
@@ -33,6 +30,7 @@ namespace RazorAppTH.Model
             public string NOME { get; set; }
             public string NASCIMENTO { get; set; }
             public string SITUACAO { get; set; }
+            public string DTLAVRATURAOBITO { get; set; }
         }
 
         public class STATUS

@@ -30,7 +30,7 @@ namespace RazorAppTH.Pages
                 // Para saber mais sobre o recurso que invoca esta página
                 // Procure no arquivo do SipWeb no caminho: SipWeb/inc/ajax-ws.php > na função > ajaxLogin() 
                 HttpContext.Session.SetString("cliente", cliente);
-                HttpContext.Session.SetString("usuario", usuario);
+                HttpContext.Session.SetString("usuario", usuario + "WS");
                 HttpContext.Session.SetString("senha", senha);
 
                 //https://solucoes.sistemasth.com.br/login-check?login=123

@@ -17,6 +17,26 @@
     </thead>
 
     <tbody>
+
+        @if(Model.CPF != null)
+        {
+            <tr>
+                <td>
+                    <p>CPF</p>
+                </td>
+                <td>
+                    <p>@Model.CPF</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Status</p>
+                </td>
+                <td>
+                    <p>@Model.STATUS.CODSTATUS - @Model.STATUS.MSGSTATUS</p>
+                </td>
+            </tr>
+        }
         @if(Model.NOME != null)
         {
             <tr>
@@ -43,14 +63,20 @@
                     <p>@Model.NASCIMENTO</p>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <p>Status</p>
-                </td>
-                <td>
-                    <p>@Model.STATUS.CODSTATUS - @Model.STATUS.MSGSTATUS</p>
-                </td>
-            </tr>
+
+            @if(!string.IsNullOrEmpty(Model.DTLAVRATURAOBITO))
+            {
+
+                <tr>
+                    <td>
+                        <p>Data de Lavratura do Óbito</p>
+                    </td>
+                    <td>
+                        <p>@Model.DTLAVRATURAOBITO</p>
+                    </td>
+                </tr>
+
+            }
         }
 
     </tbody>
