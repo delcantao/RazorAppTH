@@ -11,9 +11,11 @@ namespace RazorAppTH.Services.Helpers
     {
         public static async Task<string> ConsumeApiAsync(string url)
         {
-            using var httpClient = new HttpClient();
-            using var response = await httpClient.GetAsync(url);
-            return await response.Content.ReadAsStringAsync();
+         
+                using var httpClient = new HttpClient();
+                using var response = await httpClient.GetAsync(url);
+                return await response.Content.ReadAsStringAsync();
+     
         }
     }
 }

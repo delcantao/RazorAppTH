@@ -35,10 +35,13 @@ namespace RazorAppTH.Pages
             _renderService = renderService;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if(string.IsNullOrEmpty(HttpContext.Session.GetString("modulos")))
+                return Redirect("./Check");
             LoadSession();
             CarregaModulos();
+            return Page();
         }
         public async Task<JsonResult> OnPostConsultaApiAsync() //(string CPF, string NOME, string NOMEADC, string FONE, string EMAIL)
         {

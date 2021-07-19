@@ -172,6 +172,9 @@
                 </div>
             </div>
         </div>
+        <div style="background-color: white; color: red; display: @(String.IsNullOrEmpty(Model.ErrorMessage) ? "none": "block")">
+            @Model.ErrorMessage
+        </div>
         <!-- .entry-content -->
     </article>
     <!-- #post-213 -->

@@ -20,8 +20,9 @@ using Microsoft.AspNetCore.Hosting;
 namespace RazorAppTH.Pages
 {
     public class CheckModel : PageModel
-    {   
+    {
         public List<Model.Info.Data> _info;
+        public string ErrorMessage;
         private readonly ILogger<CheckModel> _logger;
         private readonly IRazorRenderService _renderService;
         public IWebHostEnvironment _env;
@@ -36,7 +37,16 @@ namespace RazorAppTH.Pages
             string apiResponse = HttpContext.Session.GetString("info");
             if (string.IsNullOrEmpty(apiResponse))
             {
-                apiResponse = await Commons.ConsumeApiAsync(Statics.UrlWsIth);
+                try
+                {
+                    apiResponse = await Commons.ConsumeApiAsync(Statics.UrlWsIth);
+                }
+                catch(Exception ex)
+                {
+                    _info = new List<Info.Data>();
+                    ErrorMessage = ex.Message;
+                    return;
+                }
                 HttpContext.Session.SetString("info", apiResponse);
             }
             _info = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Model.Info.Data>>(apiResponse);

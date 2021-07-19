@@ -2,7 +2,61 @@
 
 
 <h3>Dados obtidos na Receita Federal</h3>
-<p>
+
+
+<table class="ea-advanced-data-table ea-advanced-data-table-static ea-advanced-data-table-d3e681d ea-advanced-data-table-sortablex" data-id="d3e681d">
+    <thead>
+        <tr>
+            <th>
+                <p>DADO</p>
+            </th>
+            <th>
+                <p>RESULTADO</p>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if(Model.NOME != null)
+        {
+            <tr>
+                <td>
+                    <p>Nome</p>
+                </td>
+                <td>
+                    <p>@Model.NOME</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Situação</p>
+                </td>
+                <td>
+                    <p>@Model.SITUACAO</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Nascimento</p>
+                </td>
+                <td>
+                    <p>@Model.NASCIMENTO</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Status</p>
+                </td>
+                <td>
+                    <p>@Model.STATUS.CODSTATUS - @Model.STATUS.MSGSTATUS</p>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+@*<p>
     <span style="color: #808080;">
         <strong>Nome:</strong>
     </span>
@@ -16,7 +70,7 @@
     </span>: @Model.NASCIMENTO<br>
     <span style="color: #808080;">
         <strong>Status:</strong>
-    </span> @Model.STATUS.CODSTATUS - @Model.STATUS.MSGSTATUS
+    </span>
 </p>
 
-<p>&nbsp;</p>
+<p>&nbsp;</p>*@

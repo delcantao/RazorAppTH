@@ -27,22 +27,20 @@ namespace RazorAppTH.Middleware
         {
 
             var request = context.Request;
-            var url = request.Path;
+            var url = request.Path.ToString().ToLower();
             Console.WriteLine($"Url: {url}");
-
-            if(!Statics.AllowsAnonymousAccess.Contains(url))
+            if(!AllowsAnonymousAccess(url))
             {
                 Console.WriteLine("Checking Session");
+                var sessionFound = !string.IsNullOrEmpty(context.Session.GetString("cliente")) &&
+                              !string.IsNullOrEmpty(context.Session.GetString("usuario")) && 
+                              !string.IsNullOrEmpty(context.Session.GetString("senha"));
 
-                var cliente = context.Session.GetString("cliente");
-
-                Console.WriteLine(string.IsNullOrEmpty(cliente) ? "Session not found - redirecting..." : "Session found!");
-
-                if(string.IsNullOrEmpty(cliente))
+                Console.WriteLine(!sessionFound ? "Session not found - redirecting..." : "Session found!");
+                if(!sessionFound)
                 {
                     context.Response.Redirect(Statics.UrlLoginSipWeb);
-                    return;
-                    
+                    return;                    
                 }
             }
 
@@ -54,6 +52,11 @@ namespace RazorAppTH.Middleware
 
 
 
+        }
+
+        private bool AllowsAnonymousAccess(string url)
+        {
+            return !string.IsNullOrEmpty(Statics.AllowsAnonymousAccess.FirstOrDefault(e => e.ToLower().Contains(url)));
         }
         public async Task Invoke_BACKUP(HttpContext context)
         {

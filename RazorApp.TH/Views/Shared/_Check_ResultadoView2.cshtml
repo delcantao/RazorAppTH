@@ -1,74 +1,77 @@
 ﻿@model RazorAppTH.Model.Check.Data
-<table class="ea-advanced-data-table ea-advanced-data-table-static ea-advanced-data-table-d3e681d ea-advanced-data-table-sortable" data-id="d3e681d">
-    <thead>
-        <tr>
-            <th>
-                <p>CONSULTA</p>
-            </th>
-            <th>
-                <p>RESULTADO</p>
-            </th>
-        </tr>
-    </thead>
 
-    <tbody>
-        @if(Model.NOME != null)
-        {
-            <tr>
-                <td>
-                    <p>NOME:</p>
-                </td>
-                <td>
-                    <p>@Model.NOME.CODSTATUS - @Model.NOME.MSGSTATUS</p>
-                </td>
-            </tr>
-        }
-        @if(Model.NASC != null)
-        {
-            <tr>
-                <td>
-                    <p>NASC:</p>
-                </td>
-                <td>
-                    <p>@Model.NASC.CODSTATUS - @Model.NASC.MSGSTATUS</p>
-                </td>
-            </tr>
-        }
+    <h3>Resultado das validações</h3>
 
-        @if(Model.FONE != null)
-        {
+    <table class="ea-advanced-data-table ea-advanced-data-table-static ea-advanced-data-table-d3e681d ea-advanced-data-table-sortablex" data-id="d3e681d">
+        <thead>
             <tr>
-                <td>
-                    <p>FONE:</p>
-                </td>
-                <td>
-                    <p>@Model.FONE.CODSTATUS - @Model.FONE.MSGSTATUS</p>
-                </td>
+                <th>
+                    <p>CONSULTA</p>
+                </th>
+                <th>
+                    <p>RESULTADO</p>
+                </th>
             </tr>
-        }
+        </thead>
 
-        @if(Model.EMAIL != null)
-        {
-            <tr>
-                <td>
-                    <p>EMAIL:</p>
-                </td>
-                <td>
-                    <p>@Model.EMAIL.CODSTATUS - @Model.EMAIL.MSGSTATUS</p>
-                </td>
-            </tr>
-        }
+        <tbody>
+            @if(Model.NOME != null)
+            {
+                <tr>
+                    <td>
+                        <p>Nome</p>
+                    </td>
+                    <td>
+                        <p>@Model.NOME.CODSTATUS - @Model.NOME.MSGSTATUS</p>
+                    </td>
+                </tr>
+            }
+            @if(Model.NASC != null)
+            {
+                <tr>
+                    <td>
+                        <p>Nascimento</p>
+                    </td>
+                    <td>
+                        <p>@Model.NASC.CODSTATUS - @Model.NASC.MSGSTATUS</p>
+                    </td>
+                </tr>
+            }
 
-        @if(Model.NOMEADC != null)
-        {
-            <tr>
-                <td>
-                    <p>NOMEADC:</p>
-                </td>
-                <td>
-                    <p>@Model.NOMEADC.CODSTATUS - @Model.NOMEADC.MSGSTATUS</p>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+            @if(Model.FONE != null)
+            {
+                <tr>
+                    <td>
+                        <p>Fone</p>
+                    </td>
+                    <td>
+                        <p>@Model.FONE.CODSTATUS - @Model.FONE.MSGSTATUS</p>
+                    </td>
+                </tr>
+            }
+
+            @if(Model.EMAIL != null)
+            {
+                <tr>
+                    <td>
+                        <p>E-mail</p>
+                    </td>
+                    <td>
+                        <p>@Model.EMAIL.CODSTATUS - @Model.EMAIL.MSGSTATUS</p>
+                    </td>
+                </tr>
+            }
+
+            @if(Model.NOMEADC != null)
+            {
+                <tr>
+                    <td>
+                        <p>Nome adicional</p>
+                    </td>
+                    <td>
+                        <p>@Model.NOMEADC.CODSTATUS - @Model.NOMEADC.MSGSTATUS</p>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
