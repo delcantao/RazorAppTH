@@ -88,7 +88,7 @@
                                                                                                         <div class="elementor-element elementor-element-5ea6053 elementor-widget elementor-widget-mf-text" data-id="5ea6053" data-element_type="widget" data-settings="{&amp;quot;mf_input_name&amp;quot;:&amp;quot;mf-text&amp;quot;}" data-widget_type="mf-text.default">
                                                                                                             <div class="elementor-widget-container">
                                                                                                                 <div class="mf-input-wrapper">
-                                                                                                                    <label class="mf-input-label" for="mf-input-text-5ea6053">@field.Modulo</label>
+                                                                                                                    <label class="mf-input-label" for="mf-input-text-5ea6053">@field.Descricao</label>
                                                                                                                     <input type="text"
                                                                                                                            class="mf-input "
                                                                                                                            id="mf-input-text-5ea6053"
@@ -177,7 +177,31 @@
                                     <div class="elementor-element elementor-element-9065075 elementor-widget elementor-widget-html" data-id="9065075" data-element_type="widget" data-widget_type="html.default">
                                         <div class="elementor-widget-container">
 
-                                            <input type="button" value="VOLTAR" onclick="history.go(-1)" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
+                                            <div id="div-forms" style="display: inline">
+                                                <input class="btn-lf-class btn-lf-size" type="button" value="VOLTAR" onclick="history.go(-1)" button="" style="float: left; color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
+                                                <form class="btn-lf-class" method="post" asp-page-handler="Check" style="display: inline">
+                                                    <input class="btn-lf-size"
+                                                           type="button"
+                                                           value="PROCESSAR"
+                                                           onclick="jQueryResultPost(document.getElementById('form-result'))"
+                                                           button=""
+                                                           style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
+
+                                                    @*<input type="submit" value="PROCESSAR" onclick="#" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">*@
+                                                </form>
+                                                <form id="form-limpar" class="btn-lf-class" asp-page="/Resultado" asp-page-handler="Limpar" style="float: right; display: inline">
+                                                    <input class="btn-lf-size color-secondary-buttonsy"
+                                                           type="button"
+                                                           value="LIMPAR"
+                                                           onclick="jQueryLimparPost(document.getElementById('form-limpar'))"
+                                                           button=""
+                                                           style="color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
+
+                                                    @*<input type="submit" value="PROCESSAR" onclick="#" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">*@
+                                                </form>
+
+                                            </div>
+                                            
 
                                         </div>
                                     </div>
@@ -187,28 +211,6 @@
                                 <div class="elementor-widget-wrap elementor-element-populated">
                                     <div class="elementor-element elementor-element-54cd04e elementor-widget elementor-widget-html" data-id="54cd04e" data-element_type="widget" data-widget_type="html.default">
                                         <div class="elementor-widget-container">
-                                            <div id="div-forms" style="display: inline">
-
-                                                <form method="post" asp-page-handler="Check" style="display: inline">
-                                                    <input type="button"
-                                                           value="PROCESSAR"
-                                                           onclick="jQueryResultPost(document.getElementById('form-result'))"
-                                                           button=""
-                                                           style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
-
-                                                    @*<input type="submit" value="PROCESSAR" onclick="#" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">*@
-                                                </form>
-                                                <form id="form-limpar" class="" asp-page="/Resultado" asp-page-handler="Limpar" style="display: inline">
-                                                    <input type="button"
-                                                           value="LIMPAR"
-                                                           onclick="jQueryLimparPost(document.getElementById('form-limpar'))"
-                                                           button=""
-                                                           style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
-
-                                                    @*<input type="submit" value="PROCESSAR" onclick="#" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">*@
-                                                </form>
-
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

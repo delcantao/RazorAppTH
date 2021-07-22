@@ -31,7 +31,15 @@ $(document).ready(function () {
         $("#return-message").hide();
     });
 
+    jQueryCheckLimpar = () => {
 
+        let inputs = $("input[type='checkbox']")
+        console.log(inputs);
+        inputs.each((idx, obj) => {
+            if ($(obj).prop("checked"))
+                $(obj).click()
+        })
+    }
     jQueryCheckPost = form => {
         try {
             console.log(form);
