@@ -108,7 +108,7 @@ namespace RazorAppTH.Pages
                        new
                        {
                            isValid = false,
-                           message = "Ocorreu um erro ao realizar a solicitação",
+                           message = "Ocorreu um erro ao realizar a solicitação." + ex.Message,
                            htmlView1 = "",
                            htmlView2 = ""
                        }));
@@ -154,7 +154,8 @@ namespace RazorAppTH.Pages
             var info = HttpContext.Session.GetString("info");
             if(!string.IsNullOrEmpty(info))
                 _info = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Model.Info.Data>>(info);
-            _modulos = HttpContext.Session.GetString("modulos").Split(",");
+            //HttpContext.Session.Remove("modulos");
+            _modulos = HttpContext.Session.GetString("modulos") != null ? HttpContext.Session.GetString("modulos").Split(",") : null;
         }
     }
 }
