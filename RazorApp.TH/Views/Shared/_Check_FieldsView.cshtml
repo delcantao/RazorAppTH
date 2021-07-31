@@ -22,9 +22,9 @@
                                         aria-invalid="true"
                                         value="@Model.Modulo"
                                         attr-descricao="@Model.Descricao" 
-                                        @(Model.Obrigatorio ? "readonly=readonly" : "")
-                                        @(Model.Obrigatorio ? "checked=checked" : "")>
-                                <span class="@(Model.Obrigatorio ? "checkbox-obrigatorio" : "")"></span>
+                                        @(Model.Obrigatorio ?? false ? "readonly=readonly" : "")
+                                        @(Model.Obrigatorio ?? false ? "checked=checked" : "")>
+                                <span class="@(Model.Obrigatorio ?? false ? "checkbox-obrigatorio" : "")"></span>
 
 
 

@@ -11,13 +11,14 @@ namespace RazorAppTH.Model
         public class Data
         {
             public string Modulo { get; set; }
-            public bool Obrigatorio { get; set; }
+            public bool? Obrigatorio { get; set; }
             public int Ordem { get; set; }
             public string Descricao { get; set; }
             public string UrlIcone { get; set; }
             public int Tamanho { get; set; }
             public string Observacoes { get; set; }
-            public bool Ativo { get; set; } 
+            public string Erros { get; set; }
+            public bool? Ativo { get; set; } 
         }
 
     }

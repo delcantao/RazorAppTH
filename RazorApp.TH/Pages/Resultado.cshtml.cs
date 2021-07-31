@@ -70,11 +70,11 @@ namespace RazorAppTH.Pages
                     var query = HttpContext.Request.Form.ToList().Where(e => e.Key.Contains(dado.Modulo)).ToList();
                     if(query == null || query.Count == 0) continue;
                     var value = query.FirstOrDefault().Value.ToString();
+                    // Mantem o estado do que foi digitado na tela, caso o usuário decida voltar e escolher um campo novo.
                     HttpContext.Session.SetString(dado.Modulo, value);
                     queryParams.Add('p' + dado.Modulo, value);
                 }
                 var urlToSend = QueryHelpers.AddQueryString(Statics.UrlCheck, queryParams);
-                // Mantem o estado do que foi digitado na tela, caso o usuário decida voltar e escolher um campo novo.
                 
                 // ler a página view referente ao carregamento das tabelas
                 // carregar via POST de AJAX
@@ -82,6 +82,8 @@ namespace RazorAppTH.Pages
                 var jsonApi = await Commons.ConsumeApiAsync(urlToSend);
                 Result = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Model.Check.Data>>(jsonApi);
                 var message = Result[0].MENSAGEM;
+
+             
 
 
                 if(string.IsNullOrEmpty(message))

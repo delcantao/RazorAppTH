@@ -1,0 +1,20 @@
+﻿.helpers {
+    border-radius: 10px;
+    padding: 10px;
+    background: #7a2319;
+    color: white;
+        display: none; 
+    position: absolute;
+    max-width: 1200px;
+    max-height: 500px;
+    z-index: 999999;
+    font-size: 12px;
+    opacity: 0.89;
+}
+.helper-tooltip {
+    display: inline-block;
+    float: right;
+    font-size: 24px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}

@@ -85,23 +85,24 @@
                                                                                                         @foreach(var field in Model.Fields)
                                                                                                         {
 
-                                                                                                        <div class="elementor-element elementor-element-5ea6053 elementor-widget elementor-widget-mf-text" data-id="5ea6053" data-element_type="widget" data-settings="{&amp;quot;mf_input_name&amp;quot;:&amp;quot;mf-text&amp;quot;}" data-widget_type="mf-text.default">
-                                                                                                            <div class="elementor-widget-container">
-                                                                                                                <div class="mf-input-wrapper">
-                                                                                                                    <label class="mf-input-label" for="mf-input-text-5ea6053">@field.Descricao</label>
-                                                                                                                    <input type="text"
-                                                                                                                           class="mf-input "
-                                                                                                                           id="mf-input-text-5ea6053"
-                                                                                                                           name="@field.Modulo"
-                                                                                                                           placeholder="@field.Descricao"
-                                                                                                                           aria-invalid="false"
-                                                                                                                           title="@field.Observacoes"
-                                                                                                                           maxlength="@field.Tamanho"
-                                                                                                                           value="@HttpContext.Session.GetString(@field.Modulo)">
+                                                                                                            <div class="elementor-element elementor-element-5ea6053 elementor-widget elementor-widget-mf-text" data-id="5ea6053" data-element_type="widget" data-settings="{&amp;quot;mf_input_name&amp;quot;:&amp;quot;mf-text&amp;quot;}" data-widget_type="mf-text.default">
+                                                                                                                <div class="elementor-widget-container">
+                                                                                                                    <div class="mf-input-wrapper">
+                                                                                                                        <label class="mf-input-label" style="display: inline-block" for="mf-input-text-5ea6053">@field.Descricao</label>
+                                                                                                                        <label class="helper-tooltip" text-helper="@field.Erros"><i class="fas fa-info-circle"></i></label>
+                                                                                                                        <input type="text"
+                                                                                                                               class="mf-input "
+                                                                                                                               id="mf-input-text-5ea6053"
+                                                                                                                               name="@field.Modulo"
+                                                                                                                               placeholder="@field.Descricao"
+                                                                                                                               aria-invalid="false"
+                                                                                                                               title="@field.Observacoes"
+                                                                                                                               maxlength="@field.Tamanho"
+                                                                                                                               value="@HttpContext.Session.GetString(@field.Modulo)">
 
+                                                                                                                    </div>
                                                                                                                 </div>
                                                                                                             </div>
-                                                                                                        </div>
 
                                                                                                         }
 
@@ -178,30 +179,23 @@
                                         <div class="elementor-widget-container">
 
                                             <div id="div-forms" style="display: inline">
-                                                <input class="btn-lf-class btn-lf-size" type="button" value="VOLTAR" onclick="history.go(-1)" button="" style="float: left; color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
-                                                <form class="btn-lf-class" method="post" asp-page-handler="Check" style="display: inline">
-                                                    <input class="btn-lf-size"
-                                                           type="button"
-                                                           value="PROCESSAR"
-                                                           onclick="jQueryResultPost(document.getElementById('form-result'))"
-                                                           button=""
-                                                           style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
+                                                <div id="div-limpar-voltar">
+                                                    <form id="form-limpar" class="btn-lf-class" action="/Resultado?handler=Limpar" method="post">
+                                                        <input class="btn-lf-class btn-lf-size" type="button" value="VOLTAR" onclick="history.go(-1)" button="" style="float: left; color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
+                                                        <input class="btn-lf-size color-secondary-buttonsy" type="button" value="LIMPAR" onclick="jQueryLimparPost(document.getElementById('form-limpar'))" button="" style="color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
+                                                        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8C2cS4VDKH9Ji0Uz6Pr9MgjT6dI2FDeHoGiT1F08-iu9V8eF0iZ9Hif5XRvDIeVlgdMf3PpoVJ5EiZ8KRy2RAHDs8_0vhFCFTrpFqJkzecRt31mEEZQJSuZk6vqOe7eWw887qtZptg0zVaPadFRztZU">
+                                                    </form>
+                                                </div>
 
-                                                    @*<input type="submit" value="PROCESSAR" onclick="#" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">*@
-                                                </form>
-                                                <form id="form-limpar" class="btn-lf-class" asp-page="/Resultado" asp-page-handler="Limpar" style="float: right; display: inline">
-                                                    <input class="btn-lf-size color-secondary-buttonsy"
-                                                           type="button"
-                                                           value="LIMPAR"
-                                                           onclick="jQueryLimparPost(document.getElementById('form-limpar'))"
-                                                           button=""
-                                                           style="color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
-
-                                                    @*<input type="submit" value="PROCESSAR" onclick="#" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">*@
-                                                </form>
+                                                <div id="div-processar">
+                                                    <form class="btn-lf-class" method="post" style="display: inline" action="/Resultado?handler=Check">
+                                                        <input class="btn-lf-size" type="button" value="PROCESSAR" onclick="jQueryResultPost(document.getElementById('form-result'))" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
+                                                        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8C2cS4VDKH9Ji0Uz6Pr9MgjT6dI2FDeHoGiT1F08-iu9V8eF0iZ9Hif5XRvDIeVlgdMf3PpoVJ5EiZ8KRy2RAHDs8_0vhFCFTrpFqJkzecRt31mEEZQJSuZk6vqOe7eWw887qtZptg0zVaPadFRztZU">
+                                                    </form>
+                                                </div>
 
                                             </div>
-                                            
+
 
                                         </div>
                                     </div>
@@ -227,6 +221,9 @@
 
     </div>
 
+    <div class='helpers'>
+
+    </div>
 </main>
 @section Head {
     @Html.Raw(await Statics.RenderStaticPage(Model._env.WebRootPath, "includes", "resultado", "head.html"))

@@ -5,6 +5,31 @@
 
 $(document).ready(function () {
 
+    // Begin - Tooltip result page
+    var timer;
+    $(".helper-tooltip").on("mouseover", function () {
+        let text = $(this).attr('text-helper');
+        if (text) {
+            timer = setTimeout(() => {
+                let position = $(this).offset();
+                position.top += 20;
+                position.left += 20;
+                $(".helpers").css(position);
+                $(".helpers").show('fast');
+                text = text.replaceAll(";", '<br />');
+                $(".helpers").html(text);
+            }, 300);
+        }
+    });
+    $(".helper-tooltip").on("mouseout", function () {
+        clearTimeout(timer);
+        $(".helpers").html("");
+        $(".helpers").hide();
+
+    })
+    // End - Tooltip result page
+
+
     $("input[type='text'").on("keydown", function (e, f, g) {
         if (e.keyCode == 13) {
             jQueryResultPost(document.getElementById('form-result'))

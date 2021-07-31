@@ -11,11 +11,11 @@ namespace RazorAppTH.Model
         public class Data
         {
             public CAD CAD { get; set; }
-            public NOME NOME { get; set; }
-            public NOMEADC NOMEADC { get; set; }
-            public FONE FONE { get; set; }
-            public NASC NASC { get; set; }
-            public EMAIL EMAIL { get; set; }
+            public STATUS NOME { get; set; }
+            public STATUS NOMEADC { get; set; }
+            public STATUS FONE { get; set; }
+            public STATUS NASC { get; set; }
+            public STATUS EMAIL { get; set; }
             public string ID_ERRO { get; set; }
             public string MENSAGEM { get; set; }
             public string Message { get; set; }
@@ -39,35 +39,6 @@ namespace RazorAppTH.Model
             public string MSGSTATUS { get; set; }
         }
 
-        public class NOME
-        {
-            public string CODSTATUS { get; set; }
-            public string MSGSTATUS { get; set; }
-        }
-
-        public class NOMEADC
-        {
-            public string CODSTATUS { get; set; }
-            public string MSGSTATUS { get; set; }
-        }
-
-        public class FONE
-        {
-            public string CODSTATUS { get; set; }
-            public string MSGSTATUS { get; set; }
-        }
-
-        public class NASC
-        {
-            public string CODSTATUS { get; set; }
-            public string MSGSTATUS { get; set; }
-        }
-
-        public class EMAIL
-        {
-            public string CODSTATUS { get; set; }
-            public string MSGSTATUS { get; set; }
-        }
 
     }
 }

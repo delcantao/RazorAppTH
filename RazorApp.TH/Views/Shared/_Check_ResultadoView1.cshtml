@@ -18,8 +18,9 @@
 
     <tbody>
 
-        @if(Model.CPF != null)
+        @if(Model.STATUS != null)
         {
+            if (Model.CPF != null) { 
             <tr>
                 <td>
                     <p>CPF</p>
@@ -28,6 +29,7 @@
                     <p>@Model.CPF</p>
                 </td>
             </tr>
+            }
             <tr>
                 <td>
                     <p>Status</p>
