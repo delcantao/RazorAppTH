@@ -1,3 +1,4 @@
+
 .elementor-265 .elementor-element.elementor-element-7d89015:not(.elementor-motion-effects-element-type-background),
 .elementor-265 .elementor-element.elementor-element-7d89015 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
     background-color: #FFFFFF;
@@ -195,7 +196,7 @@
 
 .elementor-265 .elementor-element.elementor-element-d3e681d .ea-advanced-data-table {
     width: 100%;
-    font-size: 24PX;
+/*    font-size: 24PX;*/
 }
 
 .elementor-265 .elementor-element.elementor-element-d3e681d th {
