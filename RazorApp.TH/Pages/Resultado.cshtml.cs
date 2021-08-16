@@ -81,9 +81,7 @@ namespace RazorAppTH.Pages
 
                 var jsonApi = await Commons.ConsumeApiAsync(urlToSend);
                 Result = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Model.Check.Data>>(jsonApi);
-                var message = Result[0].MENSAGEM;
-
-             
+                var message = Result[0].MENSAGEM;             
 
 
                 if(string.IsNullOrEmpty(message))
@@ -115,15 +113,13 @@ namespace RazorAppTH.Pages
                            htmlView2 = ""
                        }));
             }
-
-
         }
 
-        public JsonResult  OnPostLimpar()
+        public async Task<JsonResult> OnPostLimparAsync()
         {
             LoadSession();
             if (_info != null) _info.ForEach(e => HttpContext.Session.SetString(e.Modulo, ""));
-            return new JsonResult(new { isValid = true });
+            return await Task.FromResult(new JsonResult(new { isValid = true }));
         }
         public async Task<JsonResult> OnPostCheckAsync()
         {

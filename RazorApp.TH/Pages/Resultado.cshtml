@@ -180,17 +180,15 @@
 
                                             <div id="div-forms" style="display: inline">
                                                 <div id="div-limpar-voltar">
-                                                    <form id="form-limpar" class="btn-lf-class" action="/Resultado?handler=Limpar" method="post">
+                                                    <form id="form-limpar" class="btn-lf-class" method="post" asp-page="/Resultado" asp-page-handler="Limpar">
                                                         <input class="btn-lf-class btn-lf-size" type="button" value="VOLTAR" onclick="history.go(-1)" button="" style="float: left; color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
                                                         <input class="btn-lf-size color-secondary-buttonsy" type="button" value="LIMPAR" onclick="jQueryLimparPost(document.getElementById('form-limpar'))" button="" style="color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
-                                                        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8C2cS4VDKH9Ji0Uz6Pr9MgjT6dI2FDeHoGiT1F08-iu9V8eF0iZ9Hif5XRvDIeVlgdMf3PpoVJ5EiZ8KRy2RAHDs8_0vhFCFTrpFqJkzecRt31mEEZQJSuZk6vqOe7eWw887qtZptg0zVaPadFRztZU">
                                                     </form>
                                                 </div>
 
                                                 <div id="div-processar">
                                                     <form class="btn-lf-class" method="post" style="display: inline" action="/Resultado?handler=Check">
                                                         <input class="btn-lf-size" type="button" value="PROCESSAR" onclick="jQueryResultPost(document.getElementById('form-result'))" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
-                                                        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8C2cS4VDKH9Ji0Uz6Pr9MgjT6dI2FDeHoGiT1F08-iu9V8eF0iZ9Hif5XRvDIeVlgdMf3PpoVJ5EiZ8KRy2RAHDs8_0vhFCFTrpFqJkzecRt31mEEZQJSuZk6vqOe7eWw887qtZptg0zVaPadFRztZU">
                                                     </form>
                                                 </div>
 
