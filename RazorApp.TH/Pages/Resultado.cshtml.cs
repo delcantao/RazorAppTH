@@ -74,6 +74,7 @@ namespace RazorAppTH.Pages
                     HttpContext.Session.SetString(dado.Modulo, value);
                     queryParams.Add('p' + dado.Modulo, value);
                 }
+
                 var urlToSend = QueryHelpers.AddQueryString(Statics.UrlCheck, queryParams);
                 
                 // ler a página view referente ao carregamento das tabelas
