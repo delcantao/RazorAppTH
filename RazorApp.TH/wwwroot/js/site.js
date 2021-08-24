@@ -95,6 +95,8 @@ $(document).ready(function () {
 
     jQueryLimparPost = form => {
         $("input[type='text']").val("");
+        $("#resultView-1").empty();
+        $("#resultView-2").empty();
         $.ajax({
             type: 'POST',
             url: form.action,
