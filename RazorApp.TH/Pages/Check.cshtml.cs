@@ -62,6 +62,5 @@ namespace RazorAppTH.Pages
             return htmlString;
 
         }
-         
     }
 }

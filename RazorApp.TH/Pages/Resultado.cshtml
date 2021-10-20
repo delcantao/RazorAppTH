@@ -182,13 +182,14 @@
                                                 <div id="div-limpar-voltar">
                                                     <form id="form-limpar" class="btn-lf-class" method="post" asp-page="/Resultado" asp-page-handler="Limpar">
                                                         <input class="btn-lf-class btn-lf-size" type="button" value="VOLTAR" onclick="history.go(-1)" button="" style="float: left; color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
-                                                        <input class="btn-lf-size color-secondary-buttonsy" type="button" value="LIMPAR" onclick="jQueryLimparPost(document.getElementById('form-limpar'))" button="" style="color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
+                                                    </form>
+                                                    <form class="btn-lf-class" method="post" action="/Resultado?handler=Check">
+                                                        <input class="btn-lf-size" type="button" value="PROCESSAR" onclick="jQueryResultPost(document.getElementById('form-result'))" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
                                                     </form>
                                                 </div>
-
                                                 <div id="div-processar">
-                                                    <form class="btn-lf-class" method="post" style="display: inline" action="/Resultado?handler=Check">
-                                                        <input class="btn-lf-size" type="button" value="PROCESSAR" onclick="jQueryResultPost(document.getElementById('form-result'))" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
+                                                    <form id="form-limpar" class="btn-lf-class" style="display: inline" method="post" asp-page="/Resultado" asp-page-handler="Limpar">
+                                                        <input class="btn-lf-size color-secondary-buttonsy" type="button" value="LIMPAR" onclick="jQueryLimparPost(document.getElementById('form-limpar'))" button="" style="color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
                                                     </form>
                                                 </div>
 
