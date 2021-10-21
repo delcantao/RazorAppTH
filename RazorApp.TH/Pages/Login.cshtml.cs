@@ -31,9 +31,10 @@ namespace RazorAppTH.Pages
                 // Para saber mais sobre o recurso que invoca esta página
                 // Procure no arquivo do SipWeb no caminho: SipWeb/inc/ajax-ws.php > na função > ajaxLogin() 
 
-                cliente = Encryption.OpenSSLDecrypt(cliente, "eitTvbiVwYX15YVvFFkqemD0gUL4CX");
-                usuario = Encryption.OpenSSLDecrypt(usuario, "eitTvbiVwYX15YVvFFkqemD0gUL4CX");
-                senha = Encryption.OpenSSLDecrypt(senha, "eitTvbiVwYX15YVvFFkqemD0gUL4CX");
+                //cliente = Encryption.OpenSSLDecrypt(cliente, "eitTvbiVwYX15YVvFFkqemD0gUL4CX");
+                //usuario = Encryption.OpenSSLDecrypt(usuario, "eitTvbiVwYX15YVvFFkqemD0gUL4CX");
+                //senha = Encryption.OpenSSLDecrypt(senha, "eitTvbiVwYX15YVvFFkqemD0gUL4CX");
+
                 HttpContext.Session.SetString("cliente", cliente);
                 HttpContext.Session.SetString("usuario", usuario + "WS");
                 HttpContext.Session.SetString("senha", senha);

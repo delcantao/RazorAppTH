@@ -10,11 +10,8 @@ namespace RazorAppTH.Services.Helpers
 {
     public static class Statics
     {
-        //public static string UrlWsIth = "https://api" + (Environment.GetEnvironmentVariable("ComputerName").Equals("THDC3") ? "" : "3") + ".sistemasth.com.br/api/ith_Check_Modulos?sCodValidacao=$WB$";
-        //public static string UrlCheck = "https://api" + (Environment.GetEnvironmentVariable("ComputerName").Equals("THDC3") ? "" : "3") + ".sistemasth.com.br/api/Check";
         public static string UrlWsIth = "https://api.sistemasth.com.br/api/ith_Check_Modulos?sCodValidacao=$WB$";
         public static string UrlCheck = "https://api.sistemasth.com.br/api/Check";
-
         public const string UrlLoginSipWeb = "https://sipweb.sistemasth.com.br/login";
         public const string UrlSolucoes = "https://solucoes.sistemasth.com.br/";
 

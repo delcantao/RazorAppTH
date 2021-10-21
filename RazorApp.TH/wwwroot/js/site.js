@@ -65,6 +65,11 @@ $(document).ready(function () {
                 $(obj).click()
         })
     }
+    $("#check_send").on("click", (e) => {
+        e.preventDefault();
+
+    });
+
     jQueryCheckPost = form => {
         try {
             console.log(form);
@@ -82,8 +87,8 @@ $(document).ready(function () {
                     }
                     window.location.href = './Resultado';
                 },
-                error: function (err) {
-                    console.log(err)
+                error: function (err, a, b, c, d) {
+                    console.log(err, a, b, c, d)
                 }
             })
             return false;

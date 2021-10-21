@@ -65,7 +65,7 @@ namespace RazorAppTH.Pages
                 //};
 
 
-                foreach(var dado in _info)
+                foreach (var dado in _info)
                 {
                     var query = HttpContext.Request.Form.ToList().Where(e => e.Key.Contains(dado.Modulo)).ToList();
                     if(query == null || query.Count == 0) continue;
@@ -74,7 +74,6 @@ namespace RazorAppTH.Pages
                     HttpContext.Session.SetString(dado.Modulo, value);
                     queryParams.Add('p' + dado.Modulo, value);
                 }
-
                 var urlToSend = QueryHelpers.AddQueryString(Statics.UrlCheck, queryParams);
                 
                 // ler a página view referente ao carregamento das tabelas
