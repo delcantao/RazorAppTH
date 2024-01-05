@@ -26,7 +26,6 @@ namespace RazorAppTH.Services.Helpers
              //"/",
              //"/Resultado",
              //"/Check"
-
         };
 
         public static async Task<string> RenderStaticPage(params string[] path)

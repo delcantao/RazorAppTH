@@ -15,7 +15,7 @@
         </thead>
 
         <tbody>
-            @if(Model.NOME != null)
+            @if (Model.NOME != null)
             {
                 <tr>
                     <td>
@@ -26,7 +26,7 @@
                     </td>
                 </tr>
             }
-            @if(Model.NASC != null)
+            @if (Model.NASC != null)
             {
                 <tr>
                     <td>
@@ -38,7 +38,7 @@
                 </tr>
             }
 
-            @if(Model.FONE != null)
+            @if (Model.FONE != null)
             {
                 <tr>
                     <td>
@@ -50,7 +50,7 @@
                 </tr>
             }
 
-            @if(Model.EMAIL != null)
+            @if (Model.EMAIL != null)
             {
                 <tr>
                     <td>
@@ -62,7 +62,7 @@
                 </tr>
             }
 
-            @if(Model.NOMEADC != null)
+            @if (Model.NOMEADC != null)
             {
                 <tr>
                     <td>
@@ -70,6 +70,18 @@
                     </td>
                     <td>
                         <p>@Model.NOMEADC.CODSTATUS - @Model.NOMEADC.MSGSTATUS</p>
+                    </td>
+                </tr>
+            }
+
+            @if (Model.MAE != null)
+            {
+                <tr>
+                    <td>
+                        <p>Nome mãe</p>
+                    </td>
+                    <td>
+                        <p>@Model.MAE.CODSTATUS - @Model.MAE.MSGSTATUS</p>
                     </td>
                 </tr>
             }

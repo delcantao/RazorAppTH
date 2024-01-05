@@ -16,6 +16,7 @@ namespace RazorAppTH.Model
             public STATUS FONE { get; set; }
             public STATUS NASC { get; set; }
             public STATUS EMAIL { get; set; }
+            public STATUS MAE { get; set; }
             public string ID_ERRO { get; set; }
             public string MENSAGEM { get; set; }
             public string Message { get; set; }
