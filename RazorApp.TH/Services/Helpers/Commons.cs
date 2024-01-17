@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace RazorAppTH.Services.Helpers
+namespace RazorApp.TH.Services.Helpers
 {
     public class Commons
     {
@@ -17,5 +17,7 @@ namespace RazorAppTH.Services.Helpers
                 return await response.Content.ReadAsStringAsync();
      
         }
+
+         
     }
 }

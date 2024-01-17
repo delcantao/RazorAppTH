@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RazorAppTH.Services.Helpers
+namespace RazorApp.TH.Services.Helpers
 {
     public class Messages
     {

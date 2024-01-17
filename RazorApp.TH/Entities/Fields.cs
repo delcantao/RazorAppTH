@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RazorAppTH.Entities
+namespace RazorApp.TH.Entities
 {
     public class Fields
     {

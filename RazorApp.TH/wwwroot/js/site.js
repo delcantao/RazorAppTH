@@ -28,15 +28,19 @@ $(document).ready(function () {
 
     })
     // End - Tooltip result page
-
+    $(".input-open-gateway").on("keydown", function (event) {
+        if (event.key == "Enter") {
+            event.preventDefault();
+        }
+        
+    });
 
     $("input[type='text'").on("keydown", function (e, f, g) {
         if (e.keyCode == 13) {
             jQueryResultPost(document.getElementById('form-result'))
         }
     })
-
-    function showLoading (on) {
+    function showLoading(on) {
         var _loading = $("#loading-animation")
         var _1stblock = $("#first-block")
         var _2ndblock = $("#second-block")
@@ -51,7 +55,6 @@ $(document).ready(function () {
         _1stblock.show("fast");
         _2ndblock.show("fast");
     }
-
     $("input").on("click", function () {
         $("#return-message").hide();
     });
@@ -126,7 +129,6 @@ $(document).ready(function () {
             }
         })
     }
-
     jQueryResultPost = form => {
         try {
             showLoading(true);
@@ -138,10 +140,13 @@ $(document).ready(function () {
                 processData: false,
                 success: function (res) {
                     showLoading(false);
+                     
                     if (!res.isValid) {
                         // exibe mensagem de erro 
                         $("#return-message").show();
                         $("#return-message").html(res.message);
+                        $("#resultView-1").html("");
+                        $("#resultView-2").html("");
                         return;
                     }
                     $("#resultView-1").html(res.htmlView1);

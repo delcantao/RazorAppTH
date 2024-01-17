@@ -1,0 +1,24 @@
+﻿@model RazorApp.TH.Model.ErrorModel[]
+
+
+ 
+
+<table class="ea-advanced-data-table ea-advanced-data-table-static ea-advanced-data-table-d3e681d ea-advanced-data-table-sortablex font-size-th" data-id="d3e681d">
+    <thead>
+        <tr>
+            <th>
+                <p>Resultado</p>
+            </th> 
+        </tr>
+    </thead> 
+    <tbody>
+ 
+        <tr>
+            <td>
+                @Model[0].MENSAGEM.ToString().Substring(3)
+            </td> 
+        </tr>      
+    
+    </tbody>
+</table>
+ 

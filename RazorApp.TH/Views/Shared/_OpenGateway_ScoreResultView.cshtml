@@ -3,20 +3,14 @@
 @model RazorApp.TH.Model.OpenGatewayModel  
 <link href="/css/progressbar.css" rel="stylesheet" />
 <style>
-   
 
-    @@keyframes timelapse {
-        0% {
-            width: 100%;
-        }
 
-        100% {
-            width: @(100 - (Convert.ToInt32(@Model.ScoreData.data.statsResult.score / 10)))%;
-        }
+    .ball {
+        left: @(Convert.ToInt32(Model.ScoreData.data.statsResult.score / 10))%!important;
     }
  
 </style>
-
+ 
 <table class="ea-advanced-data-table ea-advanced-data-table-static ea-advanced-data-table-d3e681d ea-advanced-data-table-sortablex font-size-th" data-id="d3e681d">
     <thead>
         <tr>
@@ -30,7 +24,6 @@
         <tr>
             <td>
                 @*<p>@Model.ScoreData.data.statsResult.score</p>*@
-               
                 <div id="progress_main">
                     <div id="progress_container">
                         <span class="location"></span>
@@ -45,7 +38,7 @@
                     <div class="pin">
 
                         <span class="ball">
-                            <span class="number">970</span>
+                            <span class="number">@Model.ScoreData.data.statsResult.score</span>
                         </span>
                     </div>
                 </div>
