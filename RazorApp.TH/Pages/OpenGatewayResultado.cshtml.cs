@@ -102,7 +102,7 @@ namespace RazorApp.TH.Pages
                     
                     queryParams.Add(field.Key, field.Value);
                 }
-                if (queryParams.ContainsKey("sFone") && !queryParams["sFone"].StartsWith("55")) queryParams["sFone"] = "55" + queryParams["sFone"];
+                if (queryParams.ContainsKey("sFone") && !queryParams["sFone"].StartsWith("55") && !string.IsNullOrEmpty(queryParams["sFone"])) queryParams["sFone"] = "55" + queryParams["sFone"];
 
 
                 var urlToSend = QueryHelpers.AddQueryString($"{Statics.BaseUrl}/{Product.Url}", queryParams);
