@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RazorAppTH.Middleware;
+using RazorApp.TH.Middleware;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Web.Services;
 
-namespace RazorAppTH
+namespace RazorApp.TH
 {
     public class Startup
     {

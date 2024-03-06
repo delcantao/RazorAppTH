@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using RazorAppTH.Model; 
+using RazorApp.TH.Model; 
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,11 +13,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Web.Services;
 using Microsoft.AspNetCore.Http;
-using RazorAppTH.Services.Helpers;
+using RazorApp.TH.Services.Helpers;
 using System.Net.Http;
 using Microsoft.AspNetCore.Hosting;
 
-namespace RazorAppTH.Pages
+namespace RazorApp.TH.Pages
 {
     public class CheckModel : PageModel
     {

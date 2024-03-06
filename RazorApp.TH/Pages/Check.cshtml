@@ -1,7 +1,8 @@
 ﻿@*@page "Principal/Teste"*@
 @page
-@using RazorAppTH.Services.Helpers
-@model CheckModel
+@using RazorApp.TH.Services.Helpers
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model RazorApp.TH.Pages.CheckModel
 
 @{
     ViewData["Title"] = "Home page";
@@ -47,7 +48,7 @@
                                         <div class="elementor-widget-container">
                                             <p>É uma ferramenta de apoio à prevenção ao risco e à fraude que oferece uma solução automática de checagem da informação cadastral, em tempo real, via API, evitando tentativas de fraude de identidade e inconsistências no cadastro dos clientes e prospects. sem comprometer a agilidade na entrada de dados e a satisfação dos seus clientes. <br><strong>Benefícios:</strong>&nbsp; Realizar a validação, a qualificação e confirmação de forma automática dos dados cadastrais CPF e CNPJ. Esta aplicação permite a parametrização de informações a serem checadas em uma única requisição, possibilitando:</p>
                                             <ul>
-                                                <li>Otimização de recursos, tempo de análise, através de acessos a fontes de fé pública;</li>
+                                                <li>Otimização de recursos, tempo de análise, através de acessos à fontes de fé pública;</li>
                                                 <li>Aumento de segurança da informação, pois reduz o risco da entrada de dados inconsistentes e fraudulentos;</li>
                                                 <li>Customização de acordo com a demanda de cada área, através da parametrização das APIs;</li>
                                                 <li>Conformidade com os órgãos reguladores (Circulares 3978 e 3988 do Bacen e da Lei Complementar 105).</li>

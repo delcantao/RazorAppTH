@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
-using RazorAppTH.Services.Helpers;
+using RazorApp.TH.Services.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RazorAppTH.Middleware
+namespace RazorApp.TH.Middleware
 {
     public class RequestResponseMiddleware 
     {
@@ -39,7 +39,13 @@ namespace RazorAppTH.Middleware
                 Console.WriteLine(!sessionFound ? "Session not found - redirecting..." : "Session found!");
                 if(!sessionFound)
                 {
+                    if (Statics.IsDev)
+                    {
+                        context.Response.Redirect("/login");
+                        return;
+                    }
                     context.Response.Redirect(Statics.UrlLoginSipWeb);
+
                     return;                    
                 }
             }

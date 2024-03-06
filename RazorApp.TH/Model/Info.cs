@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RazorAppTH.Model
+namespace RazorApp.TH.Model
 {
     public class Info
     {

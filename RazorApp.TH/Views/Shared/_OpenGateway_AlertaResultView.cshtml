@@ -1,0 +1,71 @@
+﻿@model RazorApp.TH.Model.OpenGatewayModel
+
+
+ 
+
+<table class="ea-advanced-data-table ea-advanced-data-table-static ea-advanced-data-table-d3e681d ea-advanced-data-table-sortablex font-size-th" data-id="d3e681d">
+    <thead>
+        <tr>
+            <th>
+                <p>Nome do Evento</p>
+            </th>
+            <th>
+                <p>Data e Hora</p>
+            </th>
+        </tr>
+    </thead>
+    @*
+    1. DEVICE_CHANGED
+    2. PORTOUT_REQUESTED
+    3. SUBSCRIPTION_CANCELED
+    4. SIMCARD_CHANGED 
+    5. Portin_requested
+    6. Msisdn_changed
+    
+    1 Subscription_canceled: indica que a assinatura foi encerrada
+    2 Simcard_changed: indica que houve uma troca de SIMCARD
+    3 Msisdn_changed: indica que houve uma troca de número telefônico
+    4 Device_changed: indica que houve uma troca de dispositivo
+    5 Portin_requested: indica que houve uma portabilidade
+    6 Portout_requested: indica que houve uma portabilidade
+    7 There were no [VALORES] changes in this customers MSISDN: indica que não foi identificado nenhum
+    *@
+    <tbody>
+    @foreach (var event1 in @Model.AlertaData.data.customer.profileEvents)
+    {
+            <tr>
+                <td>
+                    @switch (event1.eventName.ToLower())
+                    {
+                        case "subscription_canceled": 
+                            <span> Assinatura foi encerrada </span>
+                            break;
+                        case "simcard_changed": 
+                            <span> Houve uma troca de SIMCARD </span>
+                            break;
+                        case "msisdn_changed": 
+                            <span> Houve uma troca de número telefônico </span>
+                            break;
+                        case "device_changed": 
+                            <span> Houve uma troca de dispositivo </span>
+                            break;
+                        case "portin_requested": 
+                            <span> Houve uma portabilidade (portin)</span>
+                            break;
+                        case "portout_requested":
+                            <span> Houve uma portabilidade (portout)</span>
+                            break;
+                        default:
+                            <span> Não foi identificada nenhuma mudança neste número (Evento Original: @event1.eventName.ToLower()) </span>
+                            break;
+                    }
+                </td>
+                <td>
+                    @event1.timestamp
+                </td>
+        </tr>                   
+    } 
+    
+    </tbody>
+</table>
+ 

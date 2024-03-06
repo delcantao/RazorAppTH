@@ -1,0 +1,115 @@
+﻿@model RazorApp.TH.Model.OpenGatewayModel.Product
+
+
+<div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-d2295e9" data-id="d2295e9" data-element_type="column" onclick="window.location.href='/OpenGatewayResultado?Product=@Model.Nome'">
+    <div class="elementor-widget-wrap elementor-element-populated button-open-gateway ">
+        <div class="elementor-element elementor-element-d8c5520 elementor-view-default elementor-widget elementor-widget-icon" data-id="d8c5520" data-element_type="widget" data-widget_type="icon.default">
+            <div class="elementor-widget-container">
+                <div class="elementor-icon-wrapper">
+                    <div class="elementor-icon"><i aria-hidden="true" class="@Model.Icon icon-color"></i>			</div>
+                </div>
+            </div>
+        </div>
+        <div class="elementor-element elementor-element-e9e650a elementor-widget elementor-widget-mf-checkbox" data-id="e9e650a" data-element_type="widget" data-settings="{&amp;quot;mf_input_name&amp;quot;:&amp;quot;mf-checkbox&amp;quot;}" data-widget_type="mf-checkbox.default">
+            <div class="elementor-widget-container">
+                <div class="mf-input-wrapper">
+                    <div class="mf-checkbox multi-option-input-type" id="mf-input-checkbox-e9e650a">
+                        <div class="mf-checkbox-option">
+                            <label>
+                                
+                                <input type="checkbox"
+                                       class="mf-input mf-checkbox-input"
+                                       name="Modulo"
+                                       data-checked="true"
+                                       aria-invalid="true"
+                                       value="@Model.Nome"
+                                       attr-descricao="@Model.Nome"/>
+
+                                
+
+
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="elementor-element elementor-element-be05304 elementor-widget elementor-widget-text-editor" data-id="be05304" data-element_type="widget" data-widget_type="text-editor.default">
+            <div class="elementor-widget-container">
+                <p style="text-align: center;">@Model.Nome</p>
+            </div>
+        </div>
+    </div>
+    </div> 
+
+<style>
+    .button-open-gateway {
+        background-color: white;
+        margin-left: 10;
+        padding: 20px !important;
+        cursor: pointer;
+        color: #71261c;
+        border-radius: 10px;
+        border: 1px solid #71261c;
+    }
+
+        .button-open-gateway p {
+            color: #71261c;
+        }
+
+        .button-open-gateway:hover {
+            background-color: #71261c;
+            color: white;
+            border: 1px solid white;
+        }
+
+            .button-open-gateway:hover p {
+                color: white;
+            }
+
+
+    .icon-color {
+        color: #71261c;
+        background-color: white;
+    }
+
+    .button-open-gateway:hover .icon-color {
+        color: white;
+        background-color: #71261c;
+    }
+</style>
+@*
+<style>
+    .button-open-gateway {
+        background-color: #71261c;
+        margin-left: 10;
+        padding: 20px !important;
+        cursor: pointer;
+        color: white;
+        border-radius: 10px;
+    }
+
+    .button-open-gateway p { 
+        color: white;
+    }
+    .button-open-gateway:hover {
+            background-color: white;
+        color: black;
+            border: 1px solid #71261c;
+        }
+
+    .button-open-gateway:hover p {
+            color: black;
+    }
+
+
+    .icon-color{
+        color: white;
+        background-color: #71261c;
+    }
+    .button-open-gateway:hover .icon-color {
+        color: #71261c;
+        background-color: white;
+    }
+</style>
+*@                       

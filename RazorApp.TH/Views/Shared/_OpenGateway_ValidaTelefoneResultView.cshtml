@@ -1,0 +1,31 @@
+﻿@model RazorApp.TH.Model.OpenGatewayModel
+
+ 
+
+<table class="ea-advanced-data-table ea-advanced-data-table-static ea-advanced-data-table-d3e681d ea-advanced-data-table-sortablex font-size-th" data-id="d3e681d">
+    <thead>
+        <tr>
+            <th>
+                <p>Valida Telefone</p>
+            </th> 
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>
+                <p>
+                    @if (Model.ValidaTelefoneData.data.result.detailedMessage.Contains("CPF belongs to customer"))
+                   {
+                        <span>Telefone <b>vinculado</b> ao CPF informado</span>
+                   }
+                    else if (Model.ValidaTelefoneData.data.result.detailedMessage.Contains("CPF does not belong"))
+                    {
+                        <span>Telefone <b>NÃO vinculado</b>  ao CPF informado</span>
+                    }
+                    </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+ 
