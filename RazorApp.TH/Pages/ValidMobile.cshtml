@@ -1,8 +1,8 @@
-﻿@page 
+﻿@page "/mobile-number-validation"
 @using RazorApp.TH.Services.Helpers
 @using Web.Services
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@model RazorApp.TH.Pages.OpenGatewayPage
+@model RazorApp.TH.Pages.ValidMobilePage
 @inject IRazorRenderService _renderService
 
 @{
@@ -30,12 +30,12 @@
                                                             <div class="elementor-icon-box-wrapper">
                                                                 <div class="elementor-icon-box-icon">
                                                                     <span class="elementor-icon elementor-animation-">
-                                                                        <i aria-hidden="true" class="icon icon-checked"></i>
+                                                                        <i aria-hidden="true" class="fas fa-mobile-alt"></i>
                                                                     </span>
                                                                 </div>
                                                                 <div class="elementor-icon-box-content">
                                                                     <h3 class="elementor-icon-box-title">
-                                                                        <span>Check Operadoras</span>
+                                                                        <span>Mobile Number Validation</span>
                                                                     </h3>
                                                                 </div>
                                                             </div>
@@ -52,12 +52,10 @@
                                                 <br><br><strong>Benefícios:</strong>&nbsp; Realizar a validação, a qualificação e confirmação de forma automática dos dados cadastrais CPF e CNPJ. Esta aplicação permite a parametrização de informações a serem checadas em uma única requisição, possibilitando:
                                             </p>
                                             <ul>
-                                                <li>Valida Telefone;</li>
-                                                <li>Valida Endereço;</li>
-                                                <li>Alerta;</li>
-                                                <li>Score</li>
+                                                <li>Valida CPF</li>
+                                                <li>Valida SIM Swap</li>
                                             </ul>
-                                            <p><strong>Escolha abaixo o produto a ser testado e clique em SUBMETER:</strong></p>
+                                            <p><strong>Escolha abaixo o produto a ser testado</strong></p>
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +83,7 @@
                                                                             <div class="elementor-container elementor-column-gap-default">
                                                                                  
                                                                                     
-                                                                                    @foreach(var fields in Model.OpenGatewayData.Products)
+                                                                                    @foreach(var fields in Model.ValidMobileData.Products)
                                                                                     {
                                                                                         if(fields.Enabled )
                                                                                             @Html.Raw(await Model.RenderButtons(fields));

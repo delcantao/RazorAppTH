@@ -1,37 +1,28 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using System.Threading.Tasks;
 using RazorApp.TH.Services.Helpers;
-using System.Net.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using System.Linq;
 using Web.Services;
-using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Primitives;
-using System.Xml.Linq;
-using RazorApp.TH.Model.OpenGateway;
+using RazorApp.TH.Model.ValidMobile;
 using RazorApp.TH.Model.UI;
 
 namespace RazorApp.TH.Pages
 {
-    public class ResultadoOpenGatewayPage: PageModel
+    public class ValidMobileResultadoPage : PageModel
     {
         public IRazorRenderService _renderService;
         public IWebHostEnvironment _env;
-        private readonly ILogger<ResultadoOpenGatewayPage> _logger; 
+        private readonly ILogger<ValidMobileResultadoPage> _logger; 
         public Product Product;
-        public string NameProduct { get; set; } = "Check Operadoras";
+        public string NameProduct { get; set; } = "Mobile Number Validation";
 
-
-
-        public ResultadoOpenGatewayPage(ILogger<ResultadoOpenGatewayPage> logger, IWebHostEnvironment env, IRazorRenderService renderService)
+        public ValidMobileResultadoPage(ILogger<ValidMobileResultadoPage> logger, IWebHostEnvironment env, IRazorRenderService renderService)
         {
             _logger = logger;
             _env = env;
@@ -62,7 +53,7 @@ namespace RazorApp.TH.Pages
 
         private void LoadProduct(string product)
         {
-            var prodJson = HttpContext.Session.GetString("opengateway_products");
+            var prodJson = HttpContext.Session.GetString("validmobile_products");
             var prodObj = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Product>>(prodJson);
             Product = prodObj.FirstOrDefault(e => e.Nome.ToLower() == product.ToLower());
 
@@ -110,9 +101,10 @@ namespace RazorApp.TH.Pages
                 
                 // ler a página view referente ao carregamento das tabelas
                 // carregar via POST de AJAX
-
+                //urlToSend = "https://api6.sistemasth.com.br/api/BuscaNumberIntelligenceSincrono?sCliente=TH&sConsentimento=true&sCPF=02231613816&sFone=5511941009227&sPeriodoSimSwapEmhoras=24&sSenha=TIWSTIWS&sTempoEstimadoDeRetorno=72&sUsuario=TIWS";
                 var jsonResult = await Commons.ConsumeApiAsync(urlToSend);
-                 
+                product = Product.Url;
+
                 if (jsonResult.Contains("ID_ERRO"))
                 {
                     //var error = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.ErrorModel[]>(jsonResult);
@@ -126,29 +118,21 @@ namespace RazorApp.TH.Pages
                     product = "Error";
                 }
 
-                var result = new OpenGatewayModel(); 
+                var result = new ValidMobilePageModel(); 
+                result.Json = jsonResult;
                 switch (product)
                 {
-                    case "Score":
-                        var serializedResult1 = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.OpenGateway.Score[]>(jsonResult);
-                        result.ScoreData = serializedResult1[0];
-                        htmlView1 = await _renderService.ToStringAsync("_OpenGateway_ScoreResultView", result);
+                    case "BuscaSIMSwap":
+                        var serializedResult1 = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.ValidMobile.Responses.ResponseSimSwap[]>(jsonResult);
+                        result.SIMSwap = serializedResult1[0];
+                        htmlView1 = await _renderService.ToStringAsync("_ValidMobile_SIMSwapResultView", result);
                         break;
-                    case "Valida Fone":
-                        var serializedResult2 = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.OpenGateway.ValidaTelefone[]>(jsonResult);
-                        result.ValidaTelefoneData = serializedResult2[0];
-                        htmlView1 = await _renderService.ToStringAsync("_OpenGateway_ValidaTelefoneResultView", result);
+                    case "BuscaNumberIntelligenceSincrono":
+                        var serializedResult2 = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.ValidMobile.Responses.ResponseNumberIntelligence>(jsonResult);
+                        result.NumberIntelligence = serializedResult2;
+                        htmlView1 = await _renderService.ToStringAsync("_ValidMobile_NumberIntelligenceResultView", result);
                         break;
-                    case "Valida Endereço":
-                        var serializedResult3 = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.OpenGateway.ValidaEndereco[]>(jsonResult);
-                        result.ValidaEnderecoData = serializedResult3[0];
-                        htmlView1 = await _renderService.ToStringAsync("_OpenGateway_ValidaEnderecoResultView", result);
-                        break;
-                    case "Alerta":
-                        var serializedResult4 = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.OpenGateway.Alerta[]>(jsonResult);
-                        result.AlertaData= serializedResult4[0];
-                        htmlView1 = await _renderService.ToStringAsync("_OpenGateway_AlertaResultView", result);
-                        break;
+                    
                     case "Error":
                         var error = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.ErrorModel[]>(jsonResult);                        
                         htmlView1 = await _renderService.ToStringAsync("_OpenGateway_ErrorView", error);

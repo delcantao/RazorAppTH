@@ -1,0 +1,50 @@
+﻿@using RazorApp.TH.Model.ValidMobile
+@model ValidMobilePageModel
+
+
+
+<table class="ea-advanced-data-table ea-advanced-data-table-static ea-advanced-data-table-d3e681d ea-advanced-data-table-sortablex font-size-th" data-id="d3e681d">
+    <thead>
+        <tr>
+            <th>
+                <p>Valida Telefone</p>
+            </th> 
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>
+                <p>
+                    @if (Model.SIMSwap.error == null)
+                    {
+                        
+                        
+                        @if (Model.SIMSwap.simSwapOccurred)
+                        {
+                            <span>Houve troca de SIM</span>
+                        }
+                        else
+                        {
+                            <span>Não houve troca de SIM</span>
+                        }
+                    }
+                    else
+                    {
+                        switch (Model.SIMSwap.error.name)
+                        {
+                            case "EC_GATEWAY_OPERATION_FAILED":
+                                <span>Não é possível determinar SIM Swap para este número</span>
+                                break;
+                            default:
+                                <span> @Model.SIMSwap.error.name - @Model.SIMSwap.error.description </span>
+                                break;
+                                    
+                        }
+                    }
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+ 

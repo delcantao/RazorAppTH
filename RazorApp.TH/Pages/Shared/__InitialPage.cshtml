@@ -65,8 +65,11 @@
         @RenderSection("Head", true)
 
 </head>
-
-
+@{
+    var currentPage = ViewContext.RouteData.Values["page"]?.ToString();
+    var isMobileNumberValidationPage = currentPage.ToLower().Contains("validmobile") || currentPage.ToLower().Contains("mobile-number-validation");
+    var imagesLocation = isMobileNumberValidationPage ? "./wp-content/uploads/2021/07/mobile-number-validation/" : "./wp-content/uploads/2021/07/";
+}
 <body class="page-template-default page page-id-213 popularfx-body pagelayer-body elementor-default elementor-kit-22 elementor-page elementor-page-213 e--ua-blink e--ua-chrome e--ua-webkit" data-elementor-device-mode="desktop">
     <div class="ekit-template-content-markup ekit-template-content-header ekit-template-content-theme-support">
         <div data-elementor-type="wp-post" data-elementor-id="20" class="elementor elementor-20" data-elementor-settings="[]">
@@ -95,8 +98,8 @@
                         <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-1c0293b" data-id="1c0293b" data-element_type="column">
                             <div class="elementor-widget-wrap elementor-element-populated">
                                 <div class="elementor-element elementor-element-c190e2a elementor-widget elementor-widget-image" data-id="c190e2a" data-element_type="widget" data-widget_type="image.default">
-                                    <div class="elementor-widget-container">
-                                        <img width="2048" height="400" src="./wp-content/uploads/2021/07/bg-header.jpg" class="attachment-2048x2048 size-2048x2048" alt="" loading="lazy" srcset="./wp-content/uploads/2021/07/bg-header.jpg 2048w, ./wp-content/uploads/2021/07/bg-header-300x59.jpg 300w, ./wp-content/uploads/2021/07/bg-header-1024x200.jpg 1024w, ./wp-content/uploads/2021/07/bg-header-768x150.jpg 768w, ./wp-content/uploads/2021/07/bg-header-1536x300.jpg 1536w" sizes="(max-width: 2048px) 100vw, 2048px">
+                                    <div class="elementor-widget-container">  
+                                        <img width="2048" height="400" src="@(imagesLocation)bg-header.jpg" class="attachment-2048x2048 size-2048x2048" alt="" loading="lazy" srcset="@(imagesLocation)bg-header.jpg 2048w, @(imagesLocation)bg-header-300x59.jpg 300w, @(imagesLocation)bg-header-1024x200.jpg 1024w, @(imagesLocation)bg-header-768x150.jpg 768w, @(imagesLocation)bg-header-1536x300.jpg 1536w" sizes="(max-width: 2048px) 100vw, 2048px">
                                     </div>
                                 </div>
                             </div>

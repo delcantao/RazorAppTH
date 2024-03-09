@@ -1,0 +1,75 @@
+﻿@using RazorApp.TH.Model.ValidMobile
+@model ValidMobilePageModel
+
+ 
+
+@* JSON: @Model.Json *@
+<table class="ea-advanced-data-table ea-advanced-data-table-static ea-advanced-data-table-d3e681d ea-advanced-data-table-sortablex font-size-th" data-id="d3e681d">
+    <thead>
+        <tr>
+            <th>
+                <p>Valida CPF</p>
+            </th> 
+            <th>
+                <p>Valida SIM Swap </p>
+            </th> 
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>
+                <p>
+                    @if (Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.nationalIdentityNumber.error == null)
+                    {
+                        switch (Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.nationalIdentityNumber.match)
+                        {
+                            case "MATCHED":
+                                <span>Telefone <b>vinculado</b> ao CPF informado</span>
+                                break;
+                            default:
+                                <span>Telefone <b>NÃO vinculado</b>  ao CPF informado</span>
+                                break;
+                        }
+                        
+                    }
+                    else
+                    { 
+                        switch (Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.nationalIdentityNumber.error.name)
+                        {
+                            case "EC_UNKNOWN_SUBSCRIBER": 
+                                // oque fazer aqui?
+                                <span>Telefone <b>NÃO vinculado</b> ao CPF informado</span>
+                                break;
+                            default:
+                                <span>Telefone <b>NÃO vinculado</b> ao CPF informado</span>
+                                break;
+                        } 
+                    }
+                </p>
+            </td>
+            <td>
+                @if (Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.simSwap != null)
+                {
+                    if (Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.simSwap.error != null)
+                    {
+                        <span>Não é possível determinar SIM Swap para este número.</span>
+                    }
+                    else if (Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.simSwap.simSwapOccurred ?? false)
+                    {
+                        <span>Houve uma troca de SIM</span>
+                    }
+                    else
+                    {
+                        <span>Não houve troca de SIM</span>
+                    }
+                }
+                else
+                {
+                    <span> Não foi solicitado </span>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+ 

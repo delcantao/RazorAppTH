@@ -10,12 +10,20 @@ namespace RazorApp.TH.Services.Helpers
 {
     public static class Statics
     {
-        public static bool IsDev = true;
+        public static bool IsDev = false;
 
-
+        /*        
+            VALID MOBILE:
+	            1. SIMSWAP (SIMSWAP)
+	            2. VALIDACPF (NUMBER INTELLIGENCE)
+	            3. LOCALIZACAO 
+         */
         public static string UrlWsIth = "https://api.sistemasth.com.br/api/ith_Check_Modulos?sCodValidacao=$WB$";
         public static string UrlCheck = "https://api.sistemasth.com.br/api/Check";
+        // public static string BaseUrl = IsDev ? "http://localhost:51777/api/" : "https://api6.sistemasth.com.br/api/";
         public static string BaseUrl = "https://api6.sistemasth.com.br/api/";
+
+        //
         public const string UrlLoginSipWeb = "https://sipweb.sistemasth.com.br/login";
         public const string UrlSolucoes = "https://solucoes.sistemasth.com.br/";
 
