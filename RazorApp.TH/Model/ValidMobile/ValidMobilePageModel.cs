@@ -11,8 +11,8 @@ namespace RazorApp.TH.Model.ValidMobile
     public class ValidMobilePageModel
     {
         public List<Product> Products { get; set; }
-        public ResponseNumberIntelligence NumberIntelligence { get; set; }
-        public ResponseSimSwap SIMSwap { get; set; }
+        public Model.ValidMobile.Responses.newFormat.ResponseNumberIntelligence NumberIntelligence { get; set; }
+        public NewFormat.ResponseSimSwap SIMSwap { get; set; }
 
         public string Json { get; set; }
         

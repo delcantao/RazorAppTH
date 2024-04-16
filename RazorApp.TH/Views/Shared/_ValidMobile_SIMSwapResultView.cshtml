@@ -1,13 +1,19 @@
 ﻿@using RazorApp.TH.Model.ValidMobile
 @model ValidMobilePageModel
 
+@{
+    var show = Model.SIMSwap.Informacoes_de_retorno.simSwapOccurred ?? false;
+}
 
-
+@* JSON: @Model.Json *@
 <table class="ea-advanced-data-table ea-advanced-data-table-static ea-advanced-data-table-d3e681d ea-advanced-data-table-sortablex font-size-th" data-id="d3e681d">
     <thead>
         <tr>
             <th>
                 <p>Valida SIM Swap</p>
+            </th> 
+            <th style="display: @( show ? "" : "none")">
+                <p>Data de SIM Swap</p>
             </th> 
         </tr>
     </thead>
@@ -16,11 +22,11 @@
         <tr>
             <td>
                 <p>
-                    @if (Model.SIMSwap.error == null)
+                    @if (Model.SIMSwap.Informacoes_de_retorno.error == null)
                     {
-                        
-                        
-                        @if (Model.SIMSwap.simSwapOccurred)
+                
+                
+                        @if (Model.SIMSwap.Informacoes_de_retorno.simSwapOccurred ?? false)
                         {
                             <span>Houve troca de SIM</span>
                         }
@@ -31,18 +37,21 @@
                     }
                     else
                     {
-                        switch (Model.SIMSwap.error.name)
+                        switch (Model.SIMSwap.Informacoes_de_retorno.error.name)
                         {
                             case "EC_GATEWAY_OPERATION_FAILED":
-                                <span>Não é possível determinar SIM Swap para este número</span>
+                                <span>O número de telefone móvel não existe ou não foi atribuído a nenhum assinante ativo na base de dados da operadora</span>
                                 break;
                             default:
-                                <span> @Model.SIMSwap.error.name - @Model.SIMSwap.error.description </span>
+                                <span> @Model.SIMSwap.Informacoes_de_retorno.error.name - @Model.SIMSwap.Informacoes_de_retorno.error.description </span>
                                 break;
-                                    
+                
                         }
                     }
                 </p>
+            </td>
+            <td style="display: @(show ? "": "none")">
+                @Model.SIMSwap.Informacoes_de_retorno.networkInfo.simSwapTimestamp?.ToString("dd/MM/yyyy HH:mm:ss")
             </td>
         </tr>
     </tbody>

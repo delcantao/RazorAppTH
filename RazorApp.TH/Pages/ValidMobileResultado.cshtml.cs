@@ -122,13 +122,13 @@ namespace RazorApp.TH.Pages
                 result.Json = jsonResult;
                 switch (product)
                 {
-                    case "BuscaSIMSwap":
-                        var serializedResult1 = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.ValidMobile.Responses.ResponseSimSwap[]>(jsonResult);
-                        result.SIMSwap = serializedResult1[0];
+                    case "SIMSwap":
+                        var serializedResult1 = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.ValidMobile.Responses.NewFormat.ResponseSimSwap>(jsonResult);
+                        result.SIMSwap = serializedResult1;
                         htmlView1 = await _renderService.ToStringAsync("_ValidMobile_SIMSwapResultView", result);
                         break;
-                    case "BuscaNumberIntelligenceSincrono":
-                        var serializedResult2 = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.ValidMobile.Responses.ResponseNumberIntelligence>(jsonResult);
+                    case "ValidaCPFWHS":
+                        var serializedResult2 = Newtonsoft.Json.JsonConvert.DeserializeObject<Model.ValidMobile.Responses.newFormat.ResponseNumberIntelligence>(jsonResult);
                         result.NumberIntelligence = serializedResult2;
                         htmlView1 = await _renderService.ToStringAsync("_ValidMobile_NumberIntelligenceResultView", result);
                         break;

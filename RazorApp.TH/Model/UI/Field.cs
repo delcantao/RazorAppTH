@@ -11,6 +11,7 @@ namespace RazorApp.TH.Model.UI
         public bool Opcional { get; set; }
         public string Type { get; set; } = "text";
         public string InitialValue { get; set; }
+        public bool Hidden { get; set; }
         public List<KeyValue> Values { get; set; }
 
         public class KeyValue
