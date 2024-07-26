@@ -1,14 +1,19 @@
-﻿@page 
+﻿@page "/mobile-number-validation"
 @using RazorApp.TH.Services.Helpers
 @using Web.Services
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@model RazorApp.TH.Pages.OpenGatewayPage
+@model RazorApp.TH.Pages.ValidMobilePage
 @inject IRazorRenderService _renderService
 
 @{
     ViewData["Title"] = "Mobile Number Validation";
 }
-
+<style>
+    p {
+        margin: 0;
+    }
+    
+</style>
 <main id="primary" class="site-main">
     <article id="post-213" class="post-213 page type-page status-publish hentry">
         <header class="entry-header">
@@ -30,12 +35,12 @@
                                                             <div class="elementor-icon-box-wrapper">
                                                                 <div class="elementor-icon-box-icon">
                                                                     <span class="elementor-icon elementor-animation-">
-                                                                        <i aria-hidden="true" class="icon icon-checked"></i>
+                                                                        <i aria-hidden="true" class="fas fa-mobile-alt"></i>
                                                                     </span>
                                                                 </div>
                                                                 <div class="elementor-icon-box-content">
                                                                     <h3 class="elementor-icon-box-title">
-                                                                        <span>Check Operadoras</span>
+                                                                        <span>Mobile Number Validation</span>
                                                                     </h3>
                                                                 </div>
                                                             </div>
@@ -47,17 +52,37 @@
                                     </section>
                                     <div class="elementor-element elementor-element-7945f59 elementor-widget elementor-widget-text-editor" data-id="7945f59" data-element_type="widget" data-widget_type="text-editor.default">
                                         <div class="elementor-widget-container">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur metus lectus, id finibus purus vehicula vel. Fusce ac purus fermentum, venenatis orci non, semper erat. Nullam consequat diam lacinia neque condimentum porttitor. Phasellus dolor nisl, efficitur et molestie ac, molestie ac risus. Quisque eget pharetra urna. Nulla maximus efficitur commodo. Nullam nec urna vestibulum, sagittis dui a, malesuada augue. Etiam ut tortor cursus, aliquet tortor eget, ultrices dui. Phasellus et massa euismod, dignissim mauris vitae, laoreet erat.
-
-                                                <br><br><strong>Benefícios:</strong>&nbsp; Realizar a validação, a qualificação e confirmação de forma automática dos dados cadastrais CPF e CNPJ. Esta aplicação permite a parametrização de informações a serem checadas em uma única requisição, possibilitando:
+                                            <p>É uma ferramenta desenvolvida para apoiar no combate à fraude digital de forma
+                                               automática e em tempo real. Esta solução está integrada dentro da estrutura Open
+                                               Gateway oferecida pelas operadoras de redes móveis, CLARO, VIVO e TIM através
+                                               de serviços via APIs que permitem a verificação da identidade do usuário em ambiente
+                                               seguro.
+ 
                                             </p>
+                                            <p><strong>APIs</strong></p>
                                             <ul>
-                                                <li>Valida Telefone;</li>
-                                                <li>Valida Endereço;</li>
-                                                <li>Alerta;</li>
-                                                <li>Score</li>
+                                                <li><strong>Valida CPF</strong>: Permite assegurar que o número
+                                                                                 de telefone móvel e consequentemente o CPF
+                                                                                 associado a esse número, pertençam ao
+                                                                                 usuário;</li>
+                                                <li><strong>Valida SIM Swap</strong>: Utilizado para verificar se
+                                                                                      um número de telefone móvel mudou
+                                                                                      recentemente de cartão SIM (chip), ajudando a
+                                                                                      evitar ataques de apropriação de contas por
+                                                                                      fraudadores;</li>
+                                                <li><strong>Localização:</strong>: Permite confirmar se um
+                                                                                   dispositivo está em um local específico, o que
+                                                                                   pode ajudar a detectar e prevenir através do
+                                                                                   GPS transações falsas contra fraudadores <strong>(no
+                                                                                   aguardo das operadoras)</strong></li>
                                             </ul>
-                                            <p><strong>Escolha abaixo o produto a ser testado e clique em SUBMETER:</strong></p>
+                                            <p><strong>Alguns Benefícios</strong></p>
+                                            <p>Essas APIs fornecem ferramentas robustas para melhorar a segurança digital,
+                                               ajudando a prevenir fraudes de identidade e transações falsas;
+                                               O projeto foi concebido para garantir a privacidade dos usuários e está em total
+                                               conformidade com a Lei Geral de Proteção de Dados do Brasil;
+                                               Facilidade de integração em diferentes plataformas e dispositivos, são outro
+                                               diferencial, possibilitando uma experiência de usuário consistente e sem atritos.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +110,7 @@
                                                                             <div class="elementor-container elementor-column-gap-default">
                                                                                  
                                                                                     
-                                                                                    @foreach(var fields in Model.OpenGatewayData.Products)
+                                                                                    @foreach(var fields in Model.ValidMobileData.Products)
                                                                                     {
                                                                                         if(fields.Enabled )
                                                                                             @Html.Raw(await Model.RenderButtons(fields));

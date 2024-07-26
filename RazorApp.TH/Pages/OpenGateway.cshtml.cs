@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using RazorApp.TH.Model; 
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,12 +15,14 @@ using Microsoft.AspNetCore.Http;
 using RazorApp.TH.Services.Helpers;
 using System.Net.Http;
 using Microsoft.AspNetCore.Hosting;
+using RazorApp.TH.Model.OpenGateway;
+using RazorApp.TH.Model.UI;
 
 namespace RazorApp.TH.Pages
 {
     public class OpenGatewayPage : PageModel
     {
-        public Model.OpenGatewayModel OpenGatewayData;
+        public OpenGatewayModel OpenGatewayData;
         public string ErrorMessage;
         private readonly ILogger<OpenGatewayPage> _logger;
         private readonly IRazorRenderService _renderService;
@@ -60,9 +61,9 @@ namespace RazorApp.TH.Pages
             // api/BuscaOP010Alerta?sCliente={sCliente}&sUsuario={sUsuario}&sSenha={sSenha}&sFone={sFone}
 
 
-            OpenGatewayData = new Model.OpenGatewayModel
+            OpenGatewayData = new OpenGatewayModel
             {
-                Products = new List<Model.OpenGatewayModel.Product>
+                Products = new List<Product>
                 {
                     new () { Enabled = true, Url = "BuscaOP010Score", Icon = "fa fa-tachometer", Nome = "Score", Tooltip = "Score Tooltip", Campos = new () { new () { NomeInterno = "sCPF" , Nome = "CPF" } }},
                     new () { Enabled = true, Url = "BuscaOP010ValTel", Icon = "fa fa-phone", Nome = "Valida Fone", Tooltip = "Valida Fone", Campos = new () { new () { NomeInterno = "sCPF" , Nome = "CPF" }, new (){ NomeInterno = "sFone" , Nome = "Fone" } }},
@@ -78,7 +79,7 @@ namespace RazorApp.TH.Pages
             
 
         }
-        public async Task<string> RenderButtons(Model.OpenGatewayModel.Product data)
+        public async Task<string> RenderButtons(Product data)
         {
 
             var htmlString = await _renderService.ToStringAsync("_OpenGateway_ProductsView", data);

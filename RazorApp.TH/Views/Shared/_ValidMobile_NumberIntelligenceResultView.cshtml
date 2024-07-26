@@ -1,0 +1,112 @@
+﻿@using RazorApp.TH.Model.ValidMobile
+@model ValidMobilePageModel
+
+ 
+@{
+    var show = Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.simSwap.simSwapOccurred ?? false;
+    var notMatched = Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.nationalIdentityNumber.match == "NO_DATA";
+    
+} 
+@* JSON: @Model.Json *@
+<table class="ea-advanced-data-table ea-advanced-data-table-static ea-advanced-data-table-d3e681d ea-advanced-data-table-sortablex font-size-th" data-id="d3e681d">
+    <thead>
+    <tr>
+        
+        @if (!notMatched)
+        {
+            <th>
+                <p>Valida CPF</p>
+            </th>
+            <th>
+                <p>Valida SIM Swap </p>
+            </th>
+            <th style="display: @(show ? "" : "none")">
+                <p>Data de SIM Swap</p>
+            </th>
+        }
+        else
+        {
+            <th>
+                Resultado
+            </th>
+        }
+    </tr>
+    </thead>
+
+    <tbody>
+    @if (!notMatched)
+    {
+        
+    
+    <tr>
+        <td>
+            <p>
+                @if (Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.nationalIdentityNumber.error == null)
+                {
+                    switch (Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.nationalIdentityNumber.match)
+                    {
+                        case "MATCHED":
+                            <span>Telefone <b>vinculado</b> ao CPF informado</span>
+                            break;
+                        default:
+                            <span>Telefone <b>NÃO vinculado</b> ao CPF informado</span>
+                            break;
+                    }
+
+                }
+                else
+                {
+                    switch (Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.nationalIdentityNumber.error.name)
+                    {
+                        case "EC_UNKNOWN_SUBSCRIBER":
+                            // oque fazer aqui?
+                            <span>Telefone <b>NÃO vinculado</b> ao CPF informado</span>
+                            break;
+                        default:
+                            <span>Telefone <b>NÃO vinculado</b> ao CPF informado</span>
+                            break;
+                    }
+                }
+            </p>
+        </td>
+        <td>
+            @if (Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.simSwap != null)
+            {
+                if (Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.simSwap.error != null)
+                {
+                    <span>O número de telefone móvel não existe ou não foi atribuído a nenhum assinante ativo na base de dados da operadora.</span>
+                }
+                else if (Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.simSwap.simSwapOccurred ?? false)
+                {
+                    <span>Houve uma troca de SIM</span>
+                }
+                else
+                {
+                    <span>Não houve troca de SIM</span>
+                }
+            }
+            else
+            {
+                <span> Não foi solicitado </span>
+            }
+        </td>
+
+        <td style="display: @(show ? "" : "none")">
+            @Model.NumberIntelligence.Informacoes_de_retorno.niAttributes.simSwap?.networkInfo?.simSwapTimestamp?.ToString("dd/MM/yyyy HH:mm:ss")
+        </td>
+
+    </tr>
+    
+    }
+    else
+    {
+        <tr>
+            <td>
+                O número de telefone móvel <strong>não existe</strong> ou <strong>não foi atribuído a nenhum assinante ativo</strong> na base de dados da operadora
+            </td>
+        </tr>
+    }
+
+    </tbody>
+</table>
+ 

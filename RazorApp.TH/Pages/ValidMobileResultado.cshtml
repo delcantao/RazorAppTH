@@ -1,0 +1,257 @@
+﻿@page "/mobile-number-validation-req"
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Extensions
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using RazorApp.TH.Services.Helpers
+@model RazorApp.TH.Pages.ValidMobileResultadoPage
+@{
+    ViewData["Title"] = "Resultado";
+}
+<style>
+    p {
+        margin: 0;
+    }
+    
+</style>
+<main id="primary" class="site-main">
+    <article id="post-265" class="post-265 page type-page status-publish hentry">
+        <header class="entry-header">
+        </header>
+        <!-- .entry-header -->
+        <div class="entry-content">
+            <div data-elementor-type="wp-page" data-elementor-id="265" class="elementor elementor-265" data-elementor-settings="[]">
+                <div class="elementor-section-wrap">
+                    <section class="elementor-section elementor-top-section elementor-element elementor-element-7d89015 elementor-section-full_width elementor-section-height-min-height elementor-section-stretched elementor-section-height-default elementor-section-items-middle" data-id="7d89015" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}" style="width: 1903px; left: -366.5px;">
+                        <div class="elementor-container elementor-column-gap-default">
+                            <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-53bac29" data-id="53bac29" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-061c633 elementor-section-full_width elementor-section-height-min-height elementor-section-height-default" data-id="061c633" data-element_type="section">
+                                        <div class="elementor-container elementor-column-gap-no">
+                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-8705150" data-id="8705150" data-element_type="column">
+                                                <div class="elementor-widget-wrap elementor-element-populated">
+                                                    <div class="elementor-element elementor-element-c98e3e3 elementor-view-default elementor-widget elementor-widget-icon" data-id="c98e3e3" data-element_type="widget" data-widget_type="icon.default">
+                                                        <div class="elementor-widget-container">
+                                                            <div class="elementor-icon-wrapper">
+                                                                <div class="elementor-icon">
+                                                                    <i aria-hidden="true" class="@Model.Product.Icon"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-c580808" data-id="c580808" data-element_type="column">
+                                                <div class="elementor-widget-wrap elementor-element-populated">
+                                                    <div class="elementor-element elementor-element-5604369 elementor-widget elementor-widget-heading" data-id="5604369" data-element_type="widget" data-widget_type="heading.default">
+                                                        <div class="elementor-widget-container">
+                                                            <h1 class="elementor-heading-title elementor-size-default">@Model.NameProduct - @Model.Product.Nome</h1>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <div class="elementor-element elementor-element-e4a7d0e elementor-widget-divider--view-line elementor-widget elementor-widget-divider" data-id="e4a7d0e" data-element_type="widget" data-widget_type="divider.default">
+                                        <div class="elementor-widget-container">
+                                            <div class="elementor-divider">
+                                                <span class="elementor-divider-separator">
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="elementor-section elementor-top-section elementor-element elementor-element-2733c84 elementor-section-full_width elementor-section-height-min-height elementor-section-stretched elementor-section-height-default elementor-section-items-middle" data-id="2733c84" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}" style="width: 1903px; left: -366.5px;">
+                        <div class="elementor-container elementor-column-gap-default">
+                            <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-1f966db" data-id="1f966db" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-3291da4 elementor-section-full_width elementor-section-height-min-height elementor-section-height-default" data-id="3291da4" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                        <div class="elementor-container elementor-column-gap-default">
+                                            <div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-28a6ead" data-id="28a6ead" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                                <div class="elementor-widget-wrap elementor-element-populated">
+                                                    <div class="elementor-element elementor-element-f326b3d elementor-widget elementor-widget-metform" data-id="f326b3d" data-element_type="widget" data-widget_type="metform.default">
+                                                        <div class="elementor-widget-container">
+                                                            <div id="mf-response-props-id-337" data-editswitchopen="" data-erroricon="fas fa-exclamation-triangle" data-successicon="fas fa-check" data-messageposition="top" class="   mf-scroll-top-no">
+                                                                <div class="formpicker_warper formpicker_warper_editable" data-metform-formpicker-key="337">
+                                                                    <div class="elementor-widget-container">
+                                                                        <div id="metform-wrap-f326b3d-337" class="mf-form-wrapper" data-form-id="337" data-action="./wp-json/metform/v1/entries/insert/337" data-wp-nonce="840c16a903" data-form-nonce="6e6eb23d02" data-stop-vertical-effect="">
+                                                                            <form id="form-result" class="metform-form-content" asp-page="/ValidMobileResultado" asp-page-handler="ConsultaApi">
+                                                                                <div class="mf-main-response-wrap   mf-response-msg-wrap" data-show="0">
+                                                                                    <div class="mf-response-msg"></div>
+                                                                                </div>
+                                                                                <div data-elementor-type="wp-post" data-elementor-id="337" class="elementor elementor-337" data-elementor-settings="[]">
+                                                                                    <div class="elementor-section-wrap">
+                                                                                        <section class="elementor-section elementor-top-section elementor-element elementor-element-b9468b5 elementor-section-stretched elementor-section-height-min-height elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="b9468b5" data-element_type="section" data-settings="{&amp;quot;stretch_section&amp;quot;:&amp;quot;section-stretched&amp;quot;,&amp;quot;background_background&amp;quot;:&amp;quot;classic&amp;quot;}">
+                                                                                            <div class="elementor-container elementor-column-gap-default">
+                                                                                                <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-f747033" data-id="f747033" data-element_type="column">
+                                                                                                    <div class="elementor-widget-wrap elementor-element-populated">
+                                                                                                        <input type="hidden" name="product" value="@Model.Product.Nome" />
+                                                                                                        @foreach (var field in Model.Product.Campos)
+                                                                                                        {
+
+                                                                                                            <div class='@(field.Hidden  ? "ds-none" : "") elementor-element elementor-element-5ea6053 elementor-widget elementor-widget-mf-text" data-id="5ea6053" data-element_type="widget" data-settings="{&amp;quot;mf_input_name&amp;quot;:&amp;quot;mf-text&amp;quot;}" data-widget_type="mf-text.default'>
+                                                                                                                <div class="elementor-widget-container">
+                                                                                                                    <div class="mf-input-wrapper">
+                                                                                                                        <label class="mf-input-label font-size-th" style="display: inline-block" for="mf-input-text-5ea6053">@field.Nome</label>
+                                                                                                                        <label class="helper-tooltip" style="@(string.IsNullOrEmpty(field.Tooltip) ? "display: none" : "")" text-helper="@field.Tooltip"><i class="fas fa-info-circle" style="@(string.IsNullOrEmpty(field.Tooltip) ? "display: none" : "")"></i></label>
+
+                                                                                                                        @if (field.Type == "select")
+                                                                                                                        {
+
+                                                                                                                            <select class="mf-input font-size-th input-open-gateway" name="@field.NomeInterno"  placeholder="@field.Placeholder">
+                                                                                                                                @foreach (var item in field.Values)
+                                                                                                                                {
+                                                                                                                                    <option  value="@item.Key">@item.Value</option>
+                                                                                                                                        
+                                                                                                                                }
+                                                                                                                                
+                                                                                                                            </select>
+                                                                                                                        } else 
+                                                                                                                        {
+                                                                                                                            <input type="@field.Type"
+                                                                                                                                   class="mf-input font-size-th input-open-gateway"
+                                                                                                                                   id="mf-input-text-5ea6053"
+                                                                                                                                   name="@field.NomeInterno"
+                                                                                                                                   placeholder="@field.Placeholder"
+                                                                                                                                   aria-invalid="false"
+                                                                                                                                   title="@field.NomeInterno"
+                                                                                                                                   value="@(field.InitialValue)"
+                                                                                                                                    @*maxlength="@field.Tamanho"*@
+                                                                                                                                   value="@HttpContext.Session.GetString(@field.NomeInterno)">
+                                                                                                                        }
+                                                                                                                        
+
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+
+                                                                                                        }
+
+
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </section>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                        <!-----------------------------
+                                                                        * controls_data : find the the props passed indie of data attribute
+                                                                        * parent.submit_response_message : contains the markup of error or success message
+                                                                        * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+                                                                        --------------------------- -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-03b2d7b" data-id="03b2d7b" data-element_type="column">
+                                                <div class="elementor-widget-wrap">
+                                                </div>
+                                                <div id="loading-animation" style="right: 46%; display: none; top: 42%; position: relative; font-size: 37px; margin-left: 41px; z-index: 10000; ">
+                                                    <div class="loader" style="left: 200px; top: -57px;">Loading...</div>
+                                                </div>
+                                            </div>
+                                            <div id="first-block" style="width: 100%" class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-056521e" data-id="056521e" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                                <div class="elementor-widget-wrap elementor-element-populated">
+                                                    <div class="elementor-element elementor-element-d3e681d elementor-widget elementor-widget-eael-advanced-data-table" data-id="d3e681d" data-element_type="widget" data-widget_type="eael-advanced-data-table.default">
+                                                        <div class="elementor-widget-container">
+                                                            <div class="ea-advanced-data-table-wrap" data-id="d3e681d">
+                                                                <div id="resultView-1" class="ea-advanced-data-table-wrap-inner">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-16b5c43" data-id="16b5c43" data-element_type="column">
+                                                <div class="elementor-widget-wrap">
+                                                </div>
+                                            </div>
+
+                                            <div id="second-block1" style="display: none;" class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-fed2bc2" data-id="fed2bc2" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                                <div class="elementor-widget-wrap elementor-element-populated">
+                                                    <div class="elementor-element elementor-element-d3e681d elementor-widget elementor-widget-eael-advanced-data-table" data-id="d3e681d" data-element_type="widget" data-widget_type="eael-advanced-data-table.default">
+                                                        <div class="elementor-widget-container">
+                                                            <div class="ea-advanced-data-table-wrap" data-id="d3e681d">
+                                                                <div id="resultView-2" class="ea-advanced-data-table-wrap-inner">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="elementor-section elementor-top-section elementor-element elementor-element-2772c83 elementor-section-full_width elementor-section-height-min-height elementor-section-stretched elementor-section-height-default elementor-section-items-middle" data-id="2772c83" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}" style="width: 1903px; left: -366.5px;">
+                        <div class="elementor-container elementor-column-gap-default">
+                            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-9456b17" data-id="9456b17" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-9065075 elementor-widget elementor-widget-html" data-id="9065075" data-element_type="widget" data-widget_type="html.default">
+                                        <div class="elementor-widget-container">
+
+                                            <div id="div-forms" style="display: inline">
+                                                <div id="div-limpar-voltar">
+                                                    <form id="form-limpar" class="btn-lf-class" method="post" asp-page="/Resultado" asp-page-handler="Limpar">
+                                                        <input class="btn-lf-class btn-lf-size" type="button" value="VOLTAR" onclick="history.go(-1)" button="" style="float: left; color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
+                                                    </form>
+                                                    <form id="form-enviar" class="btn-lf-class" method="post" action="/Resultado?handler=Check">
+                                                        <input class="btn-lf-size" type="button" value="PROCESSAR" onclick="jQueryResultPost(document.getElementById('form-result'))" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
+                                                    </form>
+                                                </div>
+                                                <div id="div-processar">
+                                                    <form id="form-limpar" class="btn-lf-class" style="display: inline" method="post" asp-page="/Resultado" asp-page-handler="Limpar">
+                                                        <input class="btn-lf-size color-secondary-buttonsy" type="button" value="LIMPAR" onclick="jQueryLimparPost(document.getElementById('form-limpar'))" button="" style="color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
+                                                    </form>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-76a7f75" data-id="76a7f75" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-54cd04e elementor-widget elementor-widget-html" data-id="54cd04e" data-element_type="widget" data-widget_type="html.default">
+                                        <div class="elementor-widget-container">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- .entry-content -->
+    </article>
+    <!-- #post-265 -->
+    <div style=" padding: 0px 58px; color: red; background: white" id="return-message">
+
+    </div>
+
+    <div class='helpers'>
+
+    </div>
+</main>
+@section Head {
+    @Html.Raw(await Statics.RenderStaticPage(Model._env.WebRootPath, "includes", "resultado", "head.html"))
+
+}
+@section Scripts {
+    @Html.Raw(await Statics.RenderStaticPage(Model._env.WebRootPath, "includes", "resultado", "scripts.html"))
+
+}
