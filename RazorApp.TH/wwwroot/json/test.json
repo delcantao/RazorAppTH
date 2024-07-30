@@ -1,0 +1,124 @@
+{
+  "Qtd_Empresaas": 4
+, "Dcr_empresas":
+[
+  {
+    "Dados_Do_CNPJ":
+    {
+      "Cod_CNPJ":"02254938000163"
+    , "Ind_Matriz": "M"
+    , "Dcr_Razao_Social":"SISTEMAS TH CONSULTORIA E INFORMÁTICA"
+    , "Dcr_Natureza_Juridica":"2135 - EMPRESARIO (INDIVIDUAL)"
+    , "Dat_Abertura":"2008-07-15"
+    , "Dcr_CNAE_Principal":"0131800 - Cultivo de laranja"
+    , "Dcr_CNAE_Secundaria":"111301 - Cultivo de arroz;111302 - Cultivo de milho;"
+    , "End_Endereco":"Rua Amaral Gama"
+    , "End_Numero":"333"
+    , "End_Complemento":"CJ 82"
+    , "End_Bairro":"Santana"
+    , "End_Cidade":"São Paulo"
+    , "End_UF":"SP"
+    , "End_CEP":"02018-001"
+    }
+  , "Dados_Do_Socio":
+  {
+    "Dcr_Nome":"LEONIDAS LEO VARGAS TIRIBA"
+  , "Dcr_Qualificacao":"22 - Socio Administrador"
+  , "Dat_Inclusao":"2008-07-15"
+  , "Dcr_Pais":"105 - Brasil"
+  }
+  , "Dados_Do_Representante":
+  {
+    "Dcr_Nome_Representante":"MARIA CRISTINA HENRIQUES TIRIBA"
+  , "Dcr_Qualificacao_Representante":"22 - Socio Administrador"
+  }
+  , "Ind_Origem":"QSA"
+  , "Dat_Atz":"2024-07-01 11:05"
+  }
+, {
+  "Dados_Do_CNPJ":
+  {
+    "Cod_CNPJ":"08424533000102"
+  , "Ind_Matriz": "M"
+  , "Dcr_Razao_Social":"PRODUPESCA PRODUTOS DE PESCA E EXPORTACAO S/A"
+  , "Dcr_Natureza_Juridica":"2135 - EMPRESARIO (INDIVIDUAL)"
+  , "Dat_Abertura":"2008-07-15"
+  , "Dcr_CNAE_Principal":"0131800 - Cultivo de laranja"
+  , "Dcr_CNAE_Secundaria":"111301 - Cultivo de arroz;111302 - Cultivo de milho;"
+  , "End_Endereco":"Rua Amaral Gama"
+  , "End_Numero":"333"
+  , "End_Complemento":"CJ 82"
+  , "End_Bairro":"Santana"
+  , "End_Cidade":"São Paulo"
+  , "End_UF":"SP"
+  , "End_CEP":"02018-001"
+
+  }
+, "Dados_Do_Representante":
+  {
+    "Dcr_Nome_Representante":"MARIA CRISTINA HENRIQUES TIRIBA"
+  , "Dcr_Qualificacao_Representante":"22 - Socio Administrador"
+  }
+, "Ind_Origem":"REPRESENTANTE LEGAL"
+, "Dat_Atz":"2007-03-02 18:17"
+}
+, {
+  "Dados_Do_CNPJ":
+  {
+    "Cod_CNPJ":"08424609000108"
+  , "Ind_Matriz": "M"
+  , "Dcr_Razao_Social":"SPELTRI & SPELTRI LTDA"
+  , "Dcr_Natureza_Juridica":"2135 - EMPRESARIO (INDIVIDUAL)"
+  , "Dat_Abertura":"2008-07-15"
+  , "Dcr_CNAE_Principal":"0131800 - Cultivo de laranja"
+  , "Dcr_CNAE_Secundaria":"111301 - Cultivo de arroz;111302 - Cultivo de milho;"
+  , "End_Endereco":"Rua Amaral Gama"
+  , "End_Numero":"333"
+  , "End_Complemento":"CJ 82"
+  , "End_Bairro":"Santana"
+  , "End_Cidade":"São Paulo"
+  , "End_UF":"SP"
+  , "End_CEP":"02018-001"
+
+  }
+, "Dados_Do_Socio":
+  {
+    "Dcr_Nome":"LEONIDAS LEO VARGAS TIRIBA"
+  , "Dcr_Qualificacao":"22 - Socio Administrador"
+  , "Dat_Inclusao":"2008-07-15"
+  , "Dcr_Pais":"105 - Brasil"
+  }
+, "Ind_Origem":"EI"
+, "Dat_Atz":"2021-11-20 12:30"
+}
+, {
+  "Dados_Do_CNPJ":
+  {
+    "Cod_CNPJ":"08425246000389"
+  , "Ind_Matriz": "M"
+  , "Dcr_Razao_Social":"LOGTER LOGISTICA E TERCEIRIZACAO LTDA"
+  , "Dcr_Natureza_Juridica":"2135 - EMPRESARIO (INDIVIDUAL)"
+  , "Dat_Abertura":"2008-07-15"
+  , "Dcr_CNAE_Principal":"0131800 - Cultivo de laranja"
+  , "Dcr_CNAE_Secundaria":"111301 - Cultivo de arroz;111302 - Cultivo de milho;"
+  , "End_Endereco":"Rua Amaral Gama"
+  , "End_Numero":"333"
+  , "End_Complemento":"CJ 82"
+  , "End_Bairro":"Santana"
+  , "End_Cidade":"São Paulo"
+  , "End_UF":"SP"
+  , "End_CEP":"02018-001"
+
+  }
+, "Dados_Do_Socio":
+  {
+    "Dcr_Nome":"LEONIDAS LEO VARGAS TIRIBA"
+  , "Dcr_Qualificacao":"22 - Socio Administrador"
+  , "Dat_Inclusao":"2008-07-15"
+  , "Dcr_Pais":"105 - Brasil"
+  }
+, "Ind_Origem":"MEI"
+, "Dat_Atz":"2018-01-03 09:42"
+}
+]
+}

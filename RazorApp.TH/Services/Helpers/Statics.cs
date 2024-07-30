@@ -10,7 +10,7 @@ namespace RazorApp.TH.Services.Helpers
 {
     public static class Statics
     {
-        public static bool IsDev = false;
+        public static bool IsDev = true;
 
         /*        
             VALID MOBILE:

@@ -6,7 +6,9 @@ namespace RazorApp.TH.Model.UI
     {
         public string Nome { get; set; }
         public string NomeInterno { get; set; }
+        public string Icon { get; set; }
         public string Tooltip { get; set; }
+        public string Description { get; set; }
         public string Placeholder { get; set; }
         public bool Opcional { get; set; }
         public string Type { get; set; } = "text";

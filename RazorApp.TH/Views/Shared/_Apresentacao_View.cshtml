@@ -1,0 +1,300 @@
+﻿@using RazorApp.TH.Model.OpenGateway
+@model RazorApp.TH.Model.Apresentacao.ParticipacaoSocietariaModel
+
+@{
+    var i = 0;
+    var maxEmp = 3;
+}
+
+<style>
+    .info {
+        color: red!important;
+        text-align: right!important;
+        font-weight: lighter;
+    }
+    .info-click {
+        cursor: pointer;
+    }
+    
+    .cnpj-header {
+        text-align: left;
+    }
+
+    .table-ps {
+        border: 1px solid;
+        margin: 10px;
+    }
+
+    .container-ps {
+        display: flex;
+    }
+    .hidden-ps {
+        display: none!important;
+    }
+    .empresas {
+        max-width: 400px!important;
+        min-width: 400px!important;
+    }
+</style>
+Quantidade de Empresas: @(Model.Qtd_Empresas > maxEmp ? maxEmp : Model.Qtd_Empresas)
+
+<script>
+    $(document).ready(() => {
+        $(".info-click").on("click", (e) => {
+            console.log(e)
+            
+            const dataOpen = e.currentTarget.attributes.getNamedItem("data-open")
+            const companyId = dataOpen.value;
+            const companyElement = $(`#${companyId}`);
+            companyElement.toggleClass("hidden-ps");
+            
+            if (companyElement.hasClass("hidden-ps")) {
+                $(`#info-${companyId}`).text("+ Informações")
+            } else {
+                $(`#info-${companyId}`).text("- Informações")
+            }
+        })
+        
+        $("#showjson").on("click", () => {
+            const mainContainer = $("#container-ps-main");
+            const jsonContainer = $("#json-container");
+            
+            mainContainer.toggleClass("hidden-ps");
+            jsonContainer.toggleClass("hidden-ps");
+            if (mainContainer.hasClass("hidden-ps")) {
+                $("#showjson").text("Ocultar JSON")
+            } else {
+                $("#showjson").text("Exibir JSON")
+            }
+
+        });
+    })
+</script>
+<div class="container-ps" id="container-ps-main">
+    @foreach (var empresas in @Model.Dcr_empresas.Take(maxEmp))
+    {
+        <div id="emp-@i" class="empresas">
+
+            @{
+                var arrNatJur = empresas.Dados_Do_CNPJ.Dcr_Natureza_Juridica?.Split('-');
+                var arrCnae = empresas.Dados_Do_CNPJ.Dcr_CNAE_Principal?.Split('-');
+                var arrPais = empresas.Dados_Do_Socio.Dcr_Pais?.Split('-');
+
+                var Dcr_Natureza_Juridica1 = "";
+                var Dcr_Natureza_Juridica2 = "";
+                var Dcr_CNAE_Principal1 = "";
+                var Dcr_CNAE_Principal2 = "";
+                var Dcr_Pais1 = "";
+                var Dcr_Pais2 = "";
+
+                if (arrNatJur.Length > 1)
+                {
+                    Dcr_Natureza_Juridica1 = arrNatJur[0];
+                    Dcr_Natureza_Juridica2 = arrNatJur[1];
+                }
+
+                if (arrCnae.Length > 1)
+                {
+                    Dcr_CNAE_Principal1 = arrCnae[0];
+                    Dcr_CNAE_Principal2 = arrCnae[1];
+                }
+
+                if (arrPais?.Length > 1)
+                {
+                    Dcr_Pais1 = arrPais[0];
+                    Dcr_Pais2 = arrPais[1];
+                }
+
+                if (string.IsNullOrEmpty(Dcr_Natureza_Juridica1))
+                {
+                    Dcr_Natureza_Juridica1 = empresas.Dados_Do_CNPJ.Dcr_Natureza_Juridica;
+                }
+                
+                if (string.IsNullOrEmpty(Dcr_CNAE_Principal1))
+                {
+                    Dcr_Natureza_Juridica1 = empresas.Dados_Do_CNPJ.Dcr_CNAE_Principal;
+                }
+                
+                if (string.IsNullOrEmpty(Dcr_Pais1))
+                {
+                    Dcr_Natureza_Juridica1 = empresas.Dados_Do_Socio.Dcr_Pais;
+                }
+            }
+            <table class="table-ps">
+                <thead>
+                <tr class="cnpj-header">
+                    <th>
+                        <strong>CNPJ:</strong> @empresas.Dados_Do_CNPJ.Cod_CNPJ
+                    </th>
+                </tr>
+                <tr>
+                    <th class="info">
+                        <span id="info-empresa-@i" class="info-click" data-open="empresa-@i">+ Informações</span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="hidden-ps" id="empresa-@i">
+                <tr>
+                    <td>
+                        <strong>Dados do CNPJ</strong>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Tipo de estabelecimento: @empresas.Dados_Do_CNPJ.Ind_Matriz</td>
+
+                </tr>
+                <tr>
+                    <td>Razão Social: @empresas.Dados_Do_CNPJ.Dcr_Razao_Social</td>
+
+                </tr>
+                <tr>
+                    <td>Código da Natureza Jurídica: @Dcr_Natureza_Juridica1 </td>
+                </tr>
+                <tr>
+                    <td>Descrição da Natureza Jurídica: @Dcr_Natureza_Juridica2 </td>
+                </tr>
+                <tr>
+                    <td>Data de abertura: @empresas.Dados_Do_CNPJ.Dat_Abertura</td>
+
+                </tr>
+                
+                @if (!string.IsNullOrEmpty(Dcr_CNAE_Principal1))
+                {
+                    <tr>
+                        <td>CNAE Principal - Código: @Dcr_CNAE_Principal1 </td>
+                    </tr>    
+                }
+                @if (!string.IsNullOrEmpty(Dcr_CNAE_Principal2))
+                {
+                    <tr>
+                        <td>CNAE Principal - Descrição: @Dcr_CNAE_Principal2 </td>
+                    </tr>    
+                }
+                
+                <tr>
+                    <td>CNAES Secundárias: @empresas.Dados_Do_CNPJ.Dcr_CNAE_Secundaria</td>
+                </tr>
+                @* <tr> *@
+                @*     <td>CNAES Secundárias - Código: @empresas.Dados_Do_CNPJ.Dcr_CNAE_Secundaria</td> *@
+                @* </tr> *@
+                <tr>
+                    <td>Endereço: @empresas.Dados_Do_CNPJ.End_Endereco</td>
+                </tr>
+                <tr>
+                    <td>Número: @empresas.Dados_Do_CNPJ.End_Numero</td>
+                </tr>
+
+                <tr>
+
+                    <td>Complemento: @empresas.Dados_Do_CNPJ.End_Complemento</td>
+                </tr>
+                <tr>
+                    <td>Bairro: @empresas.Dados_Do_CNPJ.End_Bairro</td>
+
+                </tr>
+                <tr>
+                    <td>Cidade: @empresas.Dados_Do_CNPJ.End_Cidade</td>
+
+                </tr>
+                <tr>
+                    <td>UF: @empresas.Dados_Do_CNPJ.End_UF</td>
+
+                </tr>
+                <tr>
+                    <td>CEP: @empresas.Dados_Do_CNPJ.End_CEP</td>
+
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="table-ps">
+                <tbody>
+
+                <tr>
+                    <td>
+                        <strong>Dados do Sócio </strong>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>Origem do sócio: @empresas.Ind_Origem</td>
+
+                </tr>
+                @if (!string.IsNullOrEmpty(empresas.Dados_Do_Socio?.Dcr_Nome))
+                {
+                    <tr>
+                        <td>Sócio - Nome: @empresas.Dados_Do_Socio?.Dcr_Nome</td>
+
+                    </tr>
+                }
+
+                @if (!string.IsNullOrEmpty(empresas.Dados_Do_Socio?.Dcr_Qualificacao))
+                {
+                    <tr>
+                        <td>Sócio - Qualificacao: @empresas.Dados_Do_Socio?.Dcr_Qualificacao</td>
+
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(empresas.Dados_Do_Socio?.Dat_Inclusao))
+                {
+                    <tr>
+                        <td>Sócio - Data da Inclusao: @empresas.Dados_Do_Socio?.Dat_Inclusao</td>
+
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(Dcr_Pais1))
+                {
+                    <tr>
+                        <td>Sócio - País - Codigo: @Dcr_Pais1 </td>
+
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(Dcr_Pais2))
+                {
+                    <tr>
+                        <td>Sócio - País - Descricao: @Dcr_Pais2 </td>
+
+                    </tr>
+                }
+
+                @if (!string.IsNullOrEmpty(empresas.Dados_Do_Representante?.Dcr_Nome_Representante))
+                {
+                    <tr>
+                        <td>Sócio - Representante Legal - Nome: @empresas.Dados_Do_Representante?.Dcr_Nome_Representante</td>
+
+                    </tr>
+                }
+                @if (!string.IsNullOrEmpty(empresas.Dados_Do_Representante?.Dcr_Qualificacao_Representante))
+                {
+                    <tr>
+                        <td>Sócio - Representante Legal - Qualificacao: @empresas.Dados_Do_Representante.Dcr_Qualificacao_Representante</td>
+
+                    </tr>
+                }
+
+
+                </tbody>
+            </table>
+
+            <table class="table-ps">
+                <tr>
+                    <td>
+                        Data da última atualização: @empresas.Dat_Atz.ToString("dd/MM/yyyy HH:mm")
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+        <span style="visibility: hidden">@(i++)</span>
+    }
+</div>
+<div id="json-container" class="hidden-ps">
+    <pre>
+        @Model.Json
+    </pre>
+</div>
+<div>
+    <button id="showjson"> Exibir JSON</button>
+</div>

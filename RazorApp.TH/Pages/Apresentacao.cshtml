@@ -1,0 +1,211 @@
+﻿@page "/apresentacao"
+@using RazorApp.TH.Services.Helpers
+@using Web.Services
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model RazorApp.TH.Pages.ApresentacaoPage
+@inject IRazorRenderService _renderService
+
+@{
+    ViewData["Title"] = "Mobile Number Validation";
+}
+<style>
+    p {
+        margin: 0;
+    }
+    
+</style>
+
+
+<main id="primary" class="site-main">
+    <article id="post-213" class="post-213 page type-page status-publish hentry">
+        <header class="entry-header">
+        </header>
+        <!-- .entry-header -->
+        <div class="entry-content">
+            <div data-elementor-type="wp-page" data-elementor-id="213" class="elementor elementor-213" data-elementor-settings="[]">
+                <div class="elementor-section-wrap">
+                    <section class="elementor-section elementor-top-section elementor-element elementor-element-7d89015 elementor-section-height-min-height elementor-section-stretched elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="7d89015" data-element_type="section" data-settings="{&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;background_background&quot;:&quot;classic&quot;}" style="width: 1903px; left: -366.5px;">
+                        <div class="elementor-container elementor-column-gap-default">
+                            <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-53bac29" data-id="53bac29" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-061c633 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="061c633" data-element_type="section">
+                                        <div class="elementor-container elementor-column-gap-default">
+                                            <div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-c580808" data-id="c580808" data-element_type="column">
+                                                <div class="elementor-widget-wrap elementor-element-populated">
+                                                    <div class="elementor-element elementor-element-ca37697 elementor-position-left elementor-view-default elementor-vertical-align-top elementor-widget elementor-widget-icon-box" data-id="ca37697" data-element_type="widget" data-widget_type="icon-box.default">
+                                                        <div class="elementor-widget-container">
+                                                            <div class="elementor-icon-box-wrapper">
+                                                                <div class="elementor-icon-box-icon">
+                                                                    <span class="elementor-icon elementor-animation-">
+                                                                        <i aria-hidden="true" class="icon icon-checked"></i>
+                                                                    </span>
+                                                                </div>
+                                                                <div class="elementor-icon-box-content">
+                                                                    <h3 class="elementor-icon-box-title">
+                                                                        <span>CHECK</span>
+                                                                    </h3>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <div class="elementor-element elementor-element-7945f59 elementor-widget elementor-widget-text-editor" data-id="7945f59" data-element_type="widget" data-widget_type="text-editor.default">
+                                        <div class="elementor-widget-container">
+                                            <p>É uma ferramenta de apoio à prevenção ao risco e à fraude que oferece uma solução automática de checagem da informação cadastral, em tempo real, via API, evitando tentativas de fraude de identidade e inconsistências no cadastro dos clientes e prospects. sem comprometer a agilidade na entrada de dados e a satisfação dos seus clientes. <br><strong>Benefícios:</strong>&nbsp; Realizar a validação, a qualificação e confirmação de forma automática dos dados cadastrais CPF e CNPJ. Esta aplicação permite a parametrização de informações a serem checadas em uma única requisição, possibilitando:</p>
+                                            <ul>
+                                                <li>Otimização de recursos, tempo de análise, através de acessos à fontes de fé pública;</li>
+                                                <li>Aumento de segurança da informação, pois reduz o risco da entrada de dados inconsistentes e fraudulentos;</li>
+                                                <li>Customização de acordo com a demanda de cada área, através da parametrização das APIs;</li>
+                                                <li>Conformidade com os órgãos reguladores (Circulares 3978 e 3988 do Bacen e da Lei Complementar 105).</li>
+                                            </ul>
+                                            <p><strong>Escolha abaixo os parâmetros a serem checados:</strong></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="elementor-section elementor-top-section elementor-element elementor-element-efb37d7 elementor-section-stretched elementor-section-full_width elementor-section-height-default elementor-section-height-default" data-id="efb37d7" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;stretch_section&quot;:&quot;section-stretched&quot;}" style="width: 1903px; left: -366.5px;">
+                        <div class="elementor-container elementor-column-gap-default">
+                            <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5e2a73a" data-id="5e2a73a" data-element_type="column">
+                                <div class="elementor-widget-wrap elementor-element-populated">
+                                    <div class="elementor-element elementor-element-fcb0140 elementor-widget elementor-widget-metform" data-id="fcb0140" data-element_type="widget" data-widget_type="metform.default">
+                                        <div class="elementor-widget-container">
+                                            <div id="mf-response-props-id-235" data-editswitchopen="" data-erroricon="fas fa-exclamation-triangle" data-successicon="fas fa-check" data-messageposition="top" class="   mf-scroll-top-no">
+                                                <div class="formpicker_warper formpicker_warper_editable" data-metform-formpicker-key="235">
+                                                    <div class="elementor-widget-container">
+                                                        <div id="metform-wrap-fcb0140-235" class="mf-form-wrapper" data-form-id="235" data-action="./wp-json/metform/v1/entries/insert/235" data-wp-nonce="840c16a903" data-form-nonce="6e6eb23d02" data-stop-vertical-effect="">
+                                                            <form id="formCheck" class="metform-form-content" method="post" asp-page="/Resultado" asp-page-handler="CarregaModulos">
+                                                                <div class="mf-main-response-wrap   mf-response-msg-wrap" data-show="0">
+                                                                    <div class="mf-response-msg"></div>
+                                                                </div>
+                                                                <div data-elementor-type="wp-post" data-elementor-id="235" class="elementor elementor-235" data-elementor-settings="[]">
+                                                                    <div class="elementor-section-wrap">
+                                                                        <section class="elementor-section elementor-top-section elementor-element elementor-element-b155d01 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="b155d01" data-element_type="section" data-settings="{&amp;quot;background_background&amp;quot;:&amp;quot;classic&amp;quot;}">
+
+                                                                            <div class="elementor-container elementor-column-gap-default">
+                                                                                 
+                                                                                    
+                                                                                    @foreach(var fields in Model._info)
+                                                                                    {
+                                                                                        
+                                                                                            @Html.Raw(await Model.RenderFields(fields));
+
+                                                                                        }
+
+                                                                                
+                                                                            </div>
+                                                                        </section>
+                                                                        <section class="elementor-section elementor-top-section elementor-element elementor-element-76fe9cd elementor-section-height-min-height elementor-section-stretched elementor-section-boxed elementor-section-height-default elementor-section-items-middle" data-id="76fe9cd" data-element_type="section" data-settings="{&amp;quot;background_background&amp;quot;:&amp;quot;classic&amp;quot;,&amp;quot;stretch_section&amp;quot;:&amp;quot;section-stretched&amp;quot;}">
+                                                                            <div class="elementor-container elementor-column-gap-default">
+                                                                                <div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-78470ff" data-id="78470ff" data-element_type="column">
+                                                                                    <div class="elementor-widget-wrap"></div>
+                                                                                </div>
+                                                                                <div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-5b677ca" data-id="5b677ca" data-element_type="column">
+                                                                                    <div class="elementor-widget-wrap"></div>
+                                                                                </div>
+                                                                                <div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-5f694b3" data-id="5f694b3" data-element_type="column">
+                                                                                    <div class="elementor-widget-wrap"></div>
+                                                                                </div>
+                                                                                <div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-7e23d47" data-id="7e23d47" data-element_type="column">
+                                                                                    <div class="elementor-widget-wrap"></div>
+                                                                                </div>
+                                                                                <div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-2ed6b9b" data-id="2ed6b9b" data-element_type="column">
+                                                                                    <div class="elementor-widget-wrap"></div>
+                                                                                </div>
+                                                                                <div class="elementor-column elementor-col-16 elementor-top-column elementor-element elementor-element-81d1c96" data-id="81d1c96" data-element_type="column">
+                                                                                    <div class="elementor-widget-wrap"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </section>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <!-----------------------------
+                                                        * controls_data : find the the props passed indie of data attribute
+                                                        * parent.submit_response_message : contains the markup of error or success message
+                                                        * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+                                                        --------------------------- -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <section class="elementor-section elementor-inner-section elementor-element elementor-element-16f3f5a elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="16f3f5a" data-element_type="section">
+                                        <div class="elementor-container elementor-column-gap-default">
+                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-e3c223c" data-id="e3c223c" data-element_type="column">
+                                                <div class="elementor-widget-wrap elementor-element-populated">
+                                                    <div class="elementor-element elementor-element-4d2bada elementor-align-left elementor-widget elementor-widget-button" data-id="4d2bada" data-element_type="widget" data-widget_type="button.default">
+                                                        <div class="elementor-widget-container">
+                                                            <div class="elementor-button-wrapper">
+                                                                <a href="https://solucoes.sistemasth.com.br/"  style="background: #949292" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+                                                                    <span class="elementor-button-content-wrapper">
+                                                                        <span class="elementor-button-text" >VOLTAR</span>
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-e38bae2" data-id="e38bae2" data-element_type="column">
+                                                <div class="elementor-widget-wrap elementor-element-populated">
+                                                    <div class="elementor-element elementor-element-75cf48e elementor-align-right elementor-widget elementor-widget-button" data-id="75cf48e" data-element_type="widget" data-widget_type="button.default">
+                                                        <div class="elementor-widget-container">
+                                                            <div class="elementor-button-wrapper" style="display: inline">
+
+                                                                <a href="#"
+                                                                   id="check_limpar"
+                                                                   onclick="jQueryCheckLimpar()"
+                                                                   class="color-secondary-buttons color-secondary-buttons elementor-button-link elementor-button elementor-size-sm"
+                                                                   role="button">
+                                                                    <span class="elementor-button-content-wrapper">
+                                                                        <span class="elementor-button-text">LIMPAR</span>
+                                                                    </span>
+
+                                                                </a>
+
+                                                            </div>
+                                                            <a xhref="./Resultado"
+                                                               href="#"
+                                                               id="check_send"
+                                                               onclick="jQueryCheckPost(document.getElementById('formCheck'))"
+                                                               class="elementor-button-link elementor-button elementor-size-sm"
+                                                               role="button">
+                                                                <span class="elementor-button-content-wrapper">
+                                                                    <span class="elementor-button-text">SUBMETER</span>
+                                                                </span>
+
+                                                            </a>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: white; color: red; display: @(String.IsNullOrEmpty(Model.ErrorMessage) ? "none": "block")">
+            @Model.ErrorMessage
+        </div>
+        <!-- .entry-content -->
+    </article>
+    <!-- #post-213 -->
+</main>
+
+@section Head {
+    @Html.Raw(await Statics.RenderStaticPage(Model._env.WebRootPath, "includes", "check", "head.html"))
+}
+@section Scripts {
+    @Html.Raw(await Statics.RenderStaticPage(Model._env.WebRootPath, "includes", "check", "scripts.html"))
+}

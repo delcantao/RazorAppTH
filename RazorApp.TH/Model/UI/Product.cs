@@ -9,6 +9,7 @@ namespace RazorApp.TH.Model.UI
         public string Icon { get; set; }
         public bool Enabled { get; set; }
         public string Url { get; set; }
+        public int Order { get; set; }
         public List<Field> Campos { get; set; }
 
     }
