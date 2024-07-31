@@ -1,20 +1,12 @@
-﻿@page "/apresentacao"
+﻿
+@page "/participacao"
 @using RazorApp.TH.Services.Helpers
-@using Web.Services
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@model RazorApp.TH.Pages.ApresentacaoPage
-@inject IRazorRenderService _renderService
+@model RazorApp.TH.Pages.ParticipacaoPage
 
 @{
-    ViewData["Title"] = "Mobile Number Validation";
+    ViewData["Title"] = "Pesquisa de Participação Societária por CPF";
 }
-<style>
-    p {
-        margin: 0;
-    }
-    
-</style>
-
 
 <main id="primary" class="site-main">
     <article id="post-213" class="post-213 page type-page status-publish hentry">
@@ -37,12 +29,12 @@
                                                             <div class="elementor-icon-box-wrapper">
                                                                 <div class="elementor-icon-box-icon">
                                                                     <span class="elementor-icon elementor-animation-">
-                                                                        <i aria-hidden="true" class="icon icon-checked"></i>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.6.0 by @@fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M48 0C21.5 0 0 21.5 0 48L0 464c0 26.5 21.5 48 48 48l96 0 0-80c0-26.5 21.5-48 48-48s48 21.5 48 48l0 80 96 0c26.5 0 48-21.5 48-48l0-416c0-26.5-21.5-48-48-48L48 0zM64 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm112-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM80 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM272 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z"/></svg>
                                                                     </span>
                                                                 </div>
                                                                 <div class="elementor-icon-box-content">
                                                                     <h3 class="elementor-icon-box-title">
-                                                                        <span>CHECK</span>
+                                                                        <span>Pesquisa de Participação Societária por CPF</span>
                                                                     </h3>
                                                                 </div>
                                                             </div>
@@ -54,14 +46,33 @@
                                     </section>
                                     <div class="elementor-element elementor-element-7945f59 elementor-widget elementor-widget-text-editor" data-id="7945f59" data-element_type="widget" data-widget_type="text-editor.default">
                                         <div class="elementor-widget-container">
-                                            <p>É uma ferramenta de apoio à prevenção ao risco e à fraude que oferece uma solução automática de checagem da informação cadastral, em tempo real, via API, evitando tentativas de fraude de identidade e inconsistências no cadastro dos clientes e prospects. sem comprometer a agilidade na entrada de dados e a satisfação dos seus clientes. <br><strong>Benefícios:</strong>&nbsp; Realizar a validação, a qualificação e confirmação de forma automática dos dados cadastrais CPF e CNPJ. Esta aplicação permite a parametrização de informações a serem checadas em uma única requisição, possibilitando:</p>
+                                            <p>A solução de pesquisa de Participação Societária utiliza o CPF como parâmetro de busca em fontes públicas e cruza os dados para identificar o relacionamento do CPF consultado com um ou mais tipos de CNPJ em que ele possui participação societária.<br/>
+                                                Nossa aplicação retorna para cada CNPJ encontrado o vínculo que o CPF possui na empresa relacionada.<br/>
+                                                As seguintes possibilidades de vínculos societários para o CPF podem ser:
+                                            </p>
                                             <ul>
-                                                <li>Otimização de recursos, tempo de análise, através de acessos à fontes de fé pública;</li>
-                                                <li>Aumento de segurança da informação, pois reduz o risco da entrada de dados inconsistentes e fraudulentos;</li>
-                                                <li>Customização de acordo com a demanda de cada área, através da parametrização das APIs;</li>
-                                                <li>Conformidade com os órgãos reguladores (Circulares 3978 e 3988 do Bacen e da Lei Complementar 105).</li>
+                                                <li><strong>QSA (Quadro de Sócios e Administradores):</strong> Informações disponibilizadas diretamente
+                                                    pela Receita Federal do Brasil (RFB).</li>
+                                                
+                                                <li><strong>Representante Legal:</strong> O representante legal na Receita Federal consta no QSA da
+                                                    empresa, seja como administrador não-sócio ou sócio.</li>
+                                                
+                                                <li><strong>MEI ou EI:</strong> Esses são tipos de empresas que não possuem sócios (QSA). Os vínculos do empreendedor com o CNPJ são realizados através de rotinas especiais desenvolvidas pela Sistemas TH;</li>
+                                                
                                             </ul>
-                                            <p><strong>Escolha abaixo os parâmetros a serem checados:</strong></p>
+                                            <strong>Tipos de CNPJ no Brasil</strong>
+
+                                            <ul>
+                                                <li>MEI – Microempreendedor Individual;</li> 
+                                                <li>	EI – Empresário Individual (EPP ou ME); </li>
+                                                <li>	LTDA – Sociedade Limitada; </li>
+                                                <li>	SLU – Sociedade Limitada Unipessoal; </li>
+                                                <li>	Sociedade Simples e Sociedade Anônima. </li>
+                                            </ul>
+                                            
+                                            <p>Além disso, é possível utilizar filtros como por exemplo, a CNAE principal para sinalizar se o
+                                                    CNPJ vinculado ao CPF possui uma CNAE de alto risco, conflito de interesse ou oportunidade
+                                                    de negócio.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -72,13 +83,14 @@
                         <div class="elementor-container elementor-column-gap-default">
                             <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5e2a73a" data-id="5e2a73a" data-element_type="column">
                                 <div class="elementor-widget-wrap elementor-element-populated">
-                                    <div class="elementor-element elementor-element-fcb0140 elementor-widget elementor-widget-metform" data-id="fcb0140" data-element_type="widget" data-widget_type="metform.default">
+                                    <div class="elementor-element elementor-element-fcb0140 elementor-widget elementor-widget-metform" style="margin-bottom: -23px;" data-id="fcb0140" data-element_type="widget" data-widget_type="metform.default">
                                         <div class="elementor-widget-container">
                                             <div id="mf-response-props-id-235" data-editswitchopen="" data-erroricon="fas fa-exclamation-triangle" data-successicon="fas fa-check" data-messageposition="top" class="   mf-scroll-top-no">
                                                 <div class="formpicker_warper formpicker_warper_editable" data-metform-formpicker-key="235">
                                                     <div class="elementor-widget-container">
                                                         <div id="metform-wrap-fcb0140-235" class="mf-form-wrapper" data-form-id="235" data-action="./wp-json/metform/v1/entries/insert/235" data-wp-nonce="840c16a903" data-form-nonce="6e6eb23d02" data-stop-vertical-effect="">
-                                                            <form id="formCheck1" class="metform-form-content" method="post" asp-page="/apresentacao-req" asp-page-handler="CarregaModulos">
+                                                            <form id="formCheck" class="metform-form-content"  method="post" asp-page="ConsultaParticipacaoResultado" asp-page-handler="CarregaModulos">
+                                                                @Html.AntiForgeryToken()
                                                                 <div class="mf-main-response-wrap   mf-response-msg-wrap" data-show="0">
                                                                     <div class="mf-response-msg"></div>
                                                                 </div>
@@ -91,11 +103,14 @@
                                                                                     
                                                                                     @foreach(var fields in Model._info)
                                                                                     {
-                                                                                        
+                                                                                        if(fields.Ordem > 0)
                                                                                             @Html.Raw(await Model.RenderFields(fields));
-
+                                                                                                    
+                                                                                        
+                                                                                        
+                                                                                        
                                                                                         }
-
+                                                                    
                                                                                 
                                                                             </div>
                                                                         </section>
@@ -170,7 +185,7 @@
                                                                 </a>
 
                                                             </div>
-                                                            <a xhref="./Resultado"
+                                                            <a xhref="./participacao-resultado"
                                                                href="#"
                                                                id="check_send"
                                                                onclick="jQueryCheckPost(document.getElementById('formCheck'))"

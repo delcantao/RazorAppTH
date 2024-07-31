@@ -1,11 +1,10 @@
-﻿@page "/apresentacao-req"
-@using Microsoft.AspNetCore.Http
-@using Microsoft.AspNetCore.Http.Extensions
+﻿@page
+@using Microsoft.AspNetCore.Http 
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @using RazorApp.TH.Services.Helpers
-@model RazorApp.TH.Pages.ApresentacaoResultadoPage
+@model RazorApp.TH.Pages.ParticipacaoResultado
 @{
-    ViewData["Title"] = "Resultado";
+    ViewData["Title"] = "Pesquisa de Participação Societária por CPF";
 }
 
 <main id="primary" class="site-main">
@@ -28,7 +27,7 @@
                                                         <div class="elementor-widget-container">
                                                             <div class="elementor-icon-wrapper">
                                                                 <div class="elementor-icon">
-                                                                    <i aria-hidden="true" class="icon icon-checked"></i>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.6.0 by @@fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M48 0C21.5 0 0 21.5 0 48L0 464c0 26.5 21.5 48 48 48l96 0 0-80c0-26.5 21.5-48 48-48s48 21.5 48 48l0 80 96 0c26.5 0 48-21.5 48-48l0-416c0-26.5-21.5-48-48-48L48 0zM64 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm112-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM80 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM272 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z"/></svg>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -39,7 +38,7 @@
                                                 <div class="elementor-widget-wrap elementor-element-populated">
                                                     <div class="elementor-element elementor-element-5604369 elementor-widget elementor-widget-heading" data-id="5604369" data-element_type="widget" data-widget_type="heading.default">
                                                         <div class="elementor-widget-container">
-                                                            <h1 class="elementor-heading-title elementor-size-default">CHECK - Validação Cadastral</h1>
+                                                            <h1 class="elementor-heading-title elementor-size-default">Pesquisa de Participação Societária por CPF</h1>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -72,7 +71,7 @@
                                                                 <div class="formpicker_warper formpicker_warper_editable" data-metform-formpicker-key="337">
                                                                     <div class="elementor-widget-container">
                                                                         <div id="metform-wrap-f326b3d-337" class="mf-form-wrapper" data-form-id="337" data-action="./wp-json/metform/v1/entries/insert/337" data-wp-nonce="840c16a903" data-form-nonce="6e6eb23d02" data-stop-vertical-effect="">
-                                                                            <form id="form-result" class="metform-form-content" asp-page="/Resultado" asp-page-handler="ConsultaApi">
+                                                                            <form id="form-result" class="metform-form-content" asp-page="/ConsultaParticipacaoResultado" asp-page-handler="ConsultaApi">
                                                                                 <div class="mf-main-response-wrap   mf-response-msg-wrap" data-show="0">
                                                                                     <div class="mf-response-msg"></div>
                                                                                 </div>
@@ -89,17 +88,17 @@
                                                                                                             <div class="elementor-element elementor-element-5ea6053 elementor-widget elementor-widget-mf-text" data-id="5ea6053" data-element_type="widget" data-settings="{&amp;quot;mf_input_name&amp;quot;:&amp;quot;mf-text&amp;quot;}" data-widget_type="mf-text.default">
                                                                                                                 <div class="elementor-widget-container">
                                                                                                                     <div class="mf-input-wrapper">
-                                                                                                                        <label class="mf-input-label font-size-th" style="display: inline-block" for="mf-input-text-5ea6053">@field.Description</label>
-                                                                                                                        <label class="helper-tooltip" text-helper=""><i class="fas fa-info-circle"></i></label>
+                                                                                                                        <label class="mf-input-label font-size-th" style="display: inline-block" for="mf-input-text-5ea6053">@field.Descricao</label>
+                                                                                                                        <label style="display: none" class="helper-tooltip" text-helper="@field.Erros"><i class="fas fa-info-circle"></i></label>
                                                                                                                         <input type="text"
                                                                                                                                class="mf-input font-size-th"
                                                                                                                                id="mf-input-text-5ea6053"
-                                                                                                                               name="@field.Nome"
-                                                                                                                               placeholder="@field.Placeholder"
+                                                                                                                               name="@field.Modulo"
+                                                                                                                               placeholder="@field.Descricao"
                                                                                                                                aria-invalid="false"
-                                                                                                                               title="@field.Description"
-                                                                                                                               
-                                                                                                                               value="">
+                                                                                                                               title="@field.Observacoes"
+                                                                                                                               maxlength="@field.Tamanho"
+                                                                                                                               value="@HttpContext.Session.GetString(@field.Modulo)">
 
                                                                                                                     </div>
                                                                                                                 </div>
@@ -135,10 +134,10 @@
                                                     <div class="loader" style="left: 200px; top: -57px;">Loading...</div>
                                                 </div>
                                             </div>
-                                            <div id="first-block" class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-056521e" data-id="056521e" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+                                            <div id="first-block" style="width: 100%!important;" class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-056521e" data-id="056521e" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                                                 <div class="elementor-widget-wrap elementor-element-populated">
                                                     <div class="elementor-element elementor-element-d3e681d elementor-widget elementor-widget-eael-advanced-data-table" data-id="d3e681d" data-element_type="widget" data-widget_type="eael-advanced-data-table.default">
-                                                        <div class="elementor-widget-container">
+                                                        <div class="elementor-widget-container" style="width: 101%">
                                                             <div class="ea-advanced-data-table-wrap" data-id="d3e681d">
                                                                 <div id="resultView-1" class="ea-advanced-data-table-wrap-inner">
 
@@ -153,19 +152,7 @@
                                                 </div>
                                             </div>
 
-                                            <div id="second-block" class="elementor-column elementor-col-20 elementor-inner-column elementor-element elementor-element-fed2bc2" data-id="fed2bc2" data-element_type="column" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                                                <div class="elementor-widget-wrap elementor-element-populated">
-                                                    <div class="elementor-element elementor-element-d3e681d elementor-widget elementor-widget-eael-advanced-data-table" data-id="d3e681d" data-element_type="widget" data-widget_type="eael-advanced-data-table.default">
-                                                        <div class="elementor-widget-container">
-                                                            <div class="ea-advanced-data-table-wrap" data-id="d3e681d">
-                                                                <div id="resultView-2" class="ea-advanced-data-table-wrap-inner">
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                           
                                         </div>
                                     </section>
                                 </div>
@@ -181,15 +168,15 @@
 
                                             <div id="div-forms" style="display: inline">
                                                 <div id="div-limpar-voltar">
-                                                    <form id="form-limpar" class="btn-lf-class" method="post" asp-page="/Resultado" asp-page-handler="Limpar">
+                                                    <form id="form-limpar" class="btn-lf-class" method="post" asp-page="/ConsultaParticipacaoResultado" asp-page-handler="Limpar">
                                                         <input class="btn-lf-class btn-lf-size" type="button" value="VOLTAR" onclick="history.go(-1)" button="" style="float: left; color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
                                                     </form>
-                                                    <form class="btn-lf-class" method="post" action="/Resultado?handler=Check">
+                                                    <form id="formPartSoc" class="btn-lf-class" method="post" action="/ConsultaParticipacaoResultado?handler=Check">
                                                         <input class="btn-lf-size" type="button" value="PROCESSAR" onclick="jQueryResultPost(document.getElementById('form-result'))" button="" style="color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer">
                                                     </form>
                                                 </div>
                                                 <div id="div-processar">
-                                                    <form id="form-limpar" class="btn-lf-class" style="display: inline" method="post" asp-page="/Resultado" asp-page-handler="Limpar">
+                                                    <form id="form-limpar" class="btn-lf-class" style="display: inline" method="post" asp-page="/ConsultaParticipacaoResultado" asp-page-handler="Limpar">
                                                         <input class="btn-lf-size color-secondary-buttonsy" type="button" value="LIMPAR" onclick="jQueryLimparPost(document.getElementById('form-limpar'))" button="" style="color: #FFFFFF; background-color: #949292; border-radius: 5px; font-family: Source Sans Pro; font-size: 16px; cursor: pointer">
                                                     </form>
                                                 </div>

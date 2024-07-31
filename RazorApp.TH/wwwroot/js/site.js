@@ -5,6 +5,60 @@
 
 $(document).ready(function () {
 
+
+    $(".info-click").on("click", (e) => {
+        const dataOpen = e.currentTarget.attributes.getNamedItem("data-open")
+        const companyId = dataOpen.value;
+        const companyElement = $(`#${companyId}`);
+        companyElement.toggleClass("hidden-ps");
+
+        if (companyElement.hasClass("hidden-ps")) {
+            $(`#info-${companyId}`).text("+ Informações")
+        } else {
+            $(`#info-${companyId}`).text("- Informações")
+        }
+    })
+
+
+    $(document).on("click", ".info-click", function(e) {
+        console.log(e)
+
+        const dataOpen = e.currentTarget.attributes.getNamedItem("data-open")
+        const companyId = dataOpen.value;
+        const companyElement = $(`#${companyId}`);
+        companyElement.toggleClass("hidden-ps");
+
+        if (companyElement.hasClass("hidden-ps")) {
+            $(`#info-${companyId}`).text("+ Informações")
+        } else {
+            $(`#info-${companyId}`).text("- Informações")
+        }
+    });
+    
+    
+    $(document).on("click", "#showjson", function() {
+        const mainContainer = $("#container-ps-main");
+        const jsonContainer = $("#json-container");
+
+        mainContainer.toggleClass("hidden-ps");
+        jsonContainer.toggleClass("hidden-ps");
+        if (mainContainer.hasClass("hidden-ps")) {
+            $("#showjson").text("Ocultar JSON");
+        } else {
+            $("#showjson").text("Exibir JSON");
+        }
+    });
+    
+    $("#form-result").on("submit", function(a1, a2, a3) {
+        console.log(a1, a2, a3)
+        jQueryResultPost(document.getElementById('form-result'));
+        const _2ndblock = $("#second-block")
+        _2ndblock.hide()
+        setTimeout(()=>{
+            _2ndblock.hide()
+        }, 1800)
+        return false;
+    });
     // Begin - Tooltip result page
     var timer;
     $(".helper-tooltip").on("mouseover", function () {
@@ -88,7 +142,8 @@ $(document).ready(function () {
                         $("#return-message").html(res.message);
                         return;
                     }
-                    window.location.href = './Resultado';
+                    
+                    window.location.href = res.redirectTo ? res.redirectTo : './Resultado';
                 },
                 error: function (err, a, b, c, d) {
                     console.log(err, a, b, c, d)
@@ -129,8 +184,14 @@ $(document).ready(function () {
             }
         })
     }
-    jQueryResultPost = form => {
+    jQueryResultPost = (form) => {
         try {
+                       
+            var _2ndblock = $("#second-block")
+            const hideSecondBlock = form.action.indexOf("ConsultaParticipacaoResultado") != -1
+            
+            
+            
             showLoading(true);
             $.ajax({
                 type: 'POST',
@@ -151,14 +212,16 @@ $(document).ready(function () {
                     }
                     $("#resultView-1").html(res.htmlView1);
                     $("#resultView-2").html(res.htmlView2);
-
+                    if (hideSecondBlock) _2ndblock.hide()
                 },
                 error: function (err) {
                     console.log(err)
+                    if (hideSecondBlock) _2ndblock.hide()
                 }
             })
             return false;
         } catch (ex) {
+            if (hideSecondBlock) _2ndblock.hide()            
             console.log(ex)
         }
     }

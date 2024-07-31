@@ -50,7 +50,7 @@ namespace RazorApp.TH.Pages
                 HttpContext.Session.SetString("senha", senha);
 
                 //https://solucoes.sistemasth.com.br/login-check?login=123
-                return Statics.IsDev ? Redirect("/apresentacao") : Redirect(Statics.UrlSolucoes + $"/login-check?login={cliente}");
+                return Statics.IsDev ? Redirect("/participacao") : Redirect(Statics.UrlSolucoes + $"/login-check?login={cliente}");
             }
             return Redirect(Services.Helpers.Statics.UrlLoginSipWeb);
 

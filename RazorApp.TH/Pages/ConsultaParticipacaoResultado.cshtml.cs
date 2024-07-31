@@ -1,8 +1,6 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using System.Threading.Tasks;
 using RazorApp.TH.Services.Helpers;
 using System.Net.Http;
@@ -15,60 +13,40 @@ using Web.Services;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Primitives;
-using System.Xml.Linq;
 using RazorApp.TH.Model.Apresentacao;
-using RazorApp.TH.Model.OpenGateway;
 using RazorApp.TH.Model.UI;
 
 namespace RazorApp.TH.Pages
 {
-    public class ApresentacaoResultadoPage : PageModel
+    public class ParticipacaoResultado : PageModel
     {
         public IRazorRenderService _renderService;
         public IWebHostEnvironment _env;
-        public List<Field> Fields;
-        private readonly ILogger<ResultadoOpenGatewayPage> _logger; 
+        private readonly ILogger<ParticipacaoResultado> _logger;
+        private string[] _modulos { get; set; }
+        public List<Model.Info.Data> _info;
+        public List<Model.Info.Data> Fields;
+        public List<Model.Check.Data> Result;
+        public Dictionary<string, string> fields = new Dictionary<string, string>();
         public Product Product;
-        public string NameProduct { get; set; } = "Check Operadoras";
 
 
-
-        public ApresentacaoResultadoPage(ILogger<ResultadoOpenGatewayPage> logger, IWebHostEnvironment env, IRazorRenderService renderService)
+        public ParticipacaoResultado(ILogger<ParticipacaoResultado> logger, IWebHostEnvironment env, IRazorRenderService renderService)
         {
             _logger = logger;
             _env = env;
             _renderService = renderService;
         }
 
-        public IActionResult OnGet(string product)
+        public IActionResult OnGet()
         {
-            // api/BuscaOP010Score?sCliente={sCliente}&sUsuario={sUsuario}&sSenha={sSenha}&sCPF={sCPF}
-            // api/BuscaOP010ValTel?sCliente={sCliente}&sUsuario={sUsuario}&sSenha={sSenha}&sFone={sFone}&sCPF={sCPF}
-            // api/BuscaOP010ValEnd?sCliente={sCliente}&sUsuario={sUsuario}&sSenha={sSenha}&sCEP={sCEP}&sNumeroEndereco={sNumeroEndereco}&sFone={sFone}&sCPF={sCPF}
-            // api/BuscaOP010Alerta?sCliente={sCliente}&sUsuario={sUsuario}&sSenha={sSenha}&sFone={sFone}
-
-            //var a = new List<OpenGateway.Product>
-            //{
-            //    new () { Enabled = true, Icon = "fa fa-tachometer", Nome = "Score", Tooltip = "Score Tooltip", Campos = new () { new () { Nome = "sCPF" } }},
-            //    new () { Enabled = true, Icon = "fa fa-phone", Nome = "Valida Fone", Tooltip = "Valida Fone", Campos = new () { new () { Nome = "sCPF" }, new (){ Nome = "sFone" } }},
-            //    new () { Enabled = true, Icon = "fa fa-location-arrow", Nome = "Valida Endereço", Tooltip = "Valida Endereço", Campos = new () { new () { Nome = "sCEP" },  new () { Nome = "sNumeroEndereco" },  new () { Nome = "sCPF", Opcional = true},  new () { Nome = "sFone", Opcional = true } }},
-            //    new () { Enabled = true, Icon = "fa fa-exchange", Nome = "Alerta", Tooltip = "Alerta", Campos = new () { new () { Nome = "sFone" } }}
-            //};
-
-
-
-            LoadProduct(product);
-
+            if(string.IsNullOrEmpty(HttpContext.Session.GetString("modulos")))
+                return Redirect("./Check");
+            LoadSession();
+            CarregaModulos();
             return Page();
         }
-
-        private void LoadProduct(string product)
-        {
-            var prodJson = HttpContext.Session.GetString("apresentacao_products");
-            var prodObj = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Product>>(prodJson);
-            Product = prodObj.FirstOrDefault(e => e.Nome.ToLower() == product.ToLower());
-
-        }
+        
         public async Task<JsonResult> OnPostConsultaApiAsync() //(string CPF, string NOME, string NOMEADC, string FONE, string EMAIL)
         {
             try
@@ -124,8 +102,7 @@ namespace RazorApp.TH.Pages
                     //        }));
                     product = "Error";
                 }
-
-                var result = new OpenGatewayModel(); 
+ 
                 switch (product)
                 {
                       case "Error":
@@ -171,12 +148,56 @@ namespace RazorApp.TH.Pages
                        }));
             }
         }
-
-
-        private void Deserialize()
+        private void LoadProduct(string product)
         {
+            var prodJson = HttpContext.Session.GetString("apresentacao_products");
+            var prodObj = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Product>>(prodJson);
+            Product = prodObj.FirstOrDefault(e => e.Nome.ToLower() == product.ToLower());
+
+            if (Product == null) Product = prodObj.First();
+            
 
         }
+        public async Task<JsonResult> OnPostLimparAsync()
+        {
+            LoadSession();
+            if (_info != null) _info.ForEach(e => HttpContext.Session.SetString(e.Modulo, ""));
+            return await Task.FromResult(new JsonResult(new { isValid = true }));
+        }
+        public async Task<JsonResult> OnPostCheckAsync()
+        {
+            return await Task.FromResult(new JsonResult(new { isValid = true }));
+        }
+        public async Task<JsonResult> OnPostCarregaModulos(List<string> Modulo)
+        {
 
+            if(!Modulo.Contains("sCPF")) Modulo.Insert(0, "sCPF");
+            HttpContext.Session.SetString("modulos", string.Join(",", Modulo.ToArray()));
+            _modulos = Modulo.ToArray();
+            LoadSession();
+            CarregaModulos();
+            return await Task.FromResult(new JsonResult(new { isValid = true, redirectTo = "/ConsultaParticipacaoResultado" }));
+
+        }
+        
+        private void CarregaModulos()
+        {
+            Fields = new List<Model.Info.Data>();
+            foreach(var modulo in _modulos)
+            {
+                if(string.IsNullOrEmpty(modulo)) continue;
+                var field = _info.SingleOrDefault(e => e.Modulo.Equals(modulo));
+                Fields.Add(field);
+            }
+
+        }
+        private void LoadSession()
+        {
+            var info = HttpContext.Session.GetString("info");
+            if(!string.IsNullOrEmpty(info))
+                _info = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Model.Info.Data>>(info);
+            //HttpContext.Session.Remove("modulos");
+            _modulos = HttpContext.Session.GetString("modulos") != null ? HttpContext.Session.GetString("modulos").Split(",") : null;
+        }
     }
 }

@@ -5,6 +5,9 @@ namespace RazorApp.TH.Model.Apresentacao
     public class ParticipacaoSocietariaModel
     {
         public int Qtd_Empresas { get; set; }
+        public int Qtd_Part_Socio_Empreendedor { get; set; }
+        public int Qtd_Part_Representante_Legal { get; set; }
+        
         public string Json { get; set; }
         public Dcr_empresas[] Dcr_empresas { get; set; }
     }
@@ -15,13 +18,14 @@ namespace RazorApp.TH.Model.Apresentacao
         public Dados_Do_Socio Dados_Do_Socio { get; set; }
         public Dados_Do_Representante Dados_Do_Representante { get; set; }
         public string Ind_Origem { get; set; }
-        public DateTime Dat_Atz { get; set; }
+        public string Dat_Atz { get; set; }
     }
 
     public class Dados_Do_CNPJ
     {
         public string Cod_CNPJ { get; set; }
         public string Ind_Matriz { get; set; }
+        public string Dcr_Situacao_Cadastral { get; set; }
         public string Dcr_Razao_Social { get; set; }
         public string Dcr_Natureza_Juridica { get; set; }
         public string Dat_Abertura { get; set; }

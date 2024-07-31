@@ -23,6 +23,7 @@
     .table-ps {
         border: 1px solid;
         margin: 10px;
+        border-radius: 10px;
     }
 
     .container-ps {
@@ -32,44 +33,44 @@
         display: none!important;
     }
     .empresas {
-        max-width: 400px!important;
-        min-width: 400px!important;
+        max-width: 490px!important;
+        min-width: 490px!important;
+    }
+    .ps-header {
+        display: flex;
+        gap: 1rem;
+        margin-left: 10px;
+    }
+    .ps-header > div {
+        border: 1px solid;
+        padding: 2px 10px 2px 10px;
+        border-radius: 10px;
+        
+    }
+    .pj-ex {
+        display: flex;
+        justify-content: space-between;
+        
     }
 </style>
-Quantidade de Empresas: @(Model.Qtd_Empresas > maxEmp ? maxEmp : Model.Qtd_Empresas)
 
-<script>
-    $(document).ready(() => {
-        $(".info-click").on("click", (e) => {
-            console.log(e)
-            
-            const dataOpen = e.currentTarget.attributes.getNamedItem("data-open")
-            const companyId = dataOpen.value;
-            const companyElement = $(`#${companyId}`);
-            companyElement.toggleClass("hidden-ps");
-            
-            if (companyElement.hasClass("hidden-ps")) {
-                $(`#info-${companyId}`).text("+ Informações")
-            } else {
-                $(`#info-${companyId}`).text("- Informações")
-            }
-        })
-        
-        $("#showjson").on("click", () => {
-            const mainContainer = $("#container-ps-main");
-            const jsonContainer = $("#json-container");
-            
-            mainContainer.toggleClass("hidden-ps");
-            jsonContainer.toggleClass("hidden-ps");
-            if (mainContainer.hasClass("hidden-ps")) {
-                $("#showjson").text("Ocultar JSON")
-            } else {
-                $("#showjson").text("Exibir JSON")
-            }
+<div class="ps-header">
 
-        });
-    })
-</script>
+    <div>
+        Quantidade de Empresas: @Model.Qtd_Empresas
+    </div>
+
+    <div>
+        Como sócio/empreendedor: @Model.Qtd_Part_Socio_Empreendedor
+    </div>
+
+    <div>
+        Como representante legal: @Model.Qtd_Part_Representante_Legal
+    </div>
+    
+</div>
+
+ 
 <div class="container-ps" id="container-ps-main">
     @foreach (var empresas in @Model.Dcr_empresas.Take(maxEmp))
     {
@@ -78,7 +79,7 @@ Quantidade de Empresas: @(Model.Qtd_Empresas > maxEmp ? maxEmp : Model.Qtd_Empre
             @{
                 var arrNatJur = empresas.Dados_Do_CNPJ.Dcr_Natureza_Juridica?.Split('-');
                 var arrCnae = empresas.Dados_Do_CNPJ.Dcr_CNAE_Principal?.Split('-');
-                var arrPais = empresas.Dados_Do_Socio.Dcr_Pais?.Split('-');
+                var arrPais = empresas.Dados_Do_Socio?.Dcr_Pais?.Split('-');
 
                 var Dcr_Natureza_Juridica1 = "";
                 var Dcr_Natureza_Juridica2 = "";
@@ -105,26 +106,33 @@ Quantidade de Empresas: @(Model.Qtd_Empresas > maxEmp ? maxEmp : Model.Qtd_Empre
                     Dcr_Pais2 = arrPais[1];
                 }
 
-                if (string.IsNullOrEmpty(Dcr_Natureza_Juridica1))
+                if (string.IsNullOrEmpty(Dcr_Natureza_Juridica1) && !string.IsNullOrEmpty(empresas.Dados_Do_CNPJ?.Dcr_Natureza_Juridica))
                 {
                     Dcr_Natureza_Juridica1 = empresas.Dados_Do_CNPJ.Dcr_Natureza_Juridica;
                 }
                 
-                if (string.IsNullOrEmpty(Dcr_CNAE_Principal1))
+                if (string.IsNullOrEmpty(Dcr_CNAE_Principal1) && !string.IsNullOrEmpty(empresas.Dados_Do_CNPJ?.Dcr_CNAE_Principal))
                 {
                     Dcr_Natureza_Juridica1 = empresas.Dados_Do_CNPJ.Dcr_CNAE_Principal;
                 }
                 
-                if (string.IsNullOrEmpty(Dcr_Pais1))
+                if (string.IsNullOrEmpty(Dcr_Pais1) && !string.IsNullOrEmpty(empresas.Dados_Do_Socio?.Dcr_Pais))
                 {
-                    Dcr_Natureza_Juridica1 = empresas.Dados_Do_Socio.Dcr_Pais;
+                    Dcr_Pais1 = empresas.Dados_Do_Socio.Dcr_Pais;
                 }
             }
             <table class="table-ps">
                 <thead>
                 <tr class="cnpj-header">
                     <th>
-                        <strong>CNPJ:</strong> @empresas.Dados_Do_CNPJ.Cod_CNPJ
+                        <div class="pj-ex">
+                            <div>
+                                <strong>CNPJ:</strong> @empresas.Dados_Do_CNPJ.Cod_CNPJ
+                            </div>
+                            <div>
+                                <strong>Situação Cadastral:</strong> @empresas.Dados_Do_CNPJ.Dcr_Situacao_Cadastral
+                            </div>
+                        </div>
                     </th>
                 </tr>
                 <tr>
@@ -172,9 +180,9 @@ Quantidade de Empresas: @(Model.Qtd_Empresas > maxEmp ? maxEmp : Model.Qtd_Empre
                     </tr>    
                 }
                 
-                <tr>
-                    <td>CNAES Secundárias: @empresas.Dados_Do_CNPJ.Dcr_CNAE_Secundaria</td>
-                </tr>
+                @* <tr> *@
+                @*     <td>CNAES Secundárias: @empresas.Dados_Do_CNPJ.Dcr_CNAE_Secundaria</td> *@
+                @* </tr> *@
                 @* <tr> *@
                 @*     <td>CNAES Secundárias - Código: @empresas.Dados_Do_CNPJ.Dcr_CNAE_Secundaria</td> *@
                 @* </tr> *@
@@ -224,7 +232,7 @@ Quantidade de Empresas: @(Model.Qtd_Empresas > maxEmp ? maxEmp : Model.Qtd_Empre
                 @if (!string.IsNullOrEmpty(empresas.Dados_Do_Socio?.Dcr_Nome))
                 {
                     <tr>
-                        <td>Sócio - Nome: @empresas.Dados_Do_Socio?.Dcr_Nome</td>
+                        <td>Nome: @empresas.Dados_Do_Socio?.Dcr_Nome</td>
 
                     </tr>
                 }
@@ -232,28 +240,28 @@ Quantidade de Empresas: @(Model.Qtd_Empresas > maxEmp ? maxEmp : Model.Qtd_Empre
                 @if (!string.IsNullOrEmpty(empresas.Dados_Do_Socio?.Dcr_Qualificacao))
                 {
                     <tr>
-                        <td>Sócio - Qualificacao: @empresas.Dados_Do_Socio?.Dcr_Qualificacao</td>
+                        <td>Qualificacao: @empresas.Dados_Do_Socio?.Dcr_Qualificacao</td>
 
                     </tr>
                 }
                 @if (!string.IsNullOrEmpty(empresas.Dados_Do_Socio?.Dat_Inclusao))
                 {
                     <tr>
-                        <td>Sócio - Data da Inclusao: @empresas.Dados_Do_Socio?.Dat_Inclusao</td>
+                        <td>Data da Inclusao: @empresas.Dados_Do_Socio?.Dat_Inclusao</td>
 
                     </tr>
                 }
                 @if (!string.IsNullOrEmpty(Dcr_Pais1))
                 {
                     <tr>
-                        <td>Sócio - País - Codigo: @Dcr_Pais1 </td>
+                        <td>País - Codigo: @Dcr_Pais1 </td>
 
                     </tr>
                 }
                 @if (!string.IsNullOrEmpty(Dcr_Pais2))
                 {
                     <tr>
-                        <td>Sócio - País - Descricao: @Dcr_Pais2 </td>
+                        <td>País - Descricao: @Dcr_Pais2 </td>
 
                     </tr>
                 }
@@ -261,14 +269,14 @@ Quantidade de Empresas: @(Model.Qtd_Empresas > maxEmp ? maxEmp : Model.Qtd_Empre
                 @if (!string.IsNullOrEmpty(empresas.Dados_Do_Representante?.Dcr_Nome_Representante))
                 {
                     <tr>
-                        <td>Sócio - Representante Legal - Nome: @empresas.Dados_Do_Representante?.Dcr_Nome_Representante</td>
+                        <td>Representante Legal - Nome: @empresas.Dados_Do_Representante?.Dcr_Nome_Representante</td>
 
                     </tr>
                 }
                 @if (!string.IsNullOrEmpty(empresas.Dados_Do_Representante?.Dcr_Qualificacao_Representante))
                 {
                     <tr>
-                        <td>Sócio - Representante Legal - Qualificacao: @empresas.Dados_Do_Representante.Dcr_Qualificacao_Representante</td>
+                        <td>Representante Legal - Qualificacao: @empresas.Dados_Do_Representante.Dcr_Qualificacao_Representante</td>
 
                     </tr>
                 }
@@ -280,7 +288,7 @@ Quantidade de Empresas: @(Model.Qtd_Empresas > maxEmp ? maxEmp : Model.Qtd_Empre
             <table class="table-ps">
                 <tr>
                     <td>
-                        Data da última atualização: @empresas.Dat_Atz.ToString("dd/MM/yyyy HH:mm")
+                        Data da última atualização: @empresas.Dat_Atz
                     </td>
 
                 </tr>
@@ -296,5 +304,5 @@ Quantidade de Empresas: @(Model.Qtd_Empresas > maxEmp ? maxEmp : Model.Qtd_Empre
     </pre>
 </div>
 <div>
-    <button id="showjson"> Exibir JSON</button>
+    <button id="showjson" style="margin-left: 8px; color: #FFFFFF; background-color: #752219; border-radius: 5px; font-family:Source Sans Pro; font-size:16px; cursor: pointer"> Exibir JSON</button>
 </div>
